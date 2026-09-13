@@ -118,7 +118,7 @@ img {
 .hero-section {
   position: relative;
   width: 100%;
-  height: calc(100vh + 360px); /* Arrival distance: as soon as arrival finishes, page immediately starts scrolling */
+  height: calc(100vh + 720px); /* 2-Step Scroll Corridor: 0-360px plane/text arrival, 360-720px takeoff */
   background-color: #dbeafe;
   border-radius: 0;
   box-shadow: none;
@@ -474,6 +474,8 @@ img {
   gap: 36px;
   max-width: 580px;
   will-change: transform, opacity;
+  opacity: 0;
+  transform: translate3d(0, 48px, 0);
 }
 
 /* Vertical Journey Stepper */
@@ -692,7 +694,8 @@ img {
   width: 100%;
   transform-origin: 45% 55%;
   will-change: transform, opacity;
-  transform: translate3d(0, 0, 0) rotate(-11deg);
+  transform: translate3d(-440px, 300px, 0) rotate(-6deg) scale(0.38);
+  opacity: 0;
 }
 
 .hero-airplane-img {
@@ -1054,29 +1057,32 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  gap: 36px;
   width: 100%;
-  max-width: 1540px;
+  max-width: 1560px;
   margin: 0 auto;
-  padding: 100px 56px 40px;
+  padding: 80px 48px 30px;
   flex: 1;
+  min-height: 0;
 }
 
 /* Left Information Panel */
 .showcase-info-panel {
-  max-width: 540px;
+  flex: 0 0 420px;
+  max-width: 440px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   z-index: 6;
   opacity: 1;
-  transform: translateX(0);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: translate3d(0, 0, 0);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
 }
 
 .showcase-info-panel.animating {
   opacity: 0;
-  transform: translateX(-24px);
+  transform: translate3d(-18px, 0, 0);
 }
 
 /* Elevation Badge */
@@ -1106,24 +1112,24 @@ img {
 /* Main Headline */
 .showcase-headline {
   font-family: var(--font-headline);
-  font-size: clamp(2.8rem, 5.2vw, 4.8rem);
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.025em;
   color: #ffffff;
   text-transform: uppercase;
-  margin-bottom: 26px;
+  margin-bottom: 24px;
   text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
 }
 
 /* Narrative text */
 .showcase-narrative {
-  font-size: 1.06rem;
-  line-height: 1.7;
+  font-size: 1.04rem;
+  line-height: 1.65;
   color: #e2e8f0;
   font-weight: 300;
-  margin-bottom: 36px;
-  max-width: 480px;
+  margin-bottom: 32px;
+  max-width: 440px;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
 }
 
@@ -1172,28 +1178,53 @@ img {
   transform: translateX(4px);
 }
 
-/* Right Side Cards Deck */
+/* Right Side Cards Deck (Fluid & horizontally scrollable on any viewport) */
 .showcase-cards-deck {
+  flex: 1;
+  min-width: 0;
   display: flex;
   align-items: center;
-  gap: 22px;
-  padding: 20px 10px;
-  overflow-x: visible;
+  gap: 18px;
+  padding: 16px 8px 24px;
+  overflow-x: auto;
+  overflow-y: hidden;
   z-index: 6;
   perspective: 1200px;
+  will-change: transform, opacity;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.showcase-cards-deck::-webkit-scrollbar {
+  height: 5px;
+}
+
+.showcase-cards-deck::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 999px;
+}
+
+.showcase-cards-deck::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+}
+
+.showcase-cards-deck::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.45);
 }
 
 .showcase-card {
   position: relative;
-  width: 215px;
-  height: 350px;
-  border-radius: 22px;
+  width: 195px;
+  height: 330px;
+  border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
   flex-shrink: 0;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease, border-color 0.3s ease;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease;
   user-select: none;
 }
 
@@ -1203,6 +1234,8 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+  pointer-events: none;
   transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -2146,7 +2179,7 @@ a.footer-gold-link[href^="mailto:"] {
   }
 
   .hero-section {
-    height: calc(100vh + 260px);
+    height: calc(100vh + 560px);
     padding: 0;
     border-radius: 0;
   }

@@ -40,56 +40,85 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollY = window.pageYOffset || document.documentElement.scrollTop;
     const isMobile = window.innerWidth <= 768;
 
-    // Flight takeoff distance: smooth climb-out as user scrolls past hero
-    const takeoffDistance = isMobile ? 380 : 500;
+    // 2-Step Scroll Corridor:
+    // Step 1: Pristine Empty Sky on open -> User scrolls once -> Plane & text glide in
+    // Step 2: User scrolls again -> Plane accelerates & takes off into clouds, page scrolls down
+    const step1Distance = isMobile ? 280 : 360;
+    const step2Distance = isMobile ? 280 : 360;
 
-    // Hero Resting Stance (center):
     const midX = 0;
     const midY = 0;
     const midScale = 1.0;
     const midRot = -11;
 
-    // Departure Vector (climbing up and right into clouds as page scrolls down):
-    const endX = isMobile ? window.innerWidth * 0.65 : 480;
-    const endY = isMobile ? -window.innerHeight * 0.45 : -420;
-    const endScale = 1.35;
-    const endRot = -18;
+    let planeX, planeY, planeScale, planeRot, planeOpacity;
+    let textOpacity, textY;
+    let hintOpacity;
 
-    const progress = clamp(scrollY / takeoffDistance, 0, 1);
-    const t = easeInOutQuad(progress);
+    if (scrollY <= step1Distance) {
+      // Phase 1: Materializing from Pristine Empty Sky to Center Resting Stance
+      const p1 = clamp(scrollY / step1Distance, 0, 1);
+      const t1 = easeOutCubic(p1);
 
-    const planeX = midX + (endX - midX) * t;
-    const planeY = midY + (endY - midY) * t;
-    const planeScale = midScale + (endScale - midScale) * t;
-    const planeRot = midRot + (endRot - midRot) * t;
+      // Natural flight approach corridor: glides in from bottom-left / distance
+      const startX = isMobile ? -260 : -440;
+      const startY = isMobile ? 220 : 300;
+      const startScale = 0.38;
+      const startRot = -5;
 
-    // Plane is fully visible on load; dissolves smoothly into high clouds as it climbs away
-    let planeOpacity = 1.0;
-    if (t > 0.45) {
-      planeOpacity = clamp(1.0 - (t - 0.45) / 0.55, 0, 1);
+      planeX = startX + (midX - startX) * t1;
+      planeY = startY + (midY - startY) * t1;
+      planeScale = startScale + (midScale - startScale) * t1;
+      planeRot = startRot + (midRot - startRot) * t1;
+
+      // At scrollY === 0, plane is completely invisible: PRISTINE EMPTY SKY
+      // Materializes smoothly as user scrolls
+      planeOpacity = clamp(t1 * 1.35, 0, 1);
+
+      // Hero text slides up and fades in
+      const textP = clamp((p1 - 0.12) / 0.88, 0, 1);
+      textOpacity = easeInOutQuad(textP);
+      textY = (1 - easeOutCubic(textP)) * 48;
+
+      // Scroll hint is visible on pristine sky, fades out as user scrolls
+      hintOpacity = clamp(1.0 - p1 * 2.2, 0, 1);
+    } else {
+      // Phase 2: Departure Vector - plane accelerates up and right into high clouds
+      const p2 = clamp((scrollY - step1Distance) / step2Distance, 0, 1);
+      const t2 = easeInOutQuad(p2);
+
+      const endX = isMobile ? window.innerWidth * 0.65 : 480;
+      const endY = isMobile ? -window.innerHeight * 0.45 : -440;
+      const endScale = 1.4;
+      const endRot = -19;
+
+      planeX = midX + (endX - midX) * t2;
+      planeY = midY + (endY - midY) * t2;
+      planeScale = midScale + (endScale - midScale) * t2;
+      planeRot = midRot + (endRot - midRot) * t2;
+
+      // Plane dissolves into upper cloud layer
+      planeOpacity = 1.0;
+      if (t2 > 0.35) {
+        planeOpacity = clamp(1.0 - (t2 - 0.35) / 0.65, 0, 1);
+      }
+
+      // Text glides up with parallax & dissolves
+      textOpacity = clamp(1.0 - t2 * 1.6, 0, 1);
+      textY = -t2 * 60;
+
+      hintOpacity = 0;
     }
 
-    // Navigation is always visible and stable
-    const navOpacity = 1.0;
-    const navY = 0;
-
-    // Text glides with subtle upward parallax as page scrolls
-    const textOpacity = clamp(1.0 - t * 1.4, 0, 1);
-    const textY = -t * 60;
-
-    // Scroll hint visible at top, fades out immediately on scroll
-    const hintOpacity = clamp(1.0 - progress * 2.8, 0, 1);
-
-    // Apply values to DOM
+    // Apply transforms
     if (airplaneWrapper) {
       airplaneWrapper.style.transform = `translate3d(${planeX.toFixed(1)}px, ${planeY.toFixed(1)}px, 0) rotate(${planeRot.toFixed(1)}deg) scale(${planeScale.toFixed(3)})`;
       airplaneWrapper.style.opacity = planeOpacity.toFixed(3);
     }
 
     if (heroNav) {
-      heroNav.style.opacity = navOpacity.toFixed(3);
-      heroNav.style.transform = `translate3d(0, ${navY.toFixed(1)}px, 0)`;
-      heroNav.style.pointerEvents = navOpacity > 0.5 ? 'auto' : 'none';
+      heroNav.style.opacity = '1';
+      heroNav.style.transform = 'translate3d(0, 0, 0)';
     }
 
     if (heroLeftColumn) {
@@ -566,12 +595,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. Approaching / Coming Up from below Hero ---
     if (scrollY < showcaseTop) {
-      const approach = clamp((scrollY + windowH - showcaseTop) / (windowH * 0.85), 0, 1);
+      const approachDist = windowH * 0.95;
+      const approach = clamp((scrollY + windowH - showcaseTop) / approachDist, 0, 1);
+      const easeApproach = easeOutCubic(approach);
 
+      // Destination cards deck animates smoothly from RIGHT to LEFT
       if (showcaseCardsDeck) {
-        const slideX = (1 - approach) * 140;
+        const slideX = (1 - easeApproach) * 320;
         showcaseCardsDeck.style.transform = `translate3d(${slideX.toFixed(1)}px, 0, 0)`;
-        showcaseCardsDeck.style.opacity = approach.toFixed(2);
+        showcaseCardsDeck.style.opacity = easeApproach.toFixed(3);
+      }
+
+      // Left country text panel animates into place
+      if (showcaseInfoPanel) {
+        const textY = (1 - easeApproach) * 55;
+        const textX = -(1 - easeApproach) * 40;
+        showcaseInfoPanel.style.transform = `translate3d(${textX.toFixed(1)}px, ${textY.toFixed(1)}px, 0)`;
+        showcaseInfoPanel.style.opacity = easeApproach.toFixed(3);
       }
 
       showcaseStickyViewport.style.transform = 'translate3d(0, 0, 0) scale(1)';
@@ -590,6 +630,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (showcaseCardsDeck) {
       showcaseCardsDeck.style.transform = 'translate3d(0, 0, 0)';
       showcaseCardsDeck.style.opacity = '1';
+    }
+
+    if (showcaseInfoPanel) {
+      showcaseInfoPanel.style.transform = 'translate3d(0, 0, 0)';
+      showcaseInfoPanel.style.opacity = '1';
     }
 
     // Map scroll progress to active country slide
