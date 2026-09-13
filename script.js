@@ -159,12 +159,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial call on page load
   updateFlightOnScroll();
+  if (typeof updateShowcaseOnScroll === 'function') {
+    updateShowcaseOnScroll();
+  }
 
   let isTicking = false;
   window.addEventListener('scroll', () => {
     if (!isTicking) {
       requestAnimationFrame(() => {
         updateFlightOnScroll();
+        if (typeof updateShowcaseOnScroll === 'function') {
+          updateShowcaseOnScroll();
+        }
         isTicking = false;
       });
       isTicking = true;
@@ -173,6 +179,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('resize', () => {
     updateFlightOnScroll();
+    if (typeof updateShowcaseOnScroll === 'function') {
+      updateShowcaseOnScroll();
+    }
   });
 
   // Click on scroll hint smoothly scrolls to reveal hero
@@ -615,7 +624,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 320);
   }
 
-  function goToSlide(newIndex) {
+  function scrollToShowcaseSlide(slideIdx) {
+    const showcaseSec = document.getElementById('features');
+    if (!showcaseSec) return;
+
+    const showcaseTop = showcaseSec.offsetTop;
+    const windowH = window.innerHeight;
+    const pinDist = showcaseSec.offsetHeight - windowH;
+    if (pinDist <= 0) return;
+
+    let ratio = 0.05;
+    if (slideIdx === 1) ratio = 0.20;
+    else if (slideIdx === 2) ratio = 0.38;
+    else if (slideIdx === 3) ratio = 0.56;
+    else if (slideIdx === 4) ratio = 0.74;
+    else if (slideIdx === 5) ratio = 0.88;
+
+    const targetY = showcaseTop + ratio * pinDist;
+    window.scrollTo({ top: targetY, behavior: 'smooth' });
+  }
+
+  function goToSlide(newIndex, isFromScroll = false) {
     if (newIndex < 0) {
       newIndex = destinationsData.length;
     } else if (newIndex > destinationsData.length) {
@@ -623,6 +652,88 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     currentSlide = newIndex;
     updateShowcaseView(currentSlide);
+
+    if (!isFromScroll) {
+      scrollToShowcaseSlide(currentSlide);
+    }
+  }
+
+  const showcaseStickyViewport = document.getElementById('showcase-sticky-viewport');
+  const showcaseSectionElem = document.getElementById('features');
+
+  function updateShowcaseOnScroll() {
+    if (!showcaseSectionElem || !showcaseStickyViewport) return;
+
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    const windowH = window.innerHeight;
+    const showcaseTop = showcaseSectionElem.offsetTop;
+    const showcaseH = showcaseSectionElem.offsetHeight;
+    const pinDist = showcaseH - windowH;
+
+    if (pinDist <= 0) return;
+
+    // --- 1. Approaching / Coming Up from below Hero ---
+    if (scrollY < showcaseTop) {
+      const approach = clamp((scrollY + windowH - showcaseTop) / (windowH * 0.85), 0, 1);
+
+      if (showcaseCardsDeck) {
+        // Cards slide in smoothly from the right as the page comes up!
+        const slideX = (1 - approach) * 140;
+        showcaseCardsDeck.style.transform = `translate3d(${slideX.toFixed(1)}px, 0, 0)`;
+        showcaseCardsDeck.style.opacity = approach.toFixed(2);
+      }
+
+      showcaseStickyViewport.style.transform = 'translate3d(0, 0, 0) scale(1)';
+      showcaseStickyViewport.style.opacity = '1';
+
+      if (currentSlide !== 0 && !isTransitioning) {
+        goToSlide(0, true);
+      }
+      return;
+    }
+
+    // --- 2. Locked in place (Pinned viewport active) ---
+    const scrollInside = scrollY - showcaseTop;
+    const progress = clamp(scrollInside / pinDist, 0, 1);
+
+    if (showcaseCardsDeck) {
+      showcaseCardsDeck.style.transform = 'translate3d(0, 0, 0)';
+      showcaseCardsDeck.style.opacity = '1';
+    }
+
+    // Map scroll progress to the active country slide
+    let targetSlide = 0;
+    if (progress < 0.12) {
+      targetSlide = 0;
+    } else if (progress < 0.30) {
+      targetSlide = 1;
+    } else if (progress < 0.48) {
+      targetSlide = 2;
+    } else if (progress < 0.66) {
+      targetSlide = 3;
+    } else if (progress < 0.84) {
+      targetSlide = 4;
+    } else {
+      targetSlide = 5;
+    }
+
+    if (targetSlide !== currentSlide && !isTransitioning) {
+      goToSlide(targetSlide, true);
+    }
+
+    // --- 3. Animating away when scrolled down towards footer ---
+    if (progress >= 0.93) {
+      const exitProgress = clamp((progress - 0.93) / 0.07, 0, 1);
+      const exitScale = 1.0 - exitProgress * 0.08;
+      const exitY = -exitProgress * 65;
+      const exitOpacity = 1.0 - exitProgress * 0.55;
+
+      showcaseStickyViewport.style.transform = `translate3d(0, ${exitY.toFixed(1)}px, 0) scale(${exitScale.toFixed(3)})`;
+      showcaseStickyViewport.style.opacity = exitOpacity.toFixed(2);
+    } else {
+      showcaseStickyViewport.style.transform = 'translate3d(0, 0, 0) scale(1)';
+      showcaseStickyViewport.style.opacity = '1';
+    }
   }
 
   if (showcaseNextBtn) {
