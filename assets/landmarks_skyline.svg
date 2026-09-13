@@ -1,0 +1,208 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 450" fill="none" stroke="#d4a373" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.18">
+  <!-- Ground Baseline -->
+  <line x1="0" y1="420" x2="1600" y2="420" stroke-width="2" />
+  <line x1="0" y1="432" x2="1600" y2="432" stroke-width="1" stroke-dasharray="8 6" />
+
+  <!-- 1. PARTHENON / ACROPOLIS (Left: x: 30 to 260) -->
+  <g id="parthenon">
+    <!-- Pediment Triangular Roof -->
+    <polygon points="40,240 145,185 250,240" stroke-width="2" />
+    <polygon points="55,236 145,195 235,236" stroke-width="1" />
+    <!-- Entablature / Frieze -->
+    <rect x="35" y="240" width="220" height="22" stroke-width="1.8" />
+    <line x1="35" y1="248" x2="255" y2="248" stroke-width="1" stroke-dasharray="5 5" />
+    <!-- Columns (8 Doric Columns) -->
+    <line x1="50" y1="262" x2="50" y2="420" stroke-width="4.5" />
+    <line x1="78" y1="262" x2="78" y2="420" stroke-width="4.5" />
+    <line x1="106" y1="262" x2="106" y2="420" stroke-width="4.5" />
+    <line x1="134" y1="262" x2="134" y2="420" stroke-width="4.5" />
+    <line x1="162" y1="262" x2="162" y2="420" stroke-width="4.5" />
+    <line x1="190" y1="262" x2="190" y2="420" stroke-width="4.5" />
+    <line x1="218" y1="262" x2="218" y2="420" stroke-width="4.5" />
+    <line x1="244" y1="262" x2="244" y2="420" stroke-width="4.5" />
+    <!-- Base Steps (Crepidoma) -->
+    <rect x="30" y="405" width="230" height="15" stroke-width="1.5" />
+  </g>
+
+  <!-- 2. LEANING TOWER OF PISA (x: 320 to 450, tilted 4 deg) -->
+  <g id="tower-pisa" transform="translate(370, 420) rotate(-4) translate(-370, -420)">
+    <!-- Base -->
+    <rect x="330" y="380" width="90" height="40" stroke-width="2" />
+    <!-- Arcaded Galleries (6 Tiers) -->
+    <rect x="335" y="335" width="80" height="45" stroke-width="1.8" />
+    <line x1="345" y1="335" x2="345" y2="380" stroke-width="2" />
+    <line x1="360" y1="335" x2="360" y2="380" stroke-width="2" />
+    <line x1="375" y1="335" x2="375" y2="380" stroke-width="2" />
+    <line x1="390" y1="335" x2="390" y2="380" stroke-width="2" />
+    <line x1="405" y1="335" x2="405" y2="380" stroke-width="2" />
+
+    <rect x="335" y="290" width="80" height="45" stroke-width="1.8" />
+    <line x1="345" y1="290" x2="345" y2="335" stroke-width="2" />
+    <line x1="360" y1="290" x2="360" y2="335" stroke-width="2" />
+    <line x1="375" y1="290" x2="375" y2="335" stroke-width="2" />
+    <line x1="390" y1="290" x2="390" y2="335" stroke-width="2" />
+    <line x1="405" y1="290" x2="405" y2="335" stroke-width="2" />
+
+    <rect x="335" y="245" width="80" height="45" stroke-width="1.8" />
+    <line x1="345" y1="245" x2="345" y2="290" stroke-width="2" />
+    <line x1="360" y1="245" x2="360" y2="290" stroke-width="2" />
+    <line x1="375" y1="245" x2="375" y2="290" stroke-width="2" />
+    <line x1="390" y1="245" x2="390" y2="290" stroke-width="2" />
+    <line x1="405" y1="245" x2="405" y2="290" stroke-width="2" />
+
+    <rect x="335" y="200" width="80" height="45" stroke-width="1.8" />
+    <line x1="345" y1="200" x2="345" y2="245" stroke-width="2" />
+    <line x1="360" y1="200" x2="360" y2="245" stroke-width="2" />
+    <line x1="375" y1="200" x2="375" y2="245" stroke-width="2" />
+    <line x1="390" y1="200" x2="390" y2="245" stroke-width="2" />
+    <line x1="405" y1="200" x2="405" y2="245" stroke-width="2" />
+
+    <rect x="335" y="155" width="80" height="45" stroke-width="1.8" />
+    <line x1="345" y1="155" x2="345" y2="200" stroke-width="2" />
+    <line x1="360" y1="155" x2="360" y2="200" stroke-width="2" />
+    <line x1="375" y1="155" x2="375" y2="200" stroke-width="2" />
+    <line x1="390" y1="155" x2="390" y2="200" stroke-width="2" />
+    <line x1="405" y1="155" x2="405" y2="200" stroke-width="2" />
+
+    <!-- Belfry Upper Stage -->
+    <rect x="345" y="115" width="60" height="40" stroke-width="2" />
+    <path d="M 355 155 A 8 8 0 0 1 370 155 Z" stroke-width="1.5" />
+    <path d="M 380 155 A 8 8 0 0 1 395 155 Z" stroke-width="1.5" />
+    <line x1="345" y1="115" x2="405" y2="115" stroke-width="3" />
+  </g>
+
+  <!-- 3. BIG BEN / CLOCK TOWER (x: 480 to 570) -->
+  <g id="big-ben">
+    <rect x="495" y="180" width="65" height="240" stroke-width="1.8" />
+    <!-- Tower Windows & Vertical Shafts -->
+    <line x1="510" y1="230" x2="510" y2="390" stroke-width="1.5" />
+    <line x1="527" y1="230" x2="527" y2="390" stroke-width="1.5" />
+    <line x1="545" y1="230" x2="545" y2="390" stroke-width="1.5" />
+    <!-- Clock Face Housing -->
+    <rect x="490" y="125" width="75" height="55" stroke-width="2" />
+    <circle cx="527" cy="152" r="19" stroke-width="1.8" />
+    <circle cx="527" cy="152" r="2" fill="#d4a373" />
+    <line x1="527" y1="152" x2="527" y2="140" stroke-width="2" />
+    <line x1="527" y1="152" x2="538" y2="152" stroke-width="1.5" />
+    <!-- Belfry & Spire -->
+    <polygon points="492,125 527,60 562,125" stroke-width="2" />
+    <line x1="527" y1="60" x2="527" y2="40" stroke-width="2.5" />
+  </g>
+
+  <!-- 4. EIFFEL TOWER (Center: x: 670 to 890) -->
+  <g id="eiffel-tower">
+    <!-- Base Arch -->
+    <path d="M 700 420 Q 780 340 860 420" stroke-width="2.5" />
+    <!-- Main Legs -->
+    <line x1="685" y1="420" x2="745" y2="310" stroke-width="3" />
+    <line x1="875" y1="420" x2="815" y2="310" stroke-width="3" />
+    <!-- Platform 1 -->
+    <rect x="735" y="305" width="90" height="12" stroke-width="2" />
+    <!-- Mid Section Legs -->
+    <line x1="745" y1="305" x2="765" y2="190" stroke-width="2.5" />
+    <line x1="815" y1="305" x2="795" y2="190" stroke-width="2.5" />
+    <!-- Platform 2 -->
+    <rect x="760" y="185" width="40" height="10" stroke-width="2" />
+    <!-- Upper Spire Tower -->
+    <line x1="767" y1="185" x2="779" y2="45" stroke-width="2.5" />
+    <line x1="793" y1="185" x2="781" y2="45" stroke-width="2.5" />
+    <!-- Top Dome & Antenna -->
+    <rect x="775" y="35" width="10" height="10" stroke-width="1.5" />
+    <line x1="780" y1="35" x2="780" y2="15" stroke-width="2.5" />
+    <!-- Cross Lattice Bars -->
+    <line x1="742" y1="305" x2="818" y2="245" stroke-width="1" />
+    <line x1="818" y1="305" x2="742" y2="245" stroke-width="1" />
+    <line x1="765" y1="185" x2="795" y2="110" stroke-width="1" />
+    <line x1="795" y1="185" x2="765" y2="110" stroke-width="1" />
+  </g>
+
+  <!-- 5. STATUE OF LIBERTY (x: 940 to 1050) -->
+  <g id="statue-liberty">
+    <!-- Star-shaped Fort Wood Base -->
+    <polygon points="960,420 970,370 1020,370 1030,420" stroke-width="2" />
+    <!-- Stone Pedestal -->
+    <rect x="975" y="300" width="40" height="70" stroke-width="2" />
+    <line x1="970" y1="320" x2="1020" y2="320" stroke-width="1.5" />
+    <line x1="970" y1="340" x2="1020" y2="340" stroke-width="1.5" />
+    <!-- Robes & Body -->
+    <path d="M 985 300 Q 980 230 990 190 Q 1005 230 1005 300 Z" stroke-width="2" />
+    <!-- Head & Crown Spikes -->
+    <ellipse cx="994" cy="180" rx="7" ry="9" stroke-width="1.8" />
+    <line x1="994" y1="171" x2="994" y2="162" stroke-width="1.5" />
+    <line x1="988" y1="173" x2="982" y2="166" stroke-width="1.5" />
+    <line x1="1000" y1="173" x2="1006" y2="166" stroke-width="1.5" />
+    <!-- Right Raised Arm with Torch -->
+    <line x1="1002" y1="195" x2="1018" y2="140" stroke-width="2.5" />
+    <!-- Flame Torch -->
+    <ellipse cx="1020" cy="132" rx="5" ry="8" stroke-width="1.8" />
+    <line x1="1020" y1="124" x2="1020" y2="118" stroke-width="1.5" />
+    <!-- Left Arm with Tablet -->
+    <rect x="976" y="210" width="10" height="16" stroke-width="1.5" />
+  </g>
+
+  <!-- 6. EMPIRE STATE BUILDING / MODERN SKYSCRAPER (x: 1060 to 1190) -->
+  <g id="empire-state">
+    <!-- Lower setbacks -->
+    <rect x="1080" y="320" width="90" height="100" stroke-width="2" />
+    <!-- Mid setbacks -->
+    <rect x="1090" y="220" width="70" height="100" stroke-width="2" />
+    <rect x="1100" y="140" width="50" height="80" stroke-width="2" />
+    <rect x="1110" y="90" width="30" height="50" stroke-width="2" />
+    <!-- Upper Mooring Mast & Lightning Rod -->
+    <rect x="1120" y="55" width="10" height="35" stroke-width="1.8" />
+    <line x1="1125" y1="55" x2="1125" y2="20" stroke-width="2.5" />
+    <!-- Window Grid Lines -->
+    <line x1="1100" y1="320" x2="1100" y2="420" stroke-width="1" stroke-dasharray="4 4" />
+    <line x1="1125" y1="320" x2="1125" y2="420" stroke-width="1" stroke-dasharray="4 4" />
+    <line x1="1150" y1="320" x2="1150" y2="420" stroke-width="1" stroke-dasharray="4 4" />
+    <line x1="1110" y1="220" x2="1110" y2="320" stroke-width="1" stroke-dasharray="4 4" />
+    <line x1="1140" y1="220" x2="1140" y2="320" stroke-width="1" stroke-dasharray="4 4" />
+  </g>
+
+  <!-- 7. TAJ MAHAL (Right: x: 1250 to 1570) -->
+  <g id="taj-mahal">
+    <!-- Plinth Foundation -->
+    <rect x="1270" y="380" width="270" height="40" stroke-width="2" />
+
+    <!-- Left Outer Minaret -->
+    <line x1="1260" y1="420" x2="1265" y2="170" stroke-width="3" />
+    <line x1="1275" y1="420" x2="1270" y2="170" stroke-width="3" />
+    <rect x="1261" y="165" width="14" height="12" stroke-width="1.5" />
+    <path d="M 1261 165 Q 1268 145 1275 165 Z" stroke-width="1.8" />
+    <!-- Left Balconies -->
+    <line x1="1258" y1="320" x2="1278" y2="320" stroke-width="2" />
+    <line x1="1260" y1="240" x2="1276" y2="240" stroke-width="2" />
+
+    <!-- Main Tomb Central Body -->
+    <rect x="1310" y="240" width="190" height="140" stroke-width="2" />
+    <!-- Large Central Iwan Arch -->
+    <path d="M 1365 380 L 1365 290 Q 1405 245 1445 290 L 1445 380 Z" stroke-width="2.5" />
+    <path d="M 1375 380 L 1375 305 Q 1405 270 1435 305 L 1435 380 Z" stroke-width="1.5" />
+    <!-- Side Recessed Niches (Pishtaqs) -->
+    <path d="M 1325 310 L 1325 260 Q 1340 240 1355 260 L 1355 310 Z" stroke-width="1.5" />
+    <path d="M 1325 380 L 1325 330 Q 1340 310 1355 330 L 1355 380 Z" stroke-width="1.5" />
+    <path d="M 1455 310 L 1455 260 Q 1470 240 1485 260 L 1485 310 Z" stroke-width="1.5" />
+    <path d="M 1455 380 L 1455 330 Q 1470 310 1485 330 L 1485 380 Z" stroke-width="1.5" />
+
+    <!-- Central Grand Onion Dome (Gumbad) -->
+    <path d="M 1375 240 Q 1360 170 1405 130 Q 1450 170 1435 240 Z" stroke-width="2.5" />
+    <!-- Finial (Kalash) -->
+    <line x1="1405" y1="130" x2="1405" y2="90" stroke-width="2" />
+    <circle cx="1405" cy="88" r="4" stroke-width="1.5" />
+
+    <!-- Side Chattris (Domed Kiosks) -->
+    <rect x="1330" y="210" width="25" height="30" stroke-width="1.5" />
+    <path d="M 1330 210 Q 1342 190 1355 210 Z" stroke-width="1.8" />
+    <rect x="1455" y="210" width="25" height="30" stroke-width="1.5" />
+    <path d="M 1455 210 Q 1467 190 1480 210 Z" stroke-width="1.8" />
+
+    <!-- Right Outer Minaret -->
+    <line x1="1535" y1="420" x2="1540" y2="170" stroke-width="3" />
+    <line x1="1550" y1="420" x2="1545" y2="170" stroke-width="3" />
+    <rect x="1536" y="165" width="14" height="12" stroke-width="1.5" />
+    <path d="M 1536 165 Q 1543 145 1550 165 Z" stroke-width="1.8" />
+    <!-- Right Balconies -->
+    <line x1="1533" y1="320" x2="1553" y2="320" stroke-width="2" />
+    <line x1="1535" y1="240" x2="1551" y2="240" stroke-width="2" />
+  </g>
+</svg>

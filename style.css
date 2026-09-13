@@ -977,263 +977,214 @@ img {
 }
 
 /* ==========================================================================
-   SECTION 2: FEATURE / CONTENT BLOCK (Solid Dark Teal/Navy)
+   SECTION 2: CLEAN MINIMAL CANVAS (Theme-Matched Spacer)
    ========================================================================== */
-.feature-section {
+.theme-spacer-section {
   position: relative;
   background-color: var(--ocean-navy);
-  padding: 80px 48px 90px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  min-height: 42vh;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-.feature-container {
-  max-width: 1240px;
-  margin: 0 auto;
-}
-
-/* --------------------------------------------------------------------------
-   Three-Column Grid
-   -------------------------------------------------------------------------- */
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  margin-bottom: 70px;
-  align-items: stretch;
-}
-
-/* Cards Base */
-.feature-card {
-  border-radius: var(--radius-card);
+/* ==========================================================================
+   SECTION 3: LUXURY TRAVEL FOOTER (World Landmarks Architectural Motif)
+   ========================================================================== */
+.luxury-footer {
+  position: relative;
+  background-color: #121519;
+  color: #e2e8f0;
   overflow: hidden;
-  transition: var(--transition-smooth);
-  box-shadow: var(--shadow-card);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Watermark Architectural Skyline Background */
+.footer-skyline-bg {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  width: 100%;
+  height: 380px;
+  background-image: url('assets/landmarks_skyline.svg');
+  background-repeat: repeat-x;
+  background-position: center bottom;
+  background-size: 1500px auto;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.75;
+}
+
+/* Main Container */
+.footer-main-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 85px 48px 65px;
+}
+
+/* 5-Column Grid */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr 1fr 1.15fr 1fr;
+  gap: 44px;
+  align-items: start;
+}
+
+.footer-col {
   display: flex;
   flex-direction: column;
 }
 
-.feature-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 50px -10px rgba(2, 10, 18, 0.5);
-}
-
-.card-inner {
-  padding: 40px 36px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.card-tag {
-  display: inline-block;
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--ocean-teal-mid);
-  margin-bottom: 24px;
-}
-
-.card-title {
-  font-family: var(--font-headline);
-  font-size: 1.65rem;
-  font-weight: 700;
-  line-height: 1.25;
-  color: var(--text-primary-dark);
-  margin-bottom: 16px;
+/* Column Headings with underline accent matching screenshot */
+.footer-heading {
+  font-family: var(--font-body);
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 22px;
+  position: relative;
+  padding-bottom: 10px;
   letter-spacing: -0.01em;
 }
 
-.card-body-text {
-  font-size: 0.94rem;
-  line-height: 1.6;
-  color: var(--text-secondary-dark);
-  margin-bottom: 20px;
-}
-
-/* Column 1: Light / White Card */
-.card-light {
-  background-color: var(--neutral-pure);
-}
-
-/* Column 2: Tinted / Slightly Darker Card with "Read More" */
-.card-tinted {
-  background-color: var(--neutral-tinted);
-}
-
-.card-tinted .card-tag {
-  color: var(--ocean-teal-deep);
-}
-
-.card-action {
-  margin-top: auto;
-  padding-top: 12px;
-}
-
-.card-read-more {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.84rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ocean-teal-deep);
-}
-
-.card-read-more .arrow-symbol {
-  font-size: 1.1rem;
-  transition: transform 0.25s ease;
-}
-
-.card-read-more:hover {
-  color: var(--ocean-teal-light);
-}
-
-.card-read-more:hover .arrow-symbol {
-  transform: translateX(5px);
-}
-
-/* Column 3: Photo / Image Tile */
-.card-image-tile {
-  background-color: var(--ocean-teal-deep);
-  position: relative;
-  min-height: 340px;
-}
-
-.image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.tile-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.card-image-tile:hover .tile-image {
-  transform: scale(1.06);
-}
-
-.image-overlay {
+.footer-heading::after {
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
-  padding: 24px 28px;
-  background: linear-gradient(0deg, rgba(8, 23, 33, 0.75) 0%, transparent 100%);
+  width: 38px;
+  height: 1.5px;
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: 1px;
+}
+
+/* Column 1: Contact Blocks */
+.footer-contact-block {
+  margin-bottom: 20px;
+}
+
+.contact-sublabel {
+  display: block;
+  font-size: 0.84rem;
+  color: #f1f5f9;
+  font-weight: 400;
+  margin-bottom: 5px;
+  letter-spacing: 0.01em;
+}
+
+.footer-gold-link {
+  display: inline-block;
+  color: #d4a373;
+  font-size: 1.28rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.footer-gold-link:hover {
+  color: #eec49a;
+  transform: translateX(3px);
+}
+
+a.footer-gold-link[href^="mailto:"] {
+  font-size: 1.05rem;
+  font-weight: 500;
+  word-break: break-all;
+}
+
+/* Social Media Section */
+.footer-social-block {
+  margin-top: 6px;
+}
+
+.footer-social-icons {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  gap: 16px;
+  margin-top: 10px;
 }
 
-.image-caption {
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--neutral-cream);
-  background: rgba(8, 23, 33, 0.6);
-  backdrop-filter: blur(6px);
-  padding: 6px 14px;
-  border-radius: 100px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+.social-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: #d4a373;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  opacity: 0.9;
 }
 
-/* --------------------------------------------------------------------------
-   Narrative Block Below 3 Columns (Centered copy & Discover More)
-   -------------------------------------------------------------------------- */
-.narrative-block {
-  max-width: 780px;
+.social-icon-link svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  transition: transform 0.25s ease;
+}
+
+.social-icon-link:hover {
+  color: #ffffff;
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.social-icon-link:hover svg {
+  transform: scale(1.15);
+}
+
+/* Navigation Lists (Columns 2-5) */
+.footer-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.footer-nav-list li a {
+  display: inline-block;
+  color: #cbd5e1;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  text-decoration: none;
+  font-weight: 400;
+  transition: all 0.2s ease;
+}
+
+.footer-nav-list li a:hover {
+  color: #d4a373;
+  transform: translateX(4px);
+}
+
+/* Bottom Bar / Copyright */
+.footer-bottom-bar {
+  position: relative;
+  z-index: 2;
+  background-color: #0b0d10;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 20px 24px;
+}
+
+.footer-bottom-content {
+  max-width: 1320px;
   margin: 0 auto;
   text-align: center;
 }
 
-.narrative-paragraph {
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: var(--text-secondary-light);
-  margin-bottom: 22px;
-  font-weight: 300;
+.footer-bottom-content p {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  letter-spacing: 0.02em;
+  margin: 0;
 }
 
-.narrative-paragraph strong {
-  color: var(--neutral-pure);
+.footer-brand-highlight {
+  color: #d4a373;
   font-weight: 600;
-}
-
-.narrative-action {
-  margin-top: 36px;
-  display: flex;
-  justify-content: center;
-}
-
-/* Understated Centered Action Link ("Discover More" style with arrow) */
-.discover-more-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--neutral-pure);
-  font-size: 0.88rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 8px 16px;
-  position: relative;
-  transition: var(--transition-fast);
-}
-
-.discover-more-link .action-arrow {
-  font-size: 1.15rem;
-  transition: transform 0.25s ease;
-}
-
-.discover-more-link::after {
-  content: '';
-  position: absolute;
-  bottom: 4px;
-  left: 16px;
-  right: 16px;
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.4);
-  transition: background-color 0.25s ease, transform 0.25s ease;
-}
-
-.discover-more-link:hover {
-  color: var(--neutral-offwhite);
-}
-
-.discover-more-link:hover .action-arrow {
-  transform: translateX(6px);
-}
-
-.discover-more-link:hover::after {
-  background-color: var(--neutral-pure);
-  transform: scaleX(1.05);
-}
-
-/* --------------------------------------------------------------------------
-   Footer Bar
-   -------------------------------------------------------------------------- */
-.site-footer {
-  padding: 32px 48px;
-  background-color: var(--ocean-darkest);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1240px;
-  margin: 0 auto;
-  font-size: 0.8rem;
-  color: var(--text-muted-light);
 }
 
 /* --------------------------------------------------------------------------
@@ -1468,17 +1419,13 @@ img {
     padding: 18px 24px 20px;
   }
 
-  .feature-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
+  .footer-grid {
+    grid-template-columns: 1.4fr repeat(2, 1fr);
+    gap: 36px;
   }
 
-  .card-image-tile {
-    min-height: 380px;
-  }
-
-  .feature-section {
-    padding: 60px 32px 70px;
+  .footer-main-container {
+    padding: 65px 32px 50px;
   }
 }
 
@@ -1605,17 +1552,22 @@ img {
     height: 40px;
   }
 
-  .feature-section {
-    padding: 50px 20px 60px;
+  .theme-spacer-section {
+    min-height: 25vh;
   }
 
-  .card-inner {
-    padding: 32px 24px;
+  .footer-main-container {
+    padding: 50px 22px 40px;
   }
 
-  .footer-content {
-    flex-direction: column;
-    gap: 12px;
-    text-align: center;
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .footer-skyline-bg {
+    height: 260px;
+    background-size: 900px auto;
+    opacity: 0.45;
   }
 }
