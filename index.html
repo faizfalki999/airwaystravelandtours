@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airways Travel &amp; Tours — Seamless Global Journeys</title>
+  <meta name="description" content="Airways Travel & Tours crafts bespoke travel experiences, flights, and curated itineraries worldwide. Effortless journeys tailored to every traveler.">
+  
+  <!-- Google Fonts: Playfair Display (Luxury Editorial), Outfit, Plus Jakarta Sans, Syne -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Page Wrapper with Rounded Corners and Ambient Drop Shadow -->
+  <div class="page-container" id="page-container">
+    
+    <!-- ========================================================
+         SECTION 1: HERO
+         ======================================================== -->
+    <!-- ========================================================
+         SECTION 1: HERO (Flight Experience with Scroll Animation)
+         ======================================================== -->
+    <header class="hero-section" id="hero">
+      <div class="hero-sticky-viewport" id="hero-sticky-viewport">
+      
+      <!-- Sky and Dreamy Clouds Atmospheric Backdrop -->
+      <div class="hero-sky-backdrop" id="hero-sky-backdrop">
+        <img 
+          src="assets/sky_clouds_bg.jpg" 
+          alt="Dreamy blue sky with soft white cumulus clouds" 
+          class="hero-sky-img"
+          id="hero-sky-img"
+        >
+        <!-- Floating Cloud Wisps (blend-mode: screen) for 3D depth -->
+        <div class="hero-cloud-wisps" id="hero-cloud-wisps" aria-hidden="true">
+          <img src="assets/cloud_wisps.jpg" alt="" class="cloud-wisp-img wisp-layer-1">
+          <img src="assets/cloud_wisps.jpg" alt="" class="cloud-wisp-img wisp-layer-2">
+        </div>
+        <div class="hero-sky-gradient" aria-hidden="true"></div>
+      </div>
+
+      <!-- Top Navigation Bar -->
+      <nav class="hero-nav" aria-label="Main Navigation">
+        
+        <!-- Left: Mobile Menu Toggle -->
+        <div class="nav-left">
+          <!-- Hamburger Menu Icon Button -->
+          <button class="menu-toggle-btn" id="menu-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobile-drawer">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+
+        <!-- Center Nav Links -->
+        <div class="nav-center">
+          <ul class="nav-links">
+            <li><a href="#narrative" class="nav-link">ABOUT</a></li>
+            <li><a href="#features" class="nav-link">TOUR</a></li>
+            <li><a href="#features" class="nav-link">PACKAGE</a></li>
+            <li><a href="#contact" class="nav-link" id="contact-link">CONTACT</a></li>
+          </ul>
+        </div>
+
+        <!-- Far Right: "Book Trip" Pill Button -->
+        <div class="nav-right">
+          <button class="btn-book-trip-nav" id="nav-book-trip-btn" aria-label="Book Trip Now">
+            Book Trip
+          </button>
+        </div>
+      </nav>
+
+      <!-- Main Interactive Flight Stage: Left Content + Airplane Flight Layer -->
+      <div class="hero-stage" id="hero-stage">
+        
+        <!-- Left Column: Text + Action Buttons -->
+        <div class="hero-left-column" id="hero-left-column">
+
+          <!-- Hero Typography Block -->
+          <div class="hero-text-content">
+            <span class="hero-eyebrow">ELEVATE YOUR TRAVEL JOURNEY</span>
+            <h1 class="hero-headline">
+              <span class="headline-word-lead">Experience</span><br>
+              <span class="headline-italic">The Magic Of</span><br>
+              <span class="headline-accent">Flight!</span>
+            </h1>
+            
+            <!-- Hero CTA Buttons -->
+            <div class="hero-actions-row">
+              <a href="#features" class="btn-book-hero" id="hero-cta">
+                <span>Book A Trip Now</span>
+              </a>
+            </div>
+          </div>
+
+        </div><!-- /.hero-left-column -->
+
+        <!-- Right / Center: Airplane Flight Layer (Transforms dynamically on scroll) -->
+        <div class="hero-airplane-stage" id="airplane-stage" aria-hidden="true">
+          <div class="hero-airplane-wrapper" id="airplane-wrapper">
+            <img 
+              src="assets/airplane_cutout.png" 
+              alt="White passenger jet airliner climbing into the sky" 
+              class="hero-airplane-img" 
+              id="hero-airplane"
+            >
+            <!-- Engine Thrust Shimmer & Wingtip Contrail Glow -->
+            <div class="airplane-thrust-glow"></div>
+          </div>
+        </div>
+
+      </div><!-- /.hero-stage -->
+
+      <!-- Atmospheric Initial Scroll Hint (Visible only on pristine background) -->
+      <div class="hero-scroll-hint" id="hero-scroll-hint" aria-label="Scroll to explore">
+        <div class="mouse-scroll-indicator">
+          <div class="mouse-wheel-dot"></div>
+        </div>
+        <span class="scroll-hint-label">Scroll to Explore</span>
+      </div>
+
+      </div><!-- /.hero-sticky-viewport -->
+
+      <!-- Interactive Video Modal (Triggered by Play Button) -->
+      <div class="flight-video-modal" id="flight-video-modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="video-modal-backdrop" id="video-backdrop"></div>
+        <div class="video-modal-card">
+          <button class="video-close-btn" id="video-modal-close" aria-label="Close modal">&times;</button>
+          <div class="video-modal-header">
+            <div class="video-pill-badge">PREMIUM FLIGHT EXPERIENCE</div>
+            <h3>Elevate Every Mile With Airways</h3>
+          </div>
+          <div class="video-modal-visual">
+            <img src="assets/airplane_flight_clean.jpg" alt="Airplane soaring in sunshine" class="modal-flight-img">
+            <div class="flight-stats-overlay">
+              <div class="stat-pill"><strong>120+</strong> Global Routes</div>
+              <div class="stat-pill"><strong>5-Star</strong> Service</div>
+              <div class="stat-pill"><strong>24/7</strong> Concierge</div>
+            </div>
+          </div>
+          <div class="video-modal-footer">
+            <p>From private charter jets to premier global first-class itineraries, let us curate your journey of a lifetime.</p>
+            <a href="#features" class="btn-book-hero" id="modal-reserve-btn">
+              <span>Book Your Journey Now</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </header>
+
+    <!-- ========================================================
+         SECTION 2: FEATURE / CONTENT BLOCK (Directly Below Hero)
+         ======================================================== -->
+    <section class="feature-section" id="features" aria-label="Featured Travel Experiences">
+      <div class="feature-container">
+        
+        <!-- Three-Column Row -->
+        <div class="feature-grid">
+          
+          <!-- Column 1: Light/White Card -->
+          <!-- EDITABLE: Card 1 Details -->
+          <article class="feature-card card-light" id="card-curated">
+            <div class="card-inner">
+              <span class="card-tag">01 / DISCOVERY</span>
+              <h2 class="card-title">Curated Expeditions</h2>
+              <p class="card-body-text">
+                Custom itineraries mapped across coastlines, peaks, and cultural capitals with premier airline routes and private local transit.
+              </p>
+            </div>
+          </article>
+
+          <!-- Column 2: Tinted / Slightly Darker Card with "Read More" -->
+          <!-- EDITABLE: Card 2 Details -->
+          <article class="feature-card card-tinted" id="card-concierge">
+            <div class="card-inner">
+              <span class="card-tag">02 / PLANNING</span>
+              <h2 class="card-title">Bespoke Coordination</h2>
+              <p class="card-body-text">
+                Dedicated travel specialists managing reservations, flexible schedule shifts, and personalized recommendations around the clock.
+              </p>
+              <div class="card-action">
+                <a href="#narrative" class="card-read-more" aria-label="Read more about Bespoke Coordination">
+                  Read More
+                  <span class="arrow-symbol" aria-hidden="true">&rarr;</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Column 3: Photo / Image Tile Filling the Column -->
+          <div class="feature-card card-image-tile" id="card-imagery">
+            <div class="image-wrapper">
+              <img 
+                src="assets/travel_objects.jpg" 
+                alt="Travel gear flatlay with vintage camera, world explorer map, leather passport holder, and brass compass" 
+                class="tile-image"
+                loading="lazy"
+              >
+              <div class="image-overlay">
+                <span class="image-caption">03 / ESSENTIALS</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.feature-grid -->
+
+        <!-- Centered Narrative Block Below the Three Columns -->
+        <!-- EDITABLE: Narrative Paragraphs -->
+        <div class="narrative-block" id="narrative">
+          <p class="narrative-paragraph">
+            Travel is far more than changing coordinates on a map; it is the art of stepping into new environments with complete peace of mind and boundless curiosity. At Airways Travel &amp; Tours, we combine comprehensive route intelligence with personal care to shape every step of your adventure.
+          </p>
+          <p class="narrative-paragraph">
+            <strong>Every journey is crafted with meticulous attention to detail, ensuring your experience is effortless from departure to return.</strong> Whether you are crossing continents for important meetings, taking families to secluded coastal hideaways, or embarking on solo trails, we take care of the details so you can immerse yourself in the voyage.
+          </p>
+
+          <!-- Understated Centered Action Link / Button -->
+          <div class="narrative-action">
+            <a href="#hero" class="discover-more-link" id="discover-more">
+              <span>Discover More</span>
+              <span class="action-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /.feature-container -->
+    </section>
+
+    <!-- Footer Bar for Completeness & Brand Consistency -->
+    <footer class="site-footer" id="contact">
+      <div class="footer-content">
+        <p>&copy; 2026 Airways Travel &amp; Tours. All rights reserved.</p>
+        <p class="footer-note">Crafted for modern explorers worldwide.</p>
+      </div>
+    </footer>
+
+  </div><!-- /.page-container -->
+
+  <!-- Slide-out Mobile Navigation Drawer -->
+  <aside class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <span class="drawer-title">MENU</span>
+      <button class="drawer-close-btn" id="drawer-close" aria-label="Close menu">&times;</button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="#hero" class="drawer-link">Home</a></li>
+      <li><a href="#features" class="drawer-link">Destinations</a></li>
+      <li><a href="#narrative" class="drawer-link">About Us</a></li>
+      <li><a href="#contact" class="drawer-link">Contact</a></li>
+    </ul>
+    <div class="drawer-footer">
+      <a href="#features" class="drawer-cta-btn">Start Exploring</a>
+    </div>
+  </aside>
+
+  <!-- Interactive Quick Booking Modal -->
+  <div class="modal-backdrop" id="booking-modal" aria-hidden="true">
+    <div class="modal-window" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <h3 id="modal-title">Your Itinerary Bag</h3>
+        <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-empty-state">Your itinerary bag is currently empty.</p>
+        <p class="modal-subtext">Begin by exploring our curated destinations or consulting with our travel advisors to customize your flight and stay.</p>
+        <div class="modal-actions">
+          <button class="modal-primary-btn" id="modal-explore-btn">Explore Destinations</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
