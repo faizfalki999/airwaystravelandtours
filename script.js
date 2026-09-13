@@ -40,15 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollY = window.pageYOffset || document.documentElement.scrollTop;
     const isMobile = window.innerWidth <= 768;
 
-    // Arrival track distance: pinned distance at the top for the plane to fly in
-    const arrivalTrack = isMobile ? 260 : 360;
-
-    // --- Vector Coordinates ---
-    // Approach Vector (from distance lower-left along its flight path):
-    const startX = isMobile ? -window.innerWidth * 0.70 : -420;
-    const startY = isMobile ? window.innerHeight * 0.32 : 340;
-    const startScale = 0.40;
-    const startRot = -14;
+    // Flight takeoff distance: smooth climb-out as user scrolls past hero
+    const takeoffDistance = isMobile ? 380 : 500;
 
     // Hero Resting Stance (center):
     const midX = 0;
@@ -57,73 +50,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const midRot = -11;
 
     // Departure Vector (climbing up and right into clouds as page scrolls down):
-    const endX = isMobile ? window.innerWidth * 0.75 : 500;
-    const endY = isMobile ? -window.innerHeight * 0.48 : -460;
+    const endX = isMobile ? window.innerWidth * 0.65 : 480;
+    const endY = isMobile ? -window.innerHeight * 0.45 : -420;
     const endScale = 1.35;
     const endRot = -18;
 
-    let planeX, planeY, planeScale, planeRot, planeOpacity;
-    let navOpacity, navY;
-    let textOpacity, textY;
-    let hintOpacity;
+    const progress = clamp(scrollY / takeoffDistance, 0, 1);
+    const t = easeInOutQuad(progress);
 
-    if (scrollY <= arrivalTrack) {
-      // ----------------------------------------------------
-      // Phase 1: Arrival (0 -> arrivalTrack)
-      // Background is steady; plane flies in along its natural vector;
-      // headline and nav appear; hint fades out.
-      // ----------------------------------------------------
-      const arrivalProgress = clamp(scrollY / arrivalTrack, 0, 1);
-      const t = easeOutCubic(arrivalProgress);
+    const planeX = midX + (endX - midX) * t;
+    const planeY = midY + (endY - midY) * t;
+    const planeScale = midScale + (endScale - midScale) * t;
+    const planeRot = midRot + (endRot - midRot) * t;
 
-      planeX = startX + (midX - startX) * t;
-      planeY = startY + (midY - startY) * t;
-      planeScale = startScale + (midScale - startScale) * t;
-      planeRot = startRot + (midRot - startRot) * t;
-      planeOpacity = clamp((arrivalProgress - 0.04) / 0.70, 0, 1);
-
-      // Nav fades down into view
-      navOpacity = clamp((arrivalProgress - 0.15) / 0.65, 0, 1);
-      navY = (1 - navOpacity) * -28;
-
-      // Headline and CTA slide up into view
-      textOpacity = clamp((arrivalProgress - 0.20) / 0.65, 0, 1);
-      textY = (1 - textOpacity) * 40;
-
-      // Scroll hint visible only on clean background
-      hintOpacity = clamp(1.0 - arrivalProgress / 0.30, 0, 1);
-
-    } else {
-      // ----------------------------------------------------
-      // Phase 2: Page is scrolling down, and AS the page scrolls down,
-      // the plane takes off and flies out into the upper clouds!
-      // ----------------------------------------------------
-      const scrollBeyond = scrollY - arrivalTrack;
-      const departDistance = window.innerHeight * 0.75;
-      const departProgress = clamp(scrollBeyond / departDistance, 0, 1);
-      const t = easeInOutQuad(departProgress);
-
-      planeX = midX + (endX - midX) * t;
-      planeY = midY + (endY - midY) * t;
-      planeScale = midScale + (endScale - midScale) * t;
-      planeRot = midRot + (endRot - midRot) * t;
-
-      // Dissolve into upper clouds as it reaches the top
-      if (t > 0.40) {
-        planeOpacity = clamp(1.0 - (t - 0.40) / 0.60, 0, 1);
-      } else {
-        planeOpacity = 1.0;
-      }
-
-      navOpacity = 1.0;
-      navY = 0;
-
-      // Text glides with subtle upward parallax as page scrolls
-      textOpacity = clamp(1.0 - t * 1.5, 0, 1);
-      textY = -t * 80;
-
-      hintOpacity = 0;
+    // Plane is fully visible on load; dissolves smoothly into high clouds as it climbs away
+    let planeOpacity = 1.0;
+    if (t > 0.45) {
+      planeOpacity = clamp(1.0 - (t - 0.45) / 0.55, 0, 1);
     }
+
+    // Navigation is always visible and stable
+    const navOpacity = 1.0;
+    const navY = 0;
+
+    // Text glides with subtle upward parallax as page scrolls
+    const textOpacity = clamp(1.0 - t * 1.4, 0, 1);
+    const textY = -t * 60;
+
+    // Scroll hint visible at top, fades out immediately on scroll
+    const hintOpacity = clamp(1.0 - progress * 2.8, 0, 1);
 
     // Apply values to DOM
     if (airplaneWrapper) {
@@ -493,112 +448,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
-  let currentSlide = 0; // 0 = Intro state (Plain theme background matching image 1), 1..5 = Destinations
-  let isTransitioning = false;
+  let currentSlide = 0; // 0 = Intro state, 1..5 = Destinations
+  const showcaseBgLayers = document.querySelectorAll('.showcase-bg-layer');
+  const showcaseCards = document.querySelectorAll('.showcase-card');
 
-  function renderShowcaseCards() {
-    if (!showcaseCardsDeck) return;
-    showcaseCardsDeck.innerHTML = '';
-
-    // Decide which cards to display on the right
-    // If on slide 0 (intro), display all 5 destinations
-    // If on destination slide i (1..5), display the upcoming destinations
-    let deckCards = [];
-    if (currentSlide === 0) {
-      deckCards = destinationsData;
-    } else {
-      const activeIdx = currentSlide - 1;
-      for (let i = 1; i < destinationsData.length; i++) {
-        const nextIdx = (activeIdx + i) % destinationsData.length;
-        deckCards.push(destinationsData[nextIdx]);
+  // Initialize click handlers on pre-rendered destination cards
+  showcaseCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const cardIdx = parseInt(card.getAttribute('data-index'), 10);
+      if (!isNaN(cardIdx)) {
+        goToSlide(cardIdx);
       }
-    }
-
-    deckCards.forEach((dest) => {
-      const card = document.createElement('article');
-      card.className = 'showcase-card';
-      card.setAttribute('role', 'button');
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('aria-label', `View ${dest.cardTitle}`);
-
-      card.innerHTML = `
-        <img src="${dest.image}" alt="${dest.cardTitle}" class="showcase-card-img" loading="lazy">
-        <div class="showcase-card-overlay"></div>
-        <div class="showcase-card-content">
-          <span class="showcase-card-tag">${dest.cardTag}</span>
-          <h3 class="showcase-card-title">${dest.cardTitle}</h3>
-        </div>
-      `;
-
-      card.addEventListener('click', () => {
-        const targetIndex = destinationsData.findIndex(d => d.id === dest.id);
-        if (targetIndex !== -1) {
-          goToSlide(targetIndex + 1);
-        }
-      });
-
-      card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          const targetIndex = destinationsData.findIndex(d => d.id === dest.id);
-          if (targetIndex !== -1) {
-            goToSlide(targetIndex + 1);
-          }
-        }
-      });
-
-      showcaseCardsDeck.appendChild(card);
     });
-  }
+
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const cardIdx = parseInt(card.getAttribute('data-index'), 10);
+        if (!isNaN(cardIdx)) {
+          goToSlide(cardIdx);
+        }
+      }
+    });
+  });
 
   function updateShowcaseView(slideIndex) {
-    if (isTransitioning) return;
-    isTransitioning = true;
+    // 1. Crossfade background layers natively with GPU acceleration
+    showcaseBgLayers.forEach((layer) => {
+      const layerSlide = parseInt(layer.getAttribute('data-slide'), 10);
+      layer.classList.toggle('active', layerSlide === slideIndex);
+    });
 
-    // Trigger smooth fade out of info panel
-    if (showcaseInfoPanel) {
-      showcaseInfoPanel.classList.add('animating');
-    }
+    // 2. Update text content
+    if (slideIndex === 0) {
+      if (showcaseElevation) showcaseElevation.textContent = '4250m';
+      if (showcaseRegion) showcaseRegion.textContent = 'SKARDU & BEYOND';
+      if (showcaseHeadline) showcaseHeadline.innerHTML = 'FIND YOUR<br>FROZEN ESCAPE';
+      if (showcaseNarrative) {
+        showcaseNarrative.textContent = 'Explore our frozen lake locations, each offering a unique skating experience in the heart of Skardu and worldwide alpine wonderlands.';
+      }
+      if (showcaseBtnLabel) showcaseBtnLabel.textContent = 'EXPLORE DESTINATIONS';
 
-    setTimeout(() => {
-      if (slideIndex === 0) {
-        // --- State 0: Intro (Plain theme matching background, Screenshot 1) ---
-        if (showcaseBgCurrent) {
-          showcaseBgCurrent.classList.remove('active');
-          showcaseBgCurrent.style.backgroundImage = 'none';
-        }
-        if (showcaseBgNext) {
-          showcaseBgNext.classList.remove('active');
-          showcaseBgNext.style.backgroundImage = 'none';
-        }
-
-        if (showcaseElevation) showcaseElevation.textContent = '4250m';
-        if (showcaseRegion) showcaseRegion.textContent = 'SKARDU & BEYOND';
-        if (showcaseHeadline) showcaseHeadline.innerHTML = 'FIND YOUR<br>FROZEN ESCAPE';
-        if (showcaseNarrative) {
-          showcaseNarrative.textContent = 'Explore our frozen lake locations, each offering a unique skating experience in the heart of Skardu and worldwide alpine wonderlands.';
-        }
-        if (showcaseBtnLabel) showcaseBtnLabel.textContent = 'EXPLORE DESTINATIONS';
-
-        if (counterCurrent) counterCurrent.textContent = '00';
-        if (showcaseProgressFill) showcaseProgressFill.style.width = '0%';
-
-      } else {
-        // --- State 1..5: Active Country (Fullscreen background expansion & heritage info) ---
-        const dest = destinationsData[slideIndex - 1];
-
-        // Crossfade background image
-        if (showcaseBgCurrent && showcaseBgNext) {
-          showcaseBgNext.style.backgroundImage = `url('${dest.image}')`;
-          showcaseBgNext.classList.add('active');
-
-          setTimeout(() => {
-            showcaseBgCurrent.style.backgroundImage = `url('${dest.image}')`;
-            showcaseBgCurrent.classList.add('active');
-            showcaseBgNext.classList.remove('active');
-          }, 850);
-        }
-
+      if (counterCurrent) counterCurrent.textContent = '00';
+      if (showcaseProgressFill) showcaseProgressFill.style.width = '0%';
+    } else {
+      const dest = destinationsData[slideIndex - 1];
+      if (dest) {
         if (showcaseElevation) showcaseElevation.textContent = dest.tagElevation;
         if (showcaseRegion) showcaseRegion.textContent = dest.tagRegion;
         if (showcaseHeadline) showcaseHeadline.innerHTML = dest.title;
@@ -611,17 +506,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const progressPercent = (slideIndex / destinationsData.length) * 100;
         if (showcaseProgressFill) showcaseProgressFill.style.width = `${progressPercent}%`;
       }
+    }
 
-      // Re-render right cards deck
-      renderShowcaseCards();
-
-      // Fade info panel back in
-      if (showcaseInfoPanel) {
-        showcaseInfoPanel.classList.remove('animating');
-      }
-
-      isTransitioning = false;
-    }, 320);
+    // 3. Highlight the active destination card
+    showcaseCards.forEach((card) => {
+      const cardIdx = parseInt(card.getAttribute('data-index'), 10);
+      const isCardActive = cardIdx === slideIndex;
+      card.classList.toggle('active', isCardActive);
+    });
   }
 
   function scrollToShowcaseSlide(slideIdx) {
@@ -677,7 +569,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const approach = clamp((scrollY + windowH - showcaseTop) / (windowH * 0.85), 0, 1);
 
       if (showcaseCardsDeck) {
-        // Cards slide in smoothly from the right as the page comes up!
         const slideX = (1 - approach) * 140;
         showcaseCardsDeck.style.transform = `translate3d(${slideX.toFixed(1)}px, 0, 0)`;
         showcaseCardsDeck.style.opacity = approach.toFixed(2);
@@ -686,7 +577,7 @@ document.addEventListener('DOMContentLoaded', () => {
       showcaseStickyViewport.style.transform = 'translate3d(0, 0, 0) scale(1)';
       showcaseStickyViewport.style.opacity = '1';
 
-      if (currentSlide !== 0 && !isTransitioning) {
+      if (currentSlide !== 0) {
         goToSlide(0, true);
       }
       return;
@@ -701,7 +592,7 @@ document.addEventListener('DOMContentLoaded', () => {
       showcaseCardsDeck.style.opacity = '1';
     }
 
-    // Map scroll progress to the active country slide
+    // Map scroll progress to active country slide
     let targetSlide = 0;
     if (progress < 0.12) {
       targetSlide = 0;
@@ -717,7 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
       targetSlide = 5;
     }
 
-    if (targetSlide !== currentSlide && !isTransitioning) {
+    if (targetSlide !== currentSlide) {
       goToSlide(targetSlide, true);
     }
 
@@ -875,7 +766,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Initial Showcase Setup
-  renderShowcaseCards();
+  updateShowcaseView(0);
 
   // Escape key listener for all modals and drawer
   document.addEventListener('keydown', (e) => {

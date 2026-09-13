@@ -12,6 +12,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css">
+  
+  <!-- Critical Image Preloads for Instant, Zero-Glitch Asset Rendering -->
+  <link rel="preload" href="assets/airplane_cutout.png" as="image">
+  <link rel="preload" href="assets/sky_clouds_bg.jpg" as="image">
+  <link rel="preload" href="assets/dest_skardu.jpg" as="image">
+  <link rel="preload" href="assets/dest_swiss_alps.jpg" as="image">
+  <link rel="preload" href="assets/dest_japan.jpg" as="image">
+  <link rel="preload" href="assets/dest_santorini.jpg" as="image">
+  <link rel="preload" href="assets/dest_tropical.jpg" as="image">
+  <link rel="preload" href="assets/landmarks_skyline.svg" as="image">
 </head>
 <body>
 
@@ -161,10 +171,14 @@
       <!-- Pinned Viewport Container (Locks in place & animates away on scroll) -->
       <div class="showcase-sticky-viewport" id="showcase-sticky-viewport">
 
-        <!-- Fullscreen Cross-fading Background Layers -->
+        <!-- Fullscreen Cross-fading Background Layers (Pre-rendered for Instant Display) -->
         <div class="showcase-bg-container" id="showcase-bg-container">
-          <div class="showcase-bg-layer current" id="showcase-bg-current"></div>
-          <div class="showcase-bg-layer next" id="showcase-bg-next"></div>
+          <div class="showcase-bg-layer active" data-slide="0"></div>
+          <div class="showcase-bg-layer" data-slide="1" style="background-image: url('assets/dest_skardu.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="2" style="background-image: url('assets/dest_swiss_alps.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="3" style="background-image: url('assets/dest_japan.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="4" style="background-image: url('assets/dest_santorini.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="5" style="background-image: url('assets/dest_tropical.jpg');"></div>
           <div class="showcase-vignette-overlay"></div>
         </div>
 
@@ -205,9 +219,57 @@
 
           </div><!-- /.showcase-info-panel -->
 
-          <!-- Right Side: Destination Cards Carousel Deck -->
+          <!-- Right Side: Destination Cards Carousel Deck (Pre-rendered for zero-glitch display) -->
           <div class="showcase-cards-deck" id="showcase-cards-deck" aria-label="Destination Cards">
-            <!-- Cards rendered and updated dynamically by script.js -->
+            <!-- Card 1: Skardu -->
+            <article class="showcase-card" data-index="1" role="button" tabindex="0" aria-label="View Shauser Lake, Skardu">
+              <img src="assets/dest_skardu.jpg" alt="Shauser Lake, Skardu" class="showcase-card-img" loading="eager">
+              <div class="showcase-card-overlay"></div>
+              <div class="showcase-card-content">
+                <span class="showcase-card-tag">↑ 4250m</span>
+                <h3 class="showcase-card-title">Shauser Lake</h3>
+              </div>
+            </article>
+
+            <!-- Card 2: Swiss Alps -->
+            <article class="showcase-card" data-index="2" role="button" tabindex="0" aria-label="View Jungfrau Alps, Switzerland">
+              <img src="assets/dest_swiss_alps.jpg" alt="Jungfrau Alps, Switzerland" class="showcase-card-img" loading="eager">
+              <div class="showcase-card-overlay"></div>
+              <div class="showcase-card-content">
+                <span class="showcase-card-tag">↑ 3454m</span>
+                <h3 class="showcase-card-title">Jungfrau Alps</h3>
+              </div>
+            </article>
+
+            <!-- Card 3: Japan -->
+            <article class="showcase-card" data-index="3" role="button" tabindex="0" aria-label="View Mount Fuji, Japan">
+              <img src="assets/dest_japan.jpg" alt="Mount Fuji, Japan" class="showcase-card-img" loading="eager">
+              <div class="showcase-card-overlay"></div>
+              <div class="showcase-card-content">
+                <span class="showcase-card-tag">↑ 3776m</span>
+                <h3 class="showcase-card-title">Mount Fuji</h3>
+              </div>
+            </article>
+
+            <!-- Card 4: Greece -->
+            <article class="showcase-card" data-index="4" role="button" tabindex="0" aria-label="View Santorini Caldera, Greece">
+              <img src="assets/dest_santorini.jpg" alt="Santorini Caldera, Greece" class="showcase-card-img" loading="eager">
+              <div class="showcase-card-overlay"></div>
+              <div class="showcase-card-content">
+                <span class="showcase-card-tag">↑ 330m</span>
+                <h3 class="showcase-card-title">Santorini Caldera</h3>
+              </div>
+            </article>
+
+            <!-- Card 5: Bali -->
+            <article class="showcase-card" data-index="5" role="button" tabindex="0" aria-label="View Bali Sanctuary, Indonesia">
+              <img src="assets/dest_tropical.jpg" alt="Bali Sanctuary, Indonesia" class="showcase-card-img" loading="eager">
+              <div class="showcase-card-overlay"></div>
+              <div class="showcase-card-content">
+                <span class="showcase-card-tag">↑ 1717m</span>
+                <h3 class="showcase-card-title">Bali Sanctuary</h3>
+              </div>
+            </article>
           </div>
 
         </div><!-- /.showcase-stage-container -->
