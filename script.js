@@ -1,6 +1,6 @@
 /**
  * AIRWAYS TRAVEL & TOURS (UIXSHUVO)
- * Interactive Flight Scroll Animation & Client Functionality
+ * Interactive Flight Scroll Animation & Dual Showcase Client Functionality
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,24 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroNav = document.querySelector('.hero-nav');
   const scrollHint = document.getElementById('hero-scroll-hint');
   const heroCta = document.getElementById('hero-cta');
-
-  // Showcase Elements
-  const showcaseSectionElem = document.getElementById('features');
-  const showcaseStickyViewport = document.getElementById('showcase-sticky-viewport');
-  const showcaseInfoPanel = document.getElementById('showcase-info-panel');
-  const showcaseElevation = document.getElementById('showcase-elevation');
-  const showcaseRegion = document.getElementById('showcase-region');
-  const showcaseHeadline = document.getElementById('showcase-headline');
-  const showcaseNarrative = document.getElementById('showcase-narrative');
-  const showcaseBookBtn = document.getElementById('showcase-book-btn');
-  const showcaseBtnLabel = document.getElementById('showcase-btn-label');
-  const showcaseCardsDeck = document.getElementById('showcase-cards-deck');
-  const showcasePrevBtn = document.getElementById('showcase-prev-btn');
-  const showcaseNextBtn = document.getElementById('showcase-next-btn');
-  const showcaseProgressFill = document.getElementById('showcase-progress-fill');
-  const counterCurrent = document.getElementById('counter-current');
-  const showcaseBgLayers = document.querySelectorAll('.showcase-bg-layer');
-  const showcaseCards = document.querySelectorAll('.showcase-card');
 
   // Navigation & Modals Elements
   const navBookTripBtn = document.getElementById('nav-book-trip-btn');
@@ -177,8 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
-  let currentSlide = 0; // 0 = Skardu Intro/Hero, 1..5 = Destinations
-
   // ==========================================================================
   // --- 2. Math & Easing Helpers ---
   // ==========================================================================
@@ -298,222 +278,277 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // --- 4. Showcase View & Country Carousel Logic ---
+  // --- 4. Factory Function for Showcase Instances ---
   // ==========================================================================
-  function updateShowcaseView(slideIndex) {
-    // 1. Crossfade background layers
-    showcaseBgLayers.forEach((layer) => {
-      const layerSlide = parseInt(layer.getAttribute('data-slide'), 10);
-      layer.classList.toggle('active', layerSlide === slideIndex);
-    });
+  function initShowcaseInstance({ suffix = '', initialSlide = 0 } = {}) {
+    const s = suffix ? `-${suffix}` : '';
+    const sectionElem = document.getElementById(suffix ? `features-${suffix}` : 'features');
+    const stickyViewport = document.getElementById(`showcase-sticky-viewport${s}`);
+    const infoPanel = document.getElementById(`showcase-info-panel${s}`);
+    const elevation = document.getElementById(`showcase-elevation${s}`);
+    const region = document.getElementById(`showcase-region${s}`);
+    const headline = document.getElementById(`showcase-headline${s}`);
+    const narrative = document.getElementById(`showcase-narrative${s}`);
+    const bookBtn = document.getElementById(`showcase-book-btn${s}`);
+    const btnLabel = document.getElementById(`showcase-btn-label${s}`);
+    const cardsDeck = document.getElementById(`showcase-cards-deck${s}`);
+    const prevBtn = document.getElementById(`showcase-prev-btn${s}`);
+    const nextBtn = document.getElementById(`showcase-next-btn${s}`);
+    const progressFill = document.getElementById(`showcase-progress-fill${s}`);
+    const counterCurrent = document.getElementById(`counter-current${s}`);
+    const bgLayers = document.querySelectorAll(suffix ? `#showcase-bg-container-${suffix} .showcase-bg-layer` : '#showcase-bg-container .showcase-bg-layer');
+    const cards = document.querySelectorAll(suffix ? `#showcase-cards-deck-${suffix} .showcase-card` : '#showcase-cards-deck .showcase-card');
 
-    // 2. Animate text update
-    if (showcaseInfoPanel && showcaseInfoPanel.dataset.lastSlide !== String(slideIndex)) {
-      showcaseInfoPanel.dataset.lastSlide = String(slideIndex);
-      showcaseInfoPanel.classList.add('animating');
-      setTimeout(() => {
-        showcaseInfoPanel.classList.remove('animating');
-      }, 200);
-    }
+    if (!sectionElem) return null;
 
-    // 3. Update text content
-    if (slideIndex === 0) {
-      if (showcaseElevation) showcaseElevation.textContent = '4250m';
-      if (showcaseRegion) showcaseRegion.textContent = 'SKARDU & BEYOND';
-      if (showcaseHeadline) showcaseHeadline.innerHTML = 'FIND YOUR<br>FROZEN ESCAPE';
-      if (showcaseNarrative) {
-        showcaseNarrative.textContent = 'Explore our frozen lake locations, each offering a unique skating experience in the heart of Skardu and worldwide alpine wonderlands.';
+    let slide = initialSlide;
+
+    function updateView(slideIndex) {
+      bgLayers.forEach((layer) => {
+        const layerSlide = parseInt(layer.getAttribute('data-slide'), 10);
+        layer.classList.toggle('active', layerSlide === slideIndex);
+      });
+
+      if (infoPanel && infoPanel.dataset.lastSlide !== String(slideIndex)) {
+        infoPanel.dataset.lastSlide = String(slideIndex);
+        infoPanel.classList.add('animating');
+        setTimeout(() => {
+          infoPanel.classList.remove('animating');
+        }, 200);
       }
-      if (showcaseBtnLabel) showcaseBtnLabel.textContent = 'EXPLORE DESTINATIONS';
 
-      if (counterCurrent) counterCurrent.textContent = '00';
-      if (showcaseProgressFill) showcaseProgressFill.style.width = '0%';
-    } else {
-      const dest = destinationsData[slideIndex - 1];
-      if (dest) {
-        if (showcaseElevation) showcaseElevation.textContent = dest.tagElevation;
-        if (showcaseRegion) showcaseRegion.textContent = dest.tagRegion;
-        if (showcaseHeadline) showcaseHeadline.innerHTML = dest.title;
-        if (showcaseNarrative) showcaseNarrative.textContent = dest.narrative;
-        if (showcaseBtnLabel) showcaseBtnLabel.textContent = 'BOOK NOW';
+      if (slideIndex === 0) {
+        if (elevation) elevation.textContent = '4250m';
+        if (region) region.textContent = 'BALTISTAN · PAKISTAN';
+        if (headline) headline.innerHTML = 'SHAUSER<br>LAKE';
+        if (narrative) {
+          narrative.textContent = "Surrounded by untouched snow and crisp winter air, it's the ideal spot for both beginners and seasoned skaters looking for peace, beauty, and unforgettable views.";
+        }
+        if (btnLabel) btnLabel.textContent = 'BOOK NOW';
+        if (counterCurrent) counterCurrent.textContent = '01';
+        if (progressFill) progressFill.style.width = '20%';
+      } else {
+        const dest = destinationsData[slideIndex - 1];
+        if (dest) {
+          if (elevation) elevation.textContent = dest.tagElevation;
+          if (region) region.textContent = dest.tagRegion;
+          if (headline) headline.innerHTML = dest.title;
+          if (narrative) narrative.textContent = dest.narrative;
+          if (btnLabel) btnLabel.textContent = 'BOOK NOW';
+          const slideNumStr = slideIndex < 10 ? `0${slideIndex}` : `${slideIndex}`;
+          if (counterCurrent) counterCurrent.textContent = slideNumStr;
+          const progressPercent = (slideIndex / destinationsData.length) * 100;
+          if (progressFill) progressFill.style.width = `${progressPercent}%`;
+        }
+      }
 
-        const slideNumStr = slideIndex < 10 ? `0${slideIndex}` : `${slideIndex}`;
-        if (counterCurrent) counterCurrent.textContent = slideNumStr;
+      cards.forEach((card) => {
+        const cardIdx = parseInt(card.getAttribute('data-index'), 10);
+        const isCardActive = (slideIndex === 0 && cardIdx === 1) || cardIdx === slideIndex;
+        card.classList.toggle('active', isCardActive);
+      });
+    }
 
-        const progressPercent = (slideIndex / destinationsData.length) * 100;
-        if (showcaseProgressFill) showcaseProgressFill.style.width = `${progressPercent}%`;
+    function scrollToShowcaseSlide(slideIdx) {
+      const showcaseTop = sectionElem.offsetTop;
+      const windowH = window.innerHeight;
+      const pinDist = sectionElem.offsetHeight - windowH;
+      if (pinDist <= 0) return;
+
+      let ratio = 0.05;
+      if (slideIdx === 1) ratio = 0.20;
+      else if (slideIdx === 2) ratio = 0.38;
+      else if (slideIdx === 3) ratio = 0.56;
+      else if (slideIdx === 4) ratio = 0.74;
+      else if (slideIdx === 5) ratio = 0.88;
+
+      const targetY = showcaseTop + ratio * pinDist;
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
+    }
+
+    function goToSlide(newIndex, isFromScroll = false) {
+      if (newIndex < 1) {
+        newIndex = destinationsData.length;
+      } else if (newIndex > destinationsData.length) {
+        newIndex = 1;
+      }
+      slide = newIndex;
+      updateView(slide);
+
+      if (!isFromScroll) {
+        scrollToShowcaseSlide(slide);
       }
     }
 
-    // 4. Highlight the active destination card
-    showcaseCards.forEach((card) => {
-      const cardIdx = parseInt(card.getAttribute('data-index'), 10);
-      const isCardActive = cardIdx === slideIndex;
-      card.classList.toggle('active', isCardActive);
-    });
-  }
-
-  function scrollToShowcaseSlide(slideIdx) {
-    if (!showcaseSectionElem) return;
-
-    const showcaseTop = showcaseSectionElem.offsetTop;
-    const windowH = window.innerHeight;
-    const pinDist = showcaseSectionElem.offsetHeight - windowH;
-    if (pinDist <= 0) return;
-
-    let ratio = 0.05;
-    if (slideIdx === 1) ratio = 0.20;
-    else if (slideIdx === 2) ratio = 0.38;
-    else if (slideIdx === 3) ratio = 0.56;
-    else if (slideIdx === 4) ratio = 0.74;
-    else if (slideIdx === 5) ratio = 0.88;
-
-    const targetY = showcaseTop + ratio * pinDist;
-    window.scrollTo({ top: targetY, behavior: 'smooth' });
-  }
-
-  function goToSlide(newIndex, isFromScroll = false) {
-    if (newIndex < 0) {
-      newIndex = destinationsData.length;
-    } else if (newIndex > destinationsData.length) {
-      newIndex = 0;
-    }
-    currentSlide = newIndex;
-    updateShowcaseView(currentSlide);
-
-    if (!isFromScroll) {
-      scrollToShowcaseSlide(currentSlide);
-    }
-  }
-
-  // Click & keyboard handlers on destination cards
-  showcaseCards.forEach((card) => {
-    card.addEventListener('click', () => {
-      const cardIdx = parseInt(card.getAttribute('data-index'), 10);
-      if (!isNaN(cardIdx)) {
-        goToSlide(cardIdx);
-      }
-    });
-
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
         const cardIdx = parseInt(card.getAttribute('data-index'), 10);
         if (!isNaN(cardIdx)) {
           goToSlide(cardIdx);
         }
-      }
+      });
+
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const cardIdx = parseInt(card.getAttribute('data-index'), 10);
+          if (!isNaN(cardIdx)) {
+            goToSlide(cardIdx);
+          }
+        }
+      });
     });
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        goToSlide(slide - 1);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        goToSlide(slide + 1);
+      });
+    }
+
+    if (bookBtn) {
+      bookBtn.addEventListener('click', () => {
+        const destIdx = slide > 0 ? slide - 1 : 0;
+        openCountryModal(destIdx);
+      });
+    }
+
+    // Touch swipe
+    let touchStartX = 0;
+    let touchEndX = 0;
+    if (cardsDeck) {
+      cardsDeck.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      cardsDeck.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 50) {
+          goToSlide(slide + 1);
+        } else if (touchEndX - touchStartX > 50) {
+          goToSlide(slide - 1);
+        }
+      }, { passive: true });
+    }
+
+    function updateOnScroll(scrollY, windowH) {
+      if (!stickyViewport) return;
+
+      const showcaseTop = sectionElem.offsetTop;
+      const showcaseH = sectionElem.offsetHeight;
+      const pinDist = showcaseH - windowH;
+
+      if (pinDist <= 0) return;
+
+      // Approaching from above
+      if (scrollY < showcaseTop) {
+        const approachDist = windowH * 0.95;
+        const approach = clamp((scrollY + windowH - showcaseTop) / approachDist, 0, 1);
+        const easeApproach = easeOutCubic(approach);
+
+        if (cardsDeck) {
+          const slideX = (1 - easeApproach) * 320;
+          cardsDeck.style.transform = `translate3d(${slideX.toFixed(1)}px, 0, 0)`;
+          cardsDeck.style.opacity = easeApproach.toFixed(3);
+        }
+
+        if (infoPanel) {
+          const textY = (1 - easeApproach) * 55;
+          const textX = -(1 - easeApproach) * 40;
+          infoPanel.style.transform = `translate3d(${textX.toFixed(1)}px, ${textY.toFixed(1)}px, 0)`;
+          infoPanel.style.opacity = easeApproach.toFixed(3);
+        }
+
+        stickyViewport.style.transform = 'translate3d(0, 0, 0) scale(1)';
+        stickyViewport.style.opacity = '1';
+        return;
+      }
+
+      // Inside pinned track
+      const scrollInside = scrollY - showcaseTop;
+      const progress = clamp(scrollInside / pinDist, 0, 1);
+
+      if (cardsDeck) {
+        cardsDeck.style.transform = 'translate3d(0, 0, 0)';
+        cardsDeck.style.opacity = '1';
+      }
+
+      if (infoPanel) {
+        infoPanel.style.transform = 'translate3d(0, 0, 0)';
+        infoPanel.style.opacity = '1';
+      }
+
+      let targetSlide = 1;
+      if (progress < 0.20) targetSlide = 1;
+      else if (progress < 0.40) targetSlide = 2;
+      else if (progress < 0.60) targetSlide = 3;
+      else if (progress < 0.80) targetSlide = 4;
+      else targetSlide = 5;
+
+      if (targetSlide !== slide) {
+        goToSlide(targetSlide, true);
+      }
+
+      // Exit transition
+      if (progress >= 0.93) {
+        const exitProgress = clamp((progress - 0.93) / 0.07, 0, 1);
+        const exitScale = 1.0 - exitProgress * 0.08;
+        const exitY = -exitProgress * 65;
+        const exitOpacity = 1.0 - exitProgress * 0.55;
+
+        stickyViewport.style.transform = `translate3d(0, ${exitY.toFixed(1)}px, 0) scale(${exitScale.toFixed(3)})`;
+        stickyViewport.style.opacity = exitOpacity.toFixed(2);
+      } else {
+        stickyViewport.style.transform = 'translate3d(0, 0, 0) scale(1)';
+        stickyViewport.style.opacity = '1';
+      }
+    }
+
+    updateView(initialSlide);
+
+    return {
+      sectionElem,
+      updateView,
+      updateOnScroll,
+      next: () => goToSlide(slide + 1),
+      prev: () => goToSlide(slide - 1),
+      isInView: () => {
+        const rect = sectionElem.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom > 0;
+      }
+    };
+  }
+
+  // Instantiate Both Showcase Sliders
+  const showcase1 = initShowcaseInstance({ suffix: '', initialSlide: 1 });
+  const showcase2 = initShowcaseInstance({ suffix: '2', initialSlide: 1 });
+
+  function updateShowcasesOnScroll() {
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    const windowH = window.innerHeight;
+    if (showcase1) showcase1.updateOnScroll(scrollY, windowH);
+    if (showcase2) showcase2.updateOnScroll(scrollY, windowH);
+  }
+
+  // Keyboard navigation for showcases
+  document.addEventListener('keydown', (e) => {
+    if (countryModal?.classList.contains('active')) return;
+    if (showcase1 && showcase1.isInView()) {
+      if (e.key === 'ArrowRight') showcase1.next();
+      else if (e.key === 'ArrowLeft') showcase1.prev();
+    } else if (showcase2 && showcase2.isInView()) {
+      if (e.key === 'ArrowRight') showcase2.next();
+      else if (e.key === 'ArrowLeft') showcase2.prev();
+    }
   });
 
   // ==========================================================================
-  // --- 5. Showcase Scroll Controller (Right-to-Left Entrance & Viewport Pin) ---
-  // ==========================================================================
-  function updateShowcaseOnScroll() {
-    if (!showcaseSectionElem || !showcaseStickyViewport) return;
-
-    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-    const windowH = window.innerHeight;
-    const showcaseTop = showcaseSectionElem.offsetTop;
-    const showcaseH = showcaseSectionElem.offsetHeight;
-    const pinDist = showcaseH - windowH;
-
-    if (pinDist <= 0) return;
-
-    // --- 1. Approaching / Coming Up from below Hero ---
-    if (scrollY < showcaseTop) {
-      const approachDist = windowH * 0.95;
-      const approach = clamp((scrollY + windowH - showcaseTop) / approachDist, 0, 1);
-      const easeApproach = easeOutCubic(approach);
-
-      // Destination cards deck animates smoothly from RIGHT to LEFT
-      if (showcaseCardsDeck) {
-        const slideX = (1 - easeApproach) * 320;
-        showcaseCardsDeck.style.transform = `translate3d(${slideX.toFixed(1)}px, 0, 0)`;
-        showcaseCardsDeck.style.opacity = easeApproach.toFixed(3);
-      }
-
-      // Left country text panel animates into place
-      if (showcaseInfoPanel) {
-        const textY = (1 - easeApproach) * 55;
-        const textX = -(1 - easeApproach) * 40;
-        showcaseInfoPanel.style.transform = `translate3d(${textX.toFixed(1)}px, ${textY.toFixed(1)}px, 0)`;
-        showcaseInfoPanel.style.opacity = easeApproach.toFixed(3);
-      }
-
-      showcaseStickyViewport.style.transform = 'translate3d(0, 0, 0) scale(1)';
-      showcaseStickyViewport.style.opacity = '1';
-
-      if (currentSlide !== 0) {
-        goToSlide(0, true);
-      }
-      return;
-    }
-
-    // --- 2. Locked in place (Pinned viewport active) ---
-    const scrollInside = scrollY - showcaseTop;
-    const progress = clamp(scrollInside / pinDist, 0, 1);
-
-    if (showcaseCardsDeck) {
-      showcaseCardsDeck.style.transform = 'translate3d(0, 0, 0)';
-      showcaseCardsDeck.style.opacity = '1';
-    }
-
-    if (showcaseInfoPanel) {
-      showcaseInfoPanel.style.transform = 'translate3d(0, 0, 0)';
-      showcaseInfoPanel.style.opacity = '1';
-    }
-
-    // Map scroll progress to active country slide
-    let targetSlide = 0;
-    if (progress < 0.12) {
-      targetSlide = 0;
-    } else if (progress < 0.30) {
-      targetSlide = 1;
-    } else if (progress < 0.48) {
-      targetSlide = 2;
-    } else if (progress < 0.66) {
-      targetSlide = 3;
-    } else if (progress < 0.84) {
-      targetSlide = 4;
-    } else {
-      targetSlide = 5;
-    }
-
-    if (targetSlide !== currentSlide) {
-      goToSlide(targetSlide, true);
-    }
-
-    // --- 3. Animating away when scrolled down towards footer ---
-    if (progress >= 0.93) {
-      const exitProgress = clamp((progress - 0.93) / 0.07, 0, 1);
-      const exitScale = 1.0 - exitProgress * 0.08;
-      const exitY = -exitProgress * 65;
-      const exitOpacity = 1.0 - exitProgress * 0.55;
-
-      showcaseStickyViewport.style.transform = `translate3d(0, ${exitY.toFixed(1)}px, 0) scale(${exitScale.toFixed(3)})`;
-      showcaseStickyViewport.style.opacity = exitOpacity.toFixed(2);
-    } else {
-      showcaseStickyViewport.style.transform = 'translate3d(0, 0, 0) scale(1)';
-      showcaseStickyViewport.style.opacity = '1';
-    }
-  }
-
-  // Next / Prev Button Controls
-  if (showcaseNextBtn) {
-    showcaseNextBtn.addEventListener('click', () => {
-      goToSlide(currentSlide + 1);
-    });
-  }
-
-  if (showcasePrevBtn) {
-    showcasePrevBtn.addEventListener('click', () => {
-      goToSlide(currentSlide - 1);
-    });
-  }
-
-  // ==========================================================================
-  // --- 6. Country Package Modal Details & Booking Form ---
+  // --- 5. Country Package Modal Details & Booking Form ---
   // ==========================================================================
   function openCountryModal(destIndex) {
     if (!countryModal) return;
@@ -561,16 +596,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   }
 
-  if (showcaseBookBtn) {
-    showcaseBookBtn.addEventListener('click', () => {
-      if (currentSlide === 0) {
-        goToSlide(1);
-      } else {
-        openCountryModal(currentSlide - 1);
-      }
-    });
-  }
-
   if (countryModalClose) {
     countryModalClose.addEventListener('click', closeCountryModal);
   }
@@ -592,7 +617,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const travelers = document.getElementById('pkg-travelers')?.value || '2';
 
       if (bookingConfirmationMsg) {
-        const destName = destinationsData[currentSlide > 0 ? currentSlide - 1 : 0].pkgTitle;
+        const destName = destinationsData[0].pkgTitle;
         bookingConfirmationMsg.innerHTML = `✓ Thank you, <strong>${guestName}</strong>! Your inquiry for <strong>${destName}</strong> on <strong>${travelDate}</strong> (${travelers} travelers) has been submitted. Our concierge will contact you at <em>${guestEmail}</em> within 2 hours.`;
         bookingConfirmationMsg.style.display = 'block';
       }
@@ -601,43 +626,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Keyboard navigation for showcase
-  document.addEventListener('keydown', (e) => {
-    if (!showcaseSectionElem) return;
-
-    const rect = showcaseSectionElem.getBoundingClientRect();
-    const isInView = rect.top < window.innerHeight && rect.bottom > 0;
-
-    if (isInView && !countryModal?.classList.contains('active')) {
-      if (e.key === 'ArrowRight') {
-        goToSlide(currentSlide + 1);
-      } else if (e.key === 'ArrowLeft') {
-        goToSlide(currentSlide - 1);
-      }
-    }
-  });
-
-  // Touch Swipe for mobile on cards deck
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  if (showcaseCardsDeck) {
-    showcaseCardsDeck.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    showcaseCardsDeck.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      if (touchStartX - touchEndX > 50) {
-        goToSlide(currentSlide + 1);
-      } else if (touchEndX - touchStartX > 50) {
-        goToSlide(currentSlide - 1);
-      }
-    }, { passive: true });
-  }
-
   // ==========================================================================
-  // --- 7. Modals & Navigation Event Listeners ---
+  // --- 6. Modals & Navigation Event Listeners ---
   // ==========================================================================
   if (scrollHint) {
     scrollHint.addEventListener('click', () => {
@@ -647,17 +637,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const featuresSec = document.getElementById('features');
   if (heroCta) {
     heroCta.addEventListener('click', (e) => {
       e.preventDefault();
-      if (showcaseSectionElem) showcaseSectionElem.scrollIntoView({ behavior: 'smooth' });
+      if (featuresSec) featuresSec.scrollIntoView({ behavior: 'smooth' });
     });
   }
 
   if (cornerKnowMore) {
     cornerKnowMore.addEventListener('click', (e) => {
       e.preventDefault();
-      if (showcaseSectionElem) showcaseSectionElem.scrollIntoView({ behavior: 'smooth' });
+      if (featuresSec) featuresSec.scrollIntoView({ behavior: 'smooth' });
     });
   }
 
@@ -689,7 +680,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (modalReserveBtn) {
     modalReserveBtn.addEventListener('click', () => {
       closeVideoModal();
-      if (showcaseSectionElem) showcaseSectionElem.scrollIntoView({ behavior: 'smooth' });
+      if (featuresSec) featuresSec.scrollIntoView({ behavior: 'smooth' });
     });
   }
 
@@ -759,7 +750,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modalExploreBtn) {
       modalExploreBtn.addEventListener('click', () => {
         closeModal();
-        if (showcaseSectionElem) showcaseSectionElem.scrollIntoView({ behavior: 'smooth' });
+        if (featuresSec) featuresSec.scrollIntoView({ behavior: 'smooth' });
       });
     }
 
@@ -779,14 +770,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================================================
-  // --- 8. Optimized Scroll & Resize Event Listeners ---
+  // --- 7. Optimized Scroll & Resize Event Listeners ---
   // ==========================================================================
   let isTicking = false;
   window.addEventListener('scroll', () => {
     if (!isTicking) {
       requestAnimationFrame(() => {
         updateFlightOnScroll();
-        updateShowcaseOnScroll();
+        updateShowcasesOnScroll();
         isTicking = false;
       });
       isTicking = true;
@@ -795,13 +786,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('resize', () => {
     updateFlightOnScroll();
-    updateShowcaseOnScroll();
+    updateShowcasesOnScroll();
   });
 
   // ==========================================================================
-  // --- 9. Initial Execution (Safe & Guaranteed after all setups) ---
+  // --- 8. Initial Execution ---
   // ==========================================================================
-  updateShowcaseView(0);
   updateFlightOnScroll();
-  updateShowcaseOnScroll();
+  updateShowcasesOnScroll();
 });
