@@ -154,9 +154,93 @@
     </header>
 
     <!-- ========================================================
-         SECTION 2: CLEAN MINIMAL CANVAS (Theme-Matched Spacer)
+         SECTION 2: INTERACTIVE COUNTRY SHOWCASE & SLIDER
+         (Fullscreen Landscape Transition with Heritage & Booking)
          ======================================================== -->
-    <section class="theme-spacer-section" id="features" aria-label="Explore Airways"></section>
+    <section class="country-showcase-section" id="features" aria-label="Global Destinations Showcase">
+      <!-- Fullscreen Cross-fading Background Layers -->
+      <div class="showcase-bg-container" id="showcase-bg-container">
+        <div class="showcase-bg-layer current" id="showcase-bg-current"></div>
+        <div class="showcase-bg-layer next" id="showcase-bg-next"></div>
+        <div class="showcase-vignette-overlay"></div>
+      </div>
+
+      <!-- Main Showcase Container -->
+      <div class="showcase-stage-container">
+        
+        <!-- Left Side: Country Information & Narrative -->
+        <div class="showcase-info-panel" id="showcase-info-panel">
+          
+          <!-- Elevation / Region Tag -->
+          <div class="showcase-elevation-badge" id="showcase-badge">
+            <span class="badge-arrow-icon">↑</span>
+            <span class="badge-elevation-val" id="showcase-elevation">4250m</span>
+            <span class="badge-region-sep">·</span>
+            <span class="badge-region-name" id="showcase-region">KARAKORAM</span>
+          </div>
+
+          <!-- Destination / Country Title -->
+          <h2 class="showcase-headline" id="showcase-headline">
+            FIND YOUR<br>FROZEN ESCAPE
+          </h2>
+
+          <!-- Descriptive Copy / Heritage Narrative -->
+          <p class="showcase-narrative" id="showcase-narrative">
+            Explore our frozen lake locations, each offering a unique skating experience in the heart of Skardu and worldwide alpine wonderlands.
+          </p>
+
+          <!-- Action Button: Opens Dedicated Country Package & Booking View -->
+          <div class="showcase-cta-wrapper">
+            <button class="showcase-book-btn" id="showcase-book-btn" aria-label="Book destination package">
+              <span id="showcase-btn-label">BOOK NOW</span>
+              <svg class="btn-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+
+        </div><!-- /.showcase-info-panel -->
+
+        <!-- Right Side: Destination Cards Carousel Deck -->
+        <div class="showcase-cards-deck" id="showcase-cards-deck" aria-label="Destination Cards">
+          <!-- Cards rendered and updated dynamically by script.js -->
+        </div>
+
+      </div><!-- /.showcase-stage-container -->
+
+      <!-- Bottom Navigation Controls & Progress Track -->
+      <div class="showcase-controls-bar">
+        <div class="showcase-controls-inner">
+          
+          <!-- Circular Arrow Buttons -->
+          <div class="showcase-nav-arrows">
+            <button class="nav-circle-btn prev-btn" id="showcase-prev-btn" aria-label="Previous destination">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button class="nav-circle-btn next-btn" id="showcase-next-btn" aria-label="Next destination">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Progress Bar Track -->
+          <div class="showcase-progress-wrapper" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="showcase-progress-track">
+            <div class="showcase-progress-fill" id="showcase-progress-fill"></div>
+          </div>
+
+          <!-- Slide Counter (00, 01, 02, etc.) -->
+          <div class="showcase-counter-display" id="showcase-counter">
+            <span class="counter-number" id="counter-current">00</span>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
 
     <!-- ========================================================
          SECTION 3: LUXURY TRAVEL FOOTER (World Landmarks Motif)
@@ -299,6 +383,114 @@
           <button class="modal-primary-btn" id="modal-explore-btn">Explore Destinations</button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Dedicated Country Heritage & Package Booking Modal -->
+  <div class="modal-backdrop country-modal-backdrop" id="country-package-modal" aria-hidden="true">
+    <div class="modal-window country-modal-window" role="dialog" aria-modal="true" aria-labelledby="country-modal-title">
+      <div class="country-modal-header">
+        <div class="country-modal-tag" id="country-modal-tag">↑ 4250m · BALTISTAN</div>
+        <button class="country-modal-close" id="country-modal-close" aria-label="Close country details">&times;</button>
+      </div>
+
+      <div class="country-modal-hero" id="country-modal-hero">
+        <img src="assets/dest_skardu.jpg" alt="Destination View" id="country-modal-img" class="country-modal-hero-img">
+        <div class="country-modal-hero-gradient"></div>
+        <div class="country-modal-hero-text">
+          <span class="country-modal-country" id="country-modal-country">PAKISTAN</span>
+          <h2 class="country-modal-title" id="country-modal-title">Shauser Lake & Skardu Expedition</h2>
+          <span class="country-modal-duration" id="country-modal-duration">8 Days · 7 Nights Luxury Itinerary</span>
+        </div>
+      </div>
+
+      <div class="country-modal-body">
+        <!-- Heritage & Culture Story -->
+        <div class="country-modal-section">
+          <h4 class="modal-section-title">Heritage & Cultural Significance</h4>
+          <p class="country-modal-heritage" id="country-modal-heritage">
+            Surrounded by towering 8,000m Karakoram summits and high-altitude alpine plateaus, Skardu is a legendary crossroad of ancient Balti kingdoms, Buddhist petroglyphs, and historic Silk Route trade paths.
+          </p>
+        </div>
+
+        <!-- Package Highlights Grid -->
+        <div class="country-modal-section">
+          <h4 class="modal-section-title">Package Inclusions & Experiences</h4>
+          <div class="country-highlights-grid" id="country-modal-highlights">
+            <div class="highlight-card">
+              <span class="highlight-icon">✈</span>
+              <div class="highlight-info">
+                <strong>Premier Flights</strong>
+                <span>Direct mountain scenic flights with luxury ground transfers</span>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <span class="highlight-icon">★</span>
+              <div class="highlight-info">
+                <strong>5-Star Lodging</strong>
+                <span>Exclusive chalets & private mountain retreat villas</span>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <span class="highlight-icon">🧭</span>
+              <div class="highlight-info">
+                <strong>Private Expedition</strong>
+                <span>Certified local mountain guides & private 4x4 chauffeurs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pricing & Reservation Form -->
+        <div class="country-modal-section country-booking-box">
+          <div class="booking-price-row">
+            <div>
+              <span class="price-label">Curated Package Starting At</span>
+              <div class="price-amount" id="country-modal-price">$2,450 <span class="price-sub">/ traveler</span></div>
+            </div>
+            <div class="price-badge">All-Inclusive Luxury</div>
+          </div>
+
+          <form class="country-reserve-form" id="country-booking-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="pkg-guest-name">Full Name</label>
+                <input type="text" id="pkg-guest-name" placeholder="Faiz Falki" required>
+              </div>
+              <div class="form-group">
+                <label for="pkg-guest-email">Email Address</label>
+                <input type="email" id="pkg-guest-email" placeholder="guest@domain.com" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="pkg-travel-date">Preferred Travel Date</label>
+                <input type="date" id="pkg-travel-date" required>
+              </div>
+              <div class="form-group">
+                <label for="pkg-travelers">Travelers</label>
+                <select id="pkg-travelers">
+                  <option value="1">1 Traveler</option>
+                  <option value="2" selected>2 Travelers (Couple)</option>
+                  <option value="4">4 Travelers (Family)</option>
+                  <option value="group">Group / Private Charter (5+)</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="country-submit-btn" id="country-reserve-btn">
+              <span>Request Package Booking</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="submit-arrow">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+            <div class="booking-confirmation-msg" id="booking-confirmation-msg" style="display: none;">
+              ✓ Your expedition request has been sent! Our bespoke travel specialist will contact you within 2 hours.
+            </div>
+          </form>
+        </div>
+
+      </div><!-- /.country-modal-body -->
     </div>
   </div>
 
