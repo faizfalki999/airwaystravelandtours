@@ -4,349 +4,24 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Elements
+  // ==========================================================================
+  // --- 1. DOM Elements Selection & Data Setup ---
+  // ==========================================================================
+  
+  // Hero Elements
   const heroSection = document.getElementById('hero');
   const airplaneStage = document.getElementById('airplane-stage');
   const airplaneWrapper = document.getElementById('airplane-wrapper');
   const heroLeftColumn = document.getElementById('hero-left-column');
-  const heroCornerCard = document.getElementById('hero-corner-card');
   const heroSkyImg = document.getElementById('hero-sky-img');
   const cloudWisps = document.getElementById('hero-cloud-wisps');
-
-  // --- 1. Continuous Scroll-Driven Flight Path Controller ---
-  // The user controls the entire flight path directly with the scrollbar/wheel/touch:
-  // - Top (clean bg): Plane is back in the distance along its approach path; UI is hidden.
-  // - Scrolling down: Plane flies smoothly IN along its natural approach corridor (scaling & banking in).
-  // - Mid scroll: Hero resting station (headline & CTA 100% visible & clickable).
-  // - Continuing scroll: Plane accelerates along its climb corridor up into the upper clouds & flies away.
-  // - Scrolling up: Reverses continuously with zero lag.
-
   const heroNav = document.querySelector('.hero-nav');
   const scrollHint = document.getElementById('hero-scroll-hint');
-
-  function easeOutCubic(t) {
-    return 1 - Math.pow(1 - t, 3);
-  }
-  function easeInOutQuad(t) {
-    return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-  }
-  function clamp(val, min, max) {
-    return Math.max(min, Math.min(max, val));
-  }
-
-  function updateFlightOnScroll() {
-    if (!heroSection) return;
-
-    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-    const isMobile = window.innerWidth <= 768;
-
-    // 2-Step Scroll Corridor:
-    // Step 1: Pristine Empty Sky on open -> User scrolls once -> Plane & text glide in
-    // Step 2: User scrolls again -> Plane accelerates & takes off into clouds, page scrolls down
-    const step1Distance = isMobile ? 280 : 360;
-    const step2Distance = isMobile ? 280 : 360;
-
-    const midX = 0;
-    const midY = 0;
-    const midScale = 1.0;
-    const midRot = -11;
-
-    let planeX, planeY, planeScale, planeRot, planeOpacity;
-    let textOpacity, textY;
-    let hintOpacity;
-
-    if (scrollY <= step1Distance) {
-      // Phase 1: Materializing from Pristine Empty Sky to Center Resting Stance
-      const p1 = clamp(scrollY / step1Distance, 0, 1);
-      const t1 = easeOutCubic(p1);
-
-      // Natural flight approach corridor: glides in from bottom-left / distance
-      const startX = isMobile ? -260 : -440;
-      const startY = isMobile ? 220 : 300;
-      const startScale = 0.38;
-      const startRot = -5;
-
-      planeX = startX + (midX - startX) * t1;
-      planeY = startY + (midY - startY) * t1;
-      planeScale = startScale + (midScale - startScale) * t1;
-      planeRot = startRot + (midRot - startRot) * t1;
-
-      // At scrollY === 0, plane is completely invisible: PRISTINE EMPTY SKY
-      // Materializes smoothly as user scrolls
-      planeOpacity = clamp(t1 * 1.35, 0, 1);
-
-      // Hero text slides up and fades in
-      const textP = clamp((p1 - 0.12) / 0.88, 0, 1);
-      textOpacity = easeInOutQuad(textP);
-      textY = (1 - easeOutCubic(textP)) * 48;
-
-      // Scroll hint is visible on pristine sky, fades out as user scrolls
-      hintOpacity = clamp(1.0 - p1 * 2.2, 0, 1);
-    } else {
-      // Phase 2: Departure Vector - plane accelerates up and right into high clouds
-      const p2 = clamp((scrollY - step1Distance) / step2Distance, 0, 1);
-      const t2 = easeInOutQuad(p2);
-
-      const endX = isMobile ? window.innerWidth * 0.65 : 480;
-      const endY = isMobile ? -window.innerHeight * 0.45 : -440;
-      const endScale = 1.4;
-      const endRot = -19;
-
-      planeX = midX + (endX - midX) * t2;
-      planeY = midY + (endY - midY) * t2;
-      planeScale = midScale + (endScale - midScale) * t2;
-      planeRot = midRot + (endRot - midRot) * t2;
-
-      // Plane dissolves into upper cloud layer
-      planeOpacity = 1.0;
-      if (t2 > 0.35) {
-        planeOpacity = clamp(1.0 - (t2 - 0.35) / 0.65, 0, 1);
-      }
-
-      // Text glides up with parallax & dissolves
-      textOpacity = clamp(1.0 - t2 * 1.6, 0, 1);
-      textY = -t2 * 60;
-
-      hintOpacity = 0;
-    }
-
-    // Apply transforms
-    if (airplaneWrapper) {
-      airplaneWrapper.style.transform = `translate3d(${planeX.toFixed(1)}px, ${planeY.toFixed(1)}px, 0) rotate(${planeRot.toFixed(1)}deg) scale(${planeScale.toFixed(3)})`;
-      airplaneWrapper.style.opacity = planeOpacity.toFixed(3);
-    }
-
-    if (heroNav) {
-      heroNav.style.opacity = '1';
-      heroNav.style.transform = 'translate3d(0, 0, 0)';
-    }
-
-    if (heroLeftColumn) {
-      heroLeftColumn.style.opacity = textOpacity.toFixed(3);
-      heroLeftColumn.style.transform = `translate3d(0, ${textY.toFixed(1)}px, 0)`;
-      heroLeftColumn.style.pointerEvents = textOpacity > 0.5 ? 'auto' : 'none';
-    }
-
-    if (scrollHint) {
-      scrollHint.style.opacity = hintOpacity.toFixed(3);
-      scrollHint.style.pointerEvents = hintOpacity > 0.2 ? 'auto' : 'none';
-    }
-
-    // Background stays rock-solid: no downward translation!
-    if (heroSkyImg) {
-      heroSkyImg.style.transform = 'none';
-    }
-    if (cloudWisps) {
-      cloudWisps.style.transform = 'none';
-    }
-  }
-
-  // Initial call on page load
-  updateFlightOnScroll();
-  if (typeof updateShowcaseOnScroll === 'function') {
-    updateShowcaseOnScroll();
-  }
-
-  let isTicking = false;
-  window.addEventListener('scroll', () => {
-    if (!isTicking) {
-      requestAnimationFrame(() => {
-        updateFlightOnScroll();
-        if (typeof updateShowcaseOnScroll === 'function') {
-          updateShowcaseOnScroll();
-        }
-        isTicking = false;
-      });
-      isTicking = true;
-    }
-  }, { passive: true });
-
-  window.addEventListener('resize', () => {
-    updateFlightOnScroll();
-    if (typeof updateShowcaseOnScroll === 'function') {
-      updateShowcaseOnScroll();
-    }
-  });
-
-  // Click on scroll hint smoothly scrolls to reveal hero
-  if (scrollHint) {
-    scrollHint.addEventListener('click', () => {
-      const isMobile = window.innerWidth <= 768;
-      const arrivalTrack = isMobile ? 260 : 360;
-      window.scrollTo({ top: arrivalTrack, behavior: 'smooth' });
-    });
-  }
-
-  // --- 4. Smooth Navigation & Button Scrolls ---
   const heroCta = document.getElementById('hero-cta');
-  const cornerKnowMore = document.getElementById('corner-know-more');
-  const navBookTripBtn = document.getElementById('nav-book-trip-btn');
-  const bookingModal = document.getElementById('booking-modal');
 
-  if (heroCta) {
-    heroCta.addEventListener('click', (e) => {
-      e.preventDefault();
-      const target = document.getElementById('features');
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
-    });
-  }
-
-  if (cornerKnowMore) {
-    cornerKnowMore.addEventListener('click', (e) => {
-      e.preventDefault();
-      const target = document.getElementById('features');
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
-    });
-  }
-
-  if (navBookTripBtn) {
-    navBookTripBtn.addEventListener('click', () => {
-      if (bookingModal) {
-        bookingModal.classList.add('active');
-        bookingModal.setAttribute('aria-hidden', 'false');
-      }
-    });
-  }
-
-  // Discover More Smooth Scroll
-  const discoverMore = document.getElementById('discover-more');
-  if (discoverMore) {
-    discoverMore.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  // --- 5. Interactive Flight Experience Video Modal ---
-  const btnPlayVideo = document.getElementById('btn-play-video');
-  const flightVideoModal = document.getElementById('flight-video-modal');
-  const videoModalClose = document.getElementById('video-modal-close');
-  const videoBackdrop = document.getElementById('video-backdrop');
-  const modalReserveBtn = document.getElementById('modal-reserve-btn');
-
-  function openVideoModal() {
-    if (!flightVideoModal) return;
-    flightVideoModal.classList.add('active');
-    flightVideoModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeVideoModal() {
-    if (!flightVideoModal) return;
-    flightVideoModal.classList.remove('active');
-    flightVideoModal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  if (btnPlayVideo) {
-    btnPlayVideo.addEventListener('click', openVideoModal);
-  }
-  if (videoModalClose) {
-    videoModalClose.addEventListener('click', closeVideoModal);
-  }
-  if (videoBackdrop) {
-    videoBackdrop.addEventListener('click', closeVideoModal);
-  }
-  if (modalReserveBtn) {
-    modalReserveBtn.addEventListener('click', () => {
-      closeVideoModal();
-      const target = document.getElementById('features');
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
-    });
-  }
-
-  // --- 6. Mobile Drawer Toggle ---
-  const menuToggle = document.getElementById('menu-toggle');
-  const mobileDrawer = document.getElementById('mobile-drawer');
-  const drawerClose = document.getElementById('drawer-close');
-  const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-cta-btn');
-
-  function openDrawer() {
-    if (!mobileDrawer) return;
-    mobileDrawer.classList.add('open');
-    mobileDrawer.setAttribute('aria-hidden', 'false');
-    if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeDrawer() {
-    if (!mobileDrawer) return;
-    mobileDrawer.classList.remove('open');
-    mobileDrawer.setAttribute('aria-hidden', 'true');
-    if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-
-  if (menuToggle && mobileDrawer) {
-    menuToggle.addEventListener('click', () => {
-      const isOpen = mobileDrawer.classList.contains('open');
-      if (isOpen) closeDrawer();
-      else openDrawer();
-    });
-
-    if (drawerClose) {
-      drawerClose.addEventListener('click', closeDrawer);
-    }
-
-    drawerLinks.forEach(link => {
-      link.addEventListener('click', closeDrawer);
-    });
-
-    document.addEventListener('click', (e) => {
-      if (mobileDrawer.classList.contains('open') && 
-          !mobileDrawer.contains(e.target) && 
-          !menuToggle.contains(e.target)) {
-        closeDrawer();
-      }
-    });
-  }
-
-  // --- 7. Quick Booking Bag Modal ---
-  const cartToggle = document.getElementById('cart-toggle');
-  const modalClose = document.getElementById('modal-close');
-  const modalExploreBtn = document.getElementById('modal-explore-btn');
-
-  function openModal() {
-    if (!bookingModal) return;
-    bookingModal.classList.add('active');
-    bookingModal.setAttribute('aria-hidden', 'false');
-  }
-
-  function closeModal() {
-    if (!bookingModal) return;
-    bookingModal.classList.remove('active');
-    bookingModal.setAttribute('aria-hidden', 'true');
-  }
-
-  if (cartToggle && bookingModal) {
-    cartToggle.addEventListener('click', openModal);
-
-    if (modalClose) {
-      modalClose.addEventListener('click', closeModal);
-    }
-
-    if (modalExploreBtn) {
-      modalExploreBtn.addEventListener('click', () => {
-        closeModal();
-        const features = document.getElementById('features');
-        if (features) {
-          features.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    }
-
-    bookingModal.addEventListener('click', (e) => {
-      if (e.target === bookingModal) {
-        closeModal();
-      }
-    });
-  }
-
-  // ==========================================================================
-  // --- 8. Interactive Country Showcase Slider (Fullscreen Expansion & Booking) ---
-  // ==========================================================================
-  const showcaseBgCurrent = document.getElementById('showcase-bg-current');
-  const showcaseBgNext = document.getElementById('showcase-bg-next');
+  // Showcase Elements
+  const showcaseSectionElem = document.getElementById('features');
+  const showcaseStickyViewport = document.getElementById('showcase-sticky-viewport');
   const showcaseInfoPanel = document.getElementById('showcase-info-panel');
   const showcaseElevation = document.getElementById('showcase-elevation');
   const showcaseRegion = document.getElementById('showcase-region');
@@ -359,8 +34,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const showcaseNextBtn = document.getElementById('showcase-next-btn');
   const showcaseProgressFill = document.getElementById('showcase-progress-fill');
   const counterCurrent = document.getElementById('counter-current');
+  const showcaseBgLayers = document.querySelectorAll('.showcase-bg-layer');
+  const showcaseCards = document.querySelectorAll('.showcase-card');
 
-  // Country Modal Elements
+  // Navigation & Modals Elements
+  const navBookTripBtn = document.getElementById('nav-book-trip-btn');
+  const bookingModal = document.getElementById('booking-modal');
+  const cartToggle = document.getElementById('cart-toggle');
+  const modalClose = document.getElementById('modal-close');
+  const modalExploreBtn = document.getElementById('modal-explore-btn');
+  const discoverMore = document.getElementById('discover-more');
+  const cornerKnowMore = document.getElementById('corner-know-more');
+
+  // Video Modal Elements
+  const btnPlayVideo = document.getElementById('btn-play-video');
+  const flightVideoModal = document.getElementById('flight-video-modal');
+  const videoModalClose = document.getElementById('video-modal-close');
+  const videoBackdrop = document.getElementById('video-backdrop');
+  const modalReserveBtn = document.getElementById('modal-reserve-btn');
+
+  // Mobile Drawer Elements
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+  const drawerClose = document.getElementById('drawer-close');
+  const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-cta-btn');
+
+  // Country Detail & Booking Modal Elements
   const countryModal = document.getElementById('country-package-modal');
   const countryModalClose = document.getElementById('country-modal-close');
   const countryModalTag = document.getElementById('country-modal-tag');
@@ -374,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const countryBookingForm = document.getElementById('country-booking-form');
   const bookingConfirmationMsg = document.getElementById('booking-confirmation-msg');
 
+  // Curated Destination Packages Data
   const destinationsData = [
     {
       id: 'skardu',
@@ -477,38 +177,146 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
-  let currentSlide = 0; // 0 = Intro state, 1..5 = Destinations
-  const showcaseBgLayers = document.querySelectorAll('.showcase-bg-layer');
-  const showcaseCards = document.querySelectorAll('.showcase-card');
+  let currentSlide = 0; // 0 = Skardu Intro/Hero, 1..5 = Destinations
 
-  // Initialize click handlers on pre-rendered destination cards
-  showcaseCards.forEach((card) => {
-    card.addEventListener('click', () => {
-      const cardIdx = parseInt(card.getAttribute('data-index'), 10);
-      if (!isNaN(cardIdx)) {
-        goToSlide(cardIdx);
+  // ==========================================================================
+  // --- 2. Math & Easing Helpers ---
+  // ==========================================================================
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+  function easeInOutQuad(t) {
+    return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+  }
+  function clamp(val, min, max) {
+    return Math.max(min, Math.min(max, val));
+  }
+
+  // ==========================================================================
+  // --- 3. Hero Flight & Text Scroll Animation ---
+  // - On initial page load: only pristine empty sky & gentle scroll hint.
+  // - First scroll: Airplane swoops in along approach corridor into center; text slides in.
+  // - Second scroll: Airplane climbs & accelerates into clouds, dissolving as page scrolls.
+  // ==========================================================================
+  function updateFlightOnScroll() {
+    if (!heroSection) return;
+
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    const isMobile = window.innerWidth <= 768;
+
+    const step1Distance = isMobile ? 280 : 360;
+    const step2Distance = isMobile ? 280 : 360;
+
+    const midX = 0;
+    const midY = 0;
+    const midScale = 1.0;
+    const midRot = -11;
+
+    let planeX, planeY, planeScale, planeRot, planeOpacity;
+    let textOpacity, textY;
+    let hintOpacity;
+
+    if (scrollY <= step1Distance) {
+      // Phase 1: Materializing from Pristine Empty Sky to Center Resting Stance
+      const p1 = clamp(scrollY / step1Distance, 0, 1);
+      const t1 = easeOutCubic(p1);
+
+      // Natural flight approach corridor: glides in from bottom-left / distance
+      const startX = isMobile ? -260 : -440;
+      const startY = isMobile ? 220 : 300;
+      const startScale = 0.38;
+      const startRot = -5;
+
+      planeX = startX + (midX - startX) * t1;
+      planeY = startY + (midY - startY) * t1;
+      planeScale = startScale + (midScale - startScale) * t1;
+      planeRot = startRot + (midRot - startRot) * t1;
+
+      // At scrollY === 0, plane is completely invisible: PRISTINE EMPTY SKY
+      // Materializes smoothly as user scrolls
+      planeOpacity = clamp(t1 * 1.35, 0, 1);
+
+      // Hero text slides up and fades in
+      const textP = clamp((p1 - 0.12) / 0.88, 0, 1);
+      textOpacity = easeInOutQuad(textP);
+      textY = (1 - easeOutCubic(textP)) * 48;
+
+      // Scroll hint is visible on pristine sky, fades out as user scrolls
+      hintOpacity = clamp(1.0 - p1 * 2.2, 0, 1);
+    } else {
+      // Phase 2: Departure Vector - plane accelerates up and right into high clouds
+      const p2 = clamp((scrollY - step1Distance) / step2Distance, 0, 1);
+      const t2 = easeInOutQuad(p2);
+
+      const endX = isMobile ? window.innerWidth * 0.65 : 480;
+      const endY = isMobile ? -window.innerHeight * 0.45 : -440;
+      const endScale = 1.4;
+      const endRot = -19;
+
+      planeX = midX + (endX - midX) * t2;
+      planeY = midY + (endY - midY) * t2;
+      planeScale = midScale + (endScale - midScale) * t2;
+      planeRot = midRot + (endRot - midRot) * t2;
+
+      // Plane dissolves into upper cloud layer
+      planeOpacity = 1.0;
+      if (t2 > 0.35) {
+        planeOpacity = clamp(1.0 - (t2 - 0.35) / 0.65, 0, 1);
       }
-    });
 
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        const cardIdx = parseInt(card.getAttribute('data-index'), 10);
-        if (!isNaN(cardIdx)) {
-          goToSlide(cardIdx);
-        }
-      }
-    });
-  });
+      // Text glides up with parallax & dissolves
+      textOpacity = clamp(1.0 - t2 * 1.6, 0, 1);
+      textY = -t2 * 60;
 
+      hintOpacity = 0;
+    }
+
+    // Apply transforms to DOM
+    if (airplaneWrapper) {
+      airplaneWrapper.style.transform = `translate3d(${planeX.toFixed(1)}px, ${planeY.toFixed(1)}px, 0) rotate(${planeRot.toFixed(1)}deg) scale(${planeScale.toFixed(3)})`;
+      airplaneWrapper.style.opacity = planeOpacity.toFixed(3);
+    }
+
+    if (heroNav) {
+      heroNav.style.opacity = '1';
+      heroNav.style.transform = 'translate3d(0, 0, 0)';
+    }
+
+    if (heroLeftColumn) {
+      heroLeftColumn.style.opacity = textOpacity.toFixed(3);
+      heroLeftColumn.style.transform = `translate3d(0, ${textY.toFixed(1)}px, 0)`;
+      heroLeftColumn.style.pointerEvents = textOpacity > 0.5 ? 'auto' : 'none';
+    }
+
+    if (scrollHint) {
+      scrollHint.style.opacity = hintOpacity.toFixed(3);
+      scrollHint.style.pointerEvents = hintOpacity > 0.2 ? 'auto' : 'none';
+    }
+
+    if (heroSkyImg) heroSkyImg.style.transform = 'none';
+    if (cloudWisps) cloudWisps.style.transform = 'none';
+  }
+
+  // ==========================================================================
+  // --- 4. Showcase View & Country Carousel Logic ---
+  // ==========================================================================
   function updateShowcaseView(slideIndex) {
-    // 1. Crossfade background layers natively with GPU acceleration
+    // 1. Crossfade background layers
     showcaseBgLayers.forEach((layer) => {
       const layerSlide = parseInt(layer.getAttribute('data-slide'), 10);
       layer.classList.toggle('active', layerSlide === slideIndex);
     });
 
-    // 2. Update text content
+    // 2. Animate text update
+    if (showcaseInfoPanel && showcaseInfoPanel.dataset.lastSlide !== String(slideIndex)) {
+      showcaseInfoPanel.dataset.lastSlide = String(slideIndex);
+      showcaseInfoPanel.classList.add('animating');
+      setTimeout(() => {
+        showcaseInfoPanel.classList.remove('animating');
+      }, 200);
+    }
+
+    // 3. Update text content
     if (slideIndex === 0) {
       if (showcaseElevation) showcaseElevation.textContent = '4250m';
       if (showcaseRegion) showcaseRegion.textContent = 'SKARDU & BEYOND';
@@ -537,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // 3. Highlight the active destination card
+    // 4. Highlight the active destination card
     showcaseCards.forEach((card) => {
       const cardIdx = parseInt(card.getAttribute('data-index'), 10);
       const isCardActive = cardIdx === slideIndex;
@@ -546,12 +354,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function scrollToShowcaseSlide(slideIdx) {
-    const showcaseSec = document.getElementById('features');
-    if (!showcaseSec) return;
+    if (!showcaseSectionElem) return;
 
-    const showcaseTop = showcaseSec.offsetTop;
+    const showcaseTop = showcaseSectionElem.offsetTop;
     const windowH = window.innerHeight;
-    const pinDist = showcaseSec.offsetHeight - windowH;
+    const pinDist = showcaseSectionElem.offsetHeight - windowH;
     if (pinDist <= 0) return;
 
     let ratio = 0.05;
@@ -579,9 +386,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  const showcaseStickyViewport = document.getElementById('showcase-sticky-viewport');
-  const showcaseSectionElem = document.getElementById('features');
+  // Click & keyboard handlers on destination cards
+  showcaseCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const cardIdx = parseInt(card.getAttribute('data-index'), 10);
+      if (!isNaN(cardIdx)) {
+        goToSlide(cardIdx);
+      }
+    });
 
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const cardIdx = parseInt(card.getAttribute('data-index'), 10);
+        if (!isNaN(cardIdx)) {
+          goToSlide(cardIdx);
+        }
+      }
+    });
+  });
+
+  // ==========================================================================
+  // --- 5. Showcase Scroll Controller (Right-to-Left Entrance & Viewport Pin) ---
+  // ==========================================================================
   function updateShowcaseOnScroll() {
     if (!showcaseSectionElem || !showcaseStickyViewport) return;
 
@@ -672,6 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Next / Prev Button Controls
   if (showcaseNextBtn) {
     showcaseNextBtn.addEventListener('click', () => {
       goToSlide(currentSlide + 1);
@@ -684,7 +512,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Open Dedicated Country Package Details & Booking Modal ---
+  // ==========================================================================
+  // --- 6. Country Package Modal Details & Booking Form ---
+  // ==========================================================================
   function openCountryModal(destIndex) {
     if (!countryModal) return;
     const dest = destinationsData[destIndex];
@@ -753,7 +583,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Handle Country Package Booking Form Submission
   if (countryBookingForm) {
     countryBookingForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -772,12 +601,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Keyboard Navigation (Left / Right Arrows)
+  // Keyboard navigation for showcase
   document.addEventListener('keydown', (e) => {
-    const showcaseSection = document.getElementById('features');
-    if (!showcaseSection) return;
+    if (!showcaseSectionElem) return;
 
-    const rect = showcaseSection.getBoundingClientRect();
+    const rect = showcaseSectionElem.getBoundingClientRect();
     const isInView = rect.top < window.innerHeight && rect.bottom > 0;
 
     if (isInView && !countryModal?.classList.contains('active')) {
@@ -789,7 +617,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Touch Swipe on Cards Deck
+  // Touch Swipe for mobile on cards deck
   let touchStartX = 0;
   let touchEndX = 0;
 
@@ -801,19 +629,146 @@ document.addEventListener('DOMContentLoaded', () => {
     showcaseCardsDeck.addEventListener('touchend', (e) => {
       touchEndX = e.changedTouches[0].screenX;
       if (touchStartX - touchEndX > 50) {
-        // Swiped Left -> Next
         goToSlide(currentSlide + 1);
       } else if (touchEndX - touchStartX > 50) {
-        // Swiped Right -> Prev
         goToSlide(currentSlide - 1);
       }
     }, { passive: true });
   }
 
-  // Initial Showcase Setup
-  updateShowcaseView(0);
+  // ==========================================================================
+  // --- 7. Modals & Navigation Event Listeners ---
+  // ==========================================================================
+  if (scrollHint) {
+    scrollHint.addEventListener('click', () => {
+      const isMobile = window.innerWidth <= 768;
+      const arrivalTrack = isMobile ? 280 : 360;
+      window.scrollTo({ top: arrivalTrack, behavior: 'smooth' });
+    });
+  }
 
-  // Escape key listener for all modals and drawer
+  if (heroCta) {
+    heroCta.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (showcaseSectionElem) showcaseSectionElem.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  if (cornerKnowMore) {
+    cornerKnowMore.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (showcaseSectionElem) showcaseSectionElem.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  if (discoverMore) {
+    discoverMore.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // Video Modal
+  function openVideoModal() {
+    if (!flightVideoModal) return;
+    flightVideoModal.classList.add('active');
+    flightVideoModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeVideoModal() {
+    if (!flightVideoModal) return;
+    flightVideoModal.classList.remove('active');
+    flightVideoModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  if (btnPlayVideo) btnPlayVideo.addEventListener('click', openVideoModal);
+  if (videoModalClose) videoModalClose.addEventListener('click', closeVideoModal);
+  if (videoBackdrop) videoBackdrop.addEventListener('click', closeVideoModal);
+  if (modalReserveBtn) {
+    modalReserveBtn.addEventListener('click', () => {
+      closeVideoModal();
+      if (showcaseSectionElem) showcaseSectionElem.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  // Mobile Drawer
+  function openDrawer() {
+    if (!mobileDrawer) return;
+    mobileDrawer.classList.add('open');
+    mobileDrawer.setAttribute('aria-hidden', 'false');
+    if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    if (!mobileDrawer) return;
+    mobileDrawer.classList.remove('open');
+    mobileDrawer.setAttribute('aria-hidden', 'true');
+    if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  if (menuToggle && mobileDrawer) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = mobileDrawer.classList.contains('open');
+      if (isOpen) closeDrawer();
+      else openDrawer();
+    });
+
+    if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+
+    drawerLinks.forEach(link => {
+      link.addEventListener('click', closeDrawer);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (mobileDrawer.classList.contains('open') && 
+          !mobileDrawer.contains(e.target) && 
+          !menuToggle.contains(e.target)) {
+        closeDrawer();
+      }
+    });
+  }
+
+  // Quick Booking Bag Modal
+  function openModal() {
+    if (!bookingModal) return;
+    bookingModal.classList.add('active');
+    bookingModal.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeModal() {
+    if (!bookingModal) return;
+    bookingModal.classList.remove('active');
+    bookingModal.setAttribute('aria-hidden', 'true');
+  }
+
+  if (navBookTripBtn) {
+    navBookTripBtn.addEventListener('click', () => {
+      openModal();
+    });
+  }
+
+  if (cartToggle && bookingModal) {
+    cartToggle.addEventListener('click', openModal);
+
+    if (modalClose) modalClose.addEventListener('click', closeModal);
+
+    if (modalExploreBtn) {
+      modalExploreBtn.addEventListener('click', () => {
+        closeModal();
+        if (showcaseSectionElem) showcaseSectionElem.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+
+    bookingModal.addEventListener('click', (e) => {
+      if (e.target === bookingModal) closeModal();
+    });
+  }
+
+  // Global Escape key handler
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeDrawer();
@@ -822,4 +777,31 @@ document.addEventListener('DOMContentLoaded', () => {
       closeCountryModal();
     }
   });
+
+  // ==========================================================================
+  // --- 8. Optimized Scroll & Resize Event Listeners ---
+  // ==========================================================================
+  let isTicking = false;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      requestAnimationFrame(() => {
+        updateFlightOnScroll();
+        updateShowcaseOnScroll();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener('resize', () => {
+    updateFlightOnScroll();
+    updateShowcaseOnScroll();
+  });
+
+  // ==========================================================================
+  // --- 9. Initial Execution (Safe & Guaranteed after all setups) ---
+  // ==========================================================================
+  updateShowcaseView(0);
+  updateFlightOnScroll();
+  updateShowcaseOnScroll();
 });
