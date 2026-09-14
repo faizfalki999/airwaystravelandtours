@@ -284,6 +284,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const s = suffix ? `-${suffix}` : '';
     const sectionElem = document.getElementById(suffix ? `features-${suffix}` : 'features');
     const stickyViewport = document.getElementById(`showcase-sticky-viewport${s}`);
+    const introCurtain = document.getElementById(suffix ? `showcase-intro-curtain-${suffix}` : 'showcase-intro-curtain');
+    const introHint = document.getElementById(suffix ? `intro-hint-${suffix}` : 'intro-hint-1');
+    const controlsBar = stickyViewport ? stickyViewport.querySelector('.showcase-controls-bar') : null;
     const infoPanel = document.getElementById(`showcase-info-panel${s}`);
     const elevation = document.getElementById(`showcase-elevation${s}`);
     const region = document.getElementById(`showcase-region${s}`);
@@ -349,24 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    function scrollToShowcaseSlide(slideIdx) {
-      const showcaseTop = sectionElem.offsetTop;
-      const windowH = window.innerHeight;
-      const pinDist = sectionElem.offsetHeight - windowH;
-      if (pinDist <= 0) return;
-
-      let ratio = 0.05;
-      if (slideIdx === 1) ratio = 0.20;
-      else if (slideIdx === 2) ratio = 0.38;
-      else if (slideIdx === 3) ratio = 0.56;
-      else if (slideIdx === 4) ratio = 0.74;
-      else if (slideIdx === 5) ratio = 0.88;
-
-      const targetY = showcaseTop + ratio * pinDist;
-      window.scrollTo({ top: targetY, behavior: 'smooth' });
-    }
-
-    function goToSlide(newIndex, isFromScroll = false) {
+    function goToSlide(newIndex) {
       if (newIndex < 1) {
         newIndex = destinationsData.length;
       } else if (newIndex > destinationsData.length) {
@@ -374,10 +360,25 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       slide = newIndex;
       updateView(slide);
+    }
 
-      if (!isFromScroll) {
-        scrollToShowcaseSlide(slide);
-      }
+    if (introHint) {
+      const scrollToContent = () => {
+        const showcaseTop = sectionElem.offsetTop;
+        const windowH = window.innerHeight;
+        const pinDist = sectionElem.offsetHeight - windowH;
+        if (pinDist > 0) {
+          const targetY = showcaseTop + 0.60 * pinDist;
+          window.scrollTo({ top: targetY, behavior: 'smooth' });
+        }
+      };
+      introHint.addEventListener('click', scrollToContent);
+      introHint.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          scrollToContent();
+        }
+      });
     }
 
     cards.forEach((card) => {
@@ -445,23 +446,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (pinDist <= 0) return;
 
-      // Approaching from above
+      // 1. Approaching from above
       if (scrollY < showcaseTop) {
-        const approachDist = windowH * 0.95;
-        const approach = clamp((scrollY + windowH - showcaseTop) / approachDist, 0, 1);
-        const easeApproach = easeOutCubic(approach);
-
-        if (cardsDeck) {
-          const slideX = (1 - easeApproach) * 320;
-          cardsDeck.style.transform = `translate3d(${slideX.toFixed(1)}px, 0, 0)`;
-          cardsDeck.style.opacity = easeApproach.toFixed(3);
+        if (introCurtain) {
+          introCurtain.style.opacity = '1';
+          introCurtain.style.transform = 'translate3d(0, 0, 0)';
+          introCurtain.style.pointerEvents = 'auto';
         }
-
+        if (cardsDeck) {
+          cardsDeck.style.opacity = '0';
+          cardsDeck.style.transform = 'translate3d(240px, 0, 0)';
+        }
         if (infoPanel) {
-          const textY = (1 - easeApproach) * 55;
-          const textX = -(1 - easeApproach) * 40;
-          infoPanel.style.transform = `translate3d(${textX.toFixed(1)}px, ${textY.toFixed(1)}px, 0)`;
-          infoPanel.style.opacity = easeApproach.toFixed(3);
+          infoPanel.style.opacity = '0';
+          infoPanel.style.transform = 'translate3d(-30px, 40px, 0)';
+        }
+        if (controlsBar) {
+          controlsBar.style.opacity = '0';
         }
 
         stickyViewport.style.transform = 'translate3d(0, 0, 0) scale(1)';
@@ -469,9 +470,72 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Inside pinned track
+      // 2. Inside pinned track
       const scrollInside = scrollY - showcaseTop;
       const progress = clamp(scrollInside / pinDist, 0, 1);
+
+      const INTRO_THRESHOLD = 0.50;
+      const fadeStart = 0.12;
+
+      // Phase A: Plain Color Intro Screen (progress 0.00 to INTRO_THRESHOLD)
+      if (progress < INTRO_THRESHOLD) {
+        if (progress <= fadeStart) {
+          // 100% solid plain color screen with text
+          if (introCurtain) {
+            introCurtain.style.opacity = '1';
+            introCurtain.style.transform = 'translate3d(0, 0, 0)';
+            introCurtain.style.pointerEvents = 'auto';
+          }
+          if (cardsDeck) {
+            cardsDeck.style.opacity = '0';
+            cardsDeck.style.transform = 'translate3d(240px, 0, 0)';
+          }
+          if (infoPanel) {
+            infoPanel.style.opacity = '0';
+            infoPanel.style.transform = 'translate3d(-30px, 40px, 0)';
+          }
+          if (controlsBar) {
+            controlsBar.style.opacity = '0';
+          }
+        } else {
+          // Smooth dissolution of plain intro screen & reveal of showcase page
+          const t = (progress - fadeStart) / (INTRO_THRESHOLD - fadeStart);
+          const easeOut = easeOutCubic(t);
+          const easeIn = easeInOutQuad(t);
+
+          if (introCurtain) {
+            introCurtain.style.opacity = (1 - easeIn).toFixed(3);
+            introCurtain.style.transform = `translate3d(0, ${(-easeIn * 60).toFixed(1)}px, 0)`;
+            introCurtain.style.pointerEvents = t > 0.8 ? 'none' : 'auto';
+          }
+
+          if (cardsDeck) {
+            const slideX = (1 - easeOut) * 240;
+            cardsDeck.style.transform = `translate3d(${slideX.toFixed(1)}px, 0, 0)`;
+            cardsDeck.style.opacity = easeOut.toFixed(3);
+          }
+          if (infoPanel) {
+            const textY = (1 - easeOut) * 40;
+            const textX = -(1 - easeOut) * 30;
+            infoPanel.style.transform = `translate3d(${textX.toFixed(1)}px, ${textY.toFixed(1)}px, 0)`;
+            infoPanel.style.opacity = easeOut.toFixed(3);
+          }
+          if (controlsBar) {
+            controlsBar.style.opacity = easeOut.toFixed(3);
+          }
+        }
+
+        stickyViewport.style.transform = 'translate3d(0, 0, 0) scale(1)';
+        stickyViewport.style.opacity = '1';
+        return;
+      }
+
+      // Phase B: Past Intro Screen, Full Showcase Active (No slide changes on scroll)
+      if (introCurtain) {
+        introCurtain.style.opacity = '0';
+        introCurtain.style.pointerEvents = 'none';
+        introCurtain.style.transform = 'translate3d(0, -70px, 0)';
+      }
 
       if (cardsDeck) {
         cardsDeck.style.transform = 'translate3d(0, 0, 0)';
@@ -483,23 +547,16 @@ document.addEventListener('DOMContentLoaded', () => {
         infoPanel.style.opacity = '1';
       }
 
-      let targetSlide = 1;
-      if (progress < 0.20) targetSlide = 1;
-      else if (progress < 0.40) targetSlide = 2;
-      else if (progress < 0.60) targetSlide = 3;
-      else if (progress < 0.80) targetSlide = 4;
-      else targetSlide = 5;
-
-      if (targetSlide !== slide) {
-        goToSlide(targetSlide, true);
+      if (controlsBar) {
+        controlsBar.style.opacity = '1';
       }
 
-      // Exit transition
-      if (progress >= 0.93) {
-        const exitProgress = clamp((progress - 0.93) / 0.07, 0, 1);
-        const exitScale = 1.0 - exitProgress * 0.08;
-        const exitY = -exitProgress * 65;
-        const exitOpacity = 1.0 - exitProgress * 0.55;
+      // Exit transition at bottom of showcase as user scrolls down to next section
+      if (progress >= 0.90) {
+        const exitProgress = clamp((progress - 0.90) / 0.10, 0, 1);
+        const exitScale = 1.0 - exitProgress * 0.05;
+        const exitY = -exitProgress * 55;
+        const exitOpacity = 1.0 - exitProgress * 0.45;
 
         stickyViewport.style.transform = `translate3d(0, ${exitY.toFixed(1)}px, 0) scale(${exitScale.toFixed(3)})`;
         stickyViewport.style.opacity = exitOpacity.toFixed(2);
