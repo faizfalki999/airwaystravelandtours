@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visa Services — Airways Travel &amp; Tours</title>
+  <meta name="description" content="Explore worldwide visa facilitation services by Airways Travel & Tours. Starting rates, document audits, and fast-track embassy filing for Australia, Canada, France, China, and more.">
+  
+  <!-- Google Fonts: Playfair Display, Outfit, Plus Jakarta Sans, Syne -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.css">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="about-page-body">
+
+  <!-- Floating Page Wrapper -->
+  <div class="page-container" id="page-container">
+    
+    <!-- Top Navigation Bar -->
+    <nav class="hero-nav" aria-label="Main Navigation">
+      <div class="nav-left">
+        <button class="menu-toggle-btn" id="menu-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <a href="../index.html#hero" class="brand-logo" aria-label="Airways Travel & Tours Home">
+          <img src="../assets/airways_logo.png" alt="Airways Travel & Tours" class="nav-logo-img">
+        </a>
+      </div>
+
+      <div class="nav-center">
+        <ul class="nav-links">
+          <li><a href="../index.html#hero" class="nav-link">HOME</a></li>
+          <li><a href="../about.html" class="nav-link">ABOUT</a></li>
+          <li><a href="../services.html" class="nav-link">SERVICES</a></li>
+          <li><a href="visa.html" class="nav-link" style="color: #38bdf8; font-weight: 700;">VISAS</a></li>
+          <li><a href="#visa-inquiry-section" class="nav-link" id="contact-link">APPLY</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-right"></div>
+    </nav>
+
+    <!-- Subpage Hero Header -->
+    <header class="subpage-hero-section">
+      <div class="subpage-hero-content">
+        <div class="subpage-breadcrumb">
+          <a href="../index.html#hero">Home</a>
+          <span class="subpage-breadcrumb-sep">/</span>
+          <a href="../services.html">Services</a>
+          <span class="subpage-breadcrumb-sep">/</span>
+          <span>Visa Services</span>
+        </div>
+        <span class="about-eyebrow">GLOBAL VISA FACILITATION</span>
+        <h1 class="subpage-hero-title">International Visa Services</h1>
+        <p class="subpage-hero-lead">
+          Stress-free file preparation, documentation auditing, and embassy appointment scheduling across leading worldwide destinations. Select your target country below to begin your application.
+        </p>
+      </div>
+    </header>
+
+    <!-- Main Visa Grid Section -->
+    <main class="visa-section" id="visa-destinations">
+      
+      <!-- Search & Toolbar -->
+      <div class="visa-toolbar">
+        <div class="visa-search-box">
+          <svg class="visa-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="visa-search-input" class="visa-search-input" placeholder="Search country (e.g. Australia, France, Canada)..." aria-label="Search visa country">
+        </div>
+        <div class="visa-counter">
+          Showing <strong id="visa-counter-val">8</strong> destinations with active visa facilitation
+        </div>
+      </div>
+
+      <!-- VISA CARDS GRID: 4-across on desktop, wrapping to 2-across on mobile -->
+      <div class="visa-cards-grid" id="visa-cards-grid">
+        
+        <!-- Card 1: Australia -->
+        <article class="visa-card" data-country="Australia" data-id="australia">
+          <div class="visa-flag-wrap">
+            <img src="../assets/flags/au.png" alt="National Flag of Australia" class="visa-flag-img" loading="lazy">
+            <div class="visa-flag-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="visa-card-content">
+            <h2 class="visa-card-title">Visa For Australia</h2>
+            <div class="visa-price-block">
+              <span class="visa-start-label">Starting from</span>
+              <div class="visa-price-val">PKR 60,000</div>
+            </div>
+            <button type="button" class="visa-apply-btn" data-country="Australia" data-price="PKR 60,000" aria-label="Apply for Australia Visa">
+              APPLY NOW
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 2: Azerbaijan -->
+        <article class="visa-card" data-country="Azerbaijan" data-id="azerbaijan">
+          <div class="visa-flag-wrap">
+            <img src="../assets/flags/az.png" alt="National Flag of Azerbaijan" class="visa-flag-img" loading="lazy">
+            <div class="visa-flag-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="visa-card-content">
+            <h2 class="visa-card-title">Visa For Azerbaijan</h2>
+            <div class="visa-price-block">
+              <span class="visa-start-label">Starting from</span>
+              <div class="visa-price-val">PKR 10,000</div>
+            </div>
+            <button type="button" class="visa-apply-btn" data-country="Azerbaijan" data-price="PKR 10,000" aria-label="Apply for Azerbaijan Visa">
+              APPLY NOW
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 3: Bahrain -->
+        <article class="visa-card" data-country="Bahrain" data-id="bahrain">
+          <div class="visa-flag-wrap">
+            <img src="../assets/flags/bh.png" alt="National Flag of Bahrain" class="visa-flag-img" loading="lazy">
+            <div class="visa-flag-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="visa-card-content">
+            <h2 class="visa-card-title">Visa For Bahrain</h2>
+            <div class="visa-price-block">
+              <span class="visa-start-label">Starting from</span>
+              <div class="visa-price-val">PKR 35,000</div>
+            </div>
+            <button type="button" class="visa-apply-btn" data-country="Bahrain" data-price="PKR 35,000" aria-label="Apply for Bahrain Visa">
+              APPLY NOW
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 4: Cambodia -->
+        <article class="visa-card" data-country="Cambodia" data-id="cambodia">
+          <div class="visa-flag-wrap">
+            <img src="../assets/flags/kh.png" alt="National Flag of Cambodia" class="visa-flag-img" loading="lazy">
+            <div class="visa-flag-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="visa-card-content">
+            <h2 class="visa-card-title">Visa For Cambodia</h2>
+            <div class="visa-price-block">
+              <span class="visa-start-label">Starting from</span>
+              <div class="visa-price-val">PKR 25,000</div>
+            </div>
+            <button type="button" class="visa-apply-btn" data-country="Cambodia" data-price="PKR 25,000" aria-label="Apply for Cambodia Visa">
+              APPLY NOW
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 5: Canada -->
+        <article class="visa-card" data-country="Canada" data-id="canada">
+          <div class="visa-flag-wrap">
+            <img src="../assets/flags/ca.png" alt="National Flag of Canada" class="visa-flag-img" loading="lazy">
+            <div class="visa-flag-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="visa-card-content">
+            <h2 class="visa-card-title">Visa For Canada</h2>
+            <div class="visa-price-block">
+              <span class="visa-start-label">Starting from</span>
+              <div class="visa-price-val">PKR 60,000</div>
+            </div>
+            <button type="button" class="visa-apply-btn" data-country="Canada" data-price="PKR 60,000" aria-label="Apply for Canada Visa">
+              APPLY NOW
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 6: China -->
+        <article class="visa-card" data-country="China" data-id="china">
+          <div class="visa-flag-wrap">
+            <img src="../assets/flags/cn.png" alt="National Flag of China" class="visa-flag-img" loading="lazy">
+            <div class="visa-flag-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="visa-card-content">
+            <h2 class="visa-card-title">Visa For China</h2>
+            <div class="visa-price-block">
+              <span class="visa-start-label">Starting from</span>
+              <div class="visa-price-val">PKR 45,000</div>
+            </div>
+            <button type="button" class="visa-apply-btn" data-country="China" data-price="PKR 45,000" aria-label="Apply for China Visa">
+              APPLY NOW
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 7: Egypt -->
+        <article class="visa-card" data-country="Egypt" data-id="egypt">
+          <div class="visa-flag-wrap">
+            <img src="../assets/flags/eg.png" alt="National Flag of Egypt" class="visa-flag-img" loading="lazy">
+            <div class="visa-flag-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="visa-card-content">
+            <h2 class="visa-card-title">Visa For Egypt</h2>
+            <div class="visa-price-block">
+              <span class="visa-start-label">Starting from</span>
+              <div class="visa-price-val">PKR 30,000</div>
+            </div>
+            <button type="button" class="visa-apply-btn" data-country="Egypt" data-price="PKR 30,000" aria-label="Apply for Egypt Visa">
+              APPLY NOW
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 8: France -->
+        <article class="visa-card" data-country="France" data-id="france">
+          <div class="visa-flag-wrap">
+            <img src="../assets/flags/fr.png" alt="National Flag of France" class="visa-flag-img" loading="lazy">
+            <div class="visa-flag-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="visa-card-content">
+            <h2 class="visa-card-title">Visa For France</h2>
+            <div class="visa-price-block">
+              <span class="visa-start-label">Starting from</span>
+              <div class="visa-price-val">PKR 75,000</div>
+            </div>
+            <button type="button" class="visa-apply-btn" data-country="France" data-price="PKR 75,000" aria-label="Apply for France Visa">
+              APPLY NOW
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </main>
+
+    <!-- Visa Facilitation Inquiry & Application Form -->
+    <section class="about-contact-section" id="visa-inquiry-section" aria-label="Visa Application Inquiry">
+      <div class="about-section-container">
+        <span class="about-section-label" style="color: #7dd3fc;">START YOUR APPLICATION</span>
+        <h2 class="about-approach-title">Visa Consultation &amp; Inquiry</h2>
+        <p class="about-approach-text" style="font-size: 1.05rem;">
+          Our visa counselors verify your documents, advise on financial proofs, and secure your biometric appointment with the respective embassy or visa centre.
+        </p>
+
+        <div class="contact-layout-grid" id="contact-form-container">
+          
+          <!-- Column 1: Application Form -->
+          <div class="contact-form-panel">
+            
+            <!-- Dynamic Country Tag (Shows when user clicks APPLY NOW on a card) -->
+            <div id="visa-selected-tag" class="visa-tag-pill" style="display: none;">
+              <span>Applying for: <strong id="selected-country-text" style="color: #38bdf8;"></strong></span>
+              <button type="button" id="clear-selected-country" class="visa-tag-dismiss" aria-label="Clear selected country">&times;</button>
+            </div>
+
+            <h3 class="contact-form-title">Visa Inquiry Form</h3>
+            <p class="contact-form-desc">Fill out your details and our Karachi visa consultants will get back to you promptly with requirement checklists.</p>
+
+            <form id="visa-inquiry-form" onsubmit="event.preventDefault(); document.getElementById('contact-form-success').style.display = 'block'; this.reset(); document.getElementById('visa-selected-tag').style.display='none';">
+              
+              <div class="contact-form-group">
+                <label for="contact-name" class="contact-form-label">Full Name (As on Passport)</label>
+                <input type="text" id="contact-name" class="contact-form-input" placeholder="e.g. Tariq Mansoor" required>
+              </div>
+
+              <div class="contact-form-group">
+                <label for="contact-email" class="contact-form-label">Email Address</label>
+                <input type="email" id="contact-email" class="contact-form-input" placeholder="e.g. name@example.com" required>
+              </div>
+
+              <div class="contact-form-group">
+                <label for="contact-phone" class="contact-form-label">Contact / WhatsApp Number</label>
+                <input type="tel" id="contact-phone" class="contact-form-input" placeholder="e.g. +92 339 0020309" required>
+              </div>
+
+              <div class="contact-form-group">
+                <label for="contact-visa-country" class="contact-form-label">Country of Interest</label>
+                <select id="contact-visa-country" class="contact-form-input" style="color: #ffffff; background: rgba(7, 23, 34, 0.85);">
+                  <option value="Australia">Australia (Starting from PKR 60,000)</option>
+                  <option value="Azerbaijan">Azerbaijan (Starting from PKR 10,000)</option>
+                  <option value="Bahrain">Bahrain (Starting from PKR 35,000)</option>
+                  <option value="Cambodia">Cambodia (Starting from PKR 25,000)</option>
+                  <option value="Canada">Canada (Starting from PKR 60,000)</option>
+                  <option value="China">China (Starting from PKR 45,000)</option>
+                  <option value="Egypt">Egypt (Starting from PKR 30,000)</option>
+                  <option value="France">France (Starting from PKR 75,000)</option>
+                  <option value="Other">Other International Destination</option>
+                </select>
+              </div>
+
+              <div class="contact-form-group">
+                <label for="contact-subject" class="contact-form-label">Application Subject</label>
+                <input type="text" id="contact-subject" class="contact-form-input" placeholder="e.g. Visa Application: Australia">
+              </div>
+
+              <div class="contact-form-group">
+                <label for="contact-message" class="contact-form-label">Passport Details / Travel Intent</label>
+                <textarea id="contact-message" class="contact-form-textarea" placeholder="Mention travel dates, purpose (tourism, business, family), and previous visa travel history..."></textarea>
+              </div>
+
+              <button type="submit" class="contact-submit-btn">
+                <span>Submit Visa Application Request</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+
+              <div id="contact-form-success" style="display: none; margin-top: 18px; padding: 14px 18px; background: rgba(56, 189, 248, 0.15); border: 1px solid #38bdf8; border-radius: 10px; color: #ffffff; font-size: 0.94rem;">
+                ✓ Thank you! Your visa inquiry has been received. Our dedicated visa counselor will contact you shortly with the required checklist.
+              </div>
+            </form>
+          </div>
+
+          <!-- Column 2: Direct Contact & Visa Desk Details -->
+          <div class="contact-info-panel">
+            <div class="contact-info-card">
+              <h3 class="contact-card-title">Airways Visa Facilitation Desk</h3>
+              <p class="contact-card-text">
+                With comprehensive knowledge of global immigration requirements, we audit and organize client document dossiers to maximize approval outcomes.
+              </p>
+            </div>
+
+            <div class="contact-info-card">
+              <h4 class="contact-subhead">Our Visa Consultation Process</h4>
+              <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 14px; margin-top: 10px; font-size: 0.92rem; color: #9ab4c6;">
+                <li style="display: flex; gap: 10px;">
+                  <span style="color: #38bdf8; font-weight: 700;">01.</span>
+                  <span>Personalized document checklist &amp; case assessment</span>
+                </li>
+                <li style="display: flex; gap: 10px;">
+                  <span style="color: #38bdf8; font-weight: 700;">02.</span>
+                  <span>Bank statement, tax, and employment documentation review</span>
+                </li>
+                <li style="display: flex; gap: 10px;">
+                  <span style="color: #38bdf8; font-weight: 700;">03.</span>
+                  <span>Embassy / VFS / Gerry's appointment scheduling</span>
+                </li>
+                <li style="display: flex; gap: 10px;">
+                  <span style="color: #38bdf8; font-weight: 700;">04.</span>
+                  <span>Flight itineraries, hotel bookings &amp; travel insurance issuance</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="contact-info-card">
+              <h4 class="contact-subhead">Direct Contact</h4>
+              <p class="contact-info-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span><a href="tel:02135631822" style="color: inherit; text-decoration: none;">021 35631822</a> / <a href="tel:+923390020309" style="color: inherit; text-decoration: none;">+92 339 0020309</a></span>
+              </p>
+              <p class="contact-info-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <span><a href="mailto:airwaystravelss@gmail.com" style="color: inherit; text-decoration: none;">airwaystravelss@gmail.com</a></span>
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+        <!-- ========================================================
+         SECTION: LUXURY TRAVEL FOOTER (World Landmarks Motif)
+         ======================================================== -->
+    <footer class="luxury-footer" id="contact">
+      <!-- Watermark Architectural Skyline Backdrop -->
+      <div class="footer-skyline-bg" aria-hidden="true"></div>
+
+      <div class="footer-main-container">
+        <!-- 5-Column Grid Matching Reference Design -->
+        <div class="footer-grid">
+          
+          <!-- Column 1: Need Any Help? / Brand -->
+          <div class="footer-col col-help brand-col">
+            <div class="footer-brand-badge">
+              <a href="../index.html#hero" class="footer-brand-logo" aria-label="Airways Travel & Tours">
+                <img src="../assets/airways_logo.png" alt="Airways Travel & Tours" class="footer-logo-img">
+              </a>
+              <span class="footer-brand-tagline">Curated Luxury Journeys</span>
+            </div>
+            <h3 class="footer-heading">Need any help?</h3>
+            <div class="footer-contact-block">
+              <span class="contact-sublabel">Call 24/7 Concierge</span>
+              <a href="tel:02135631822" class="footer-gold-link">021 35631822</a>
+            </div>
+            <div class="footer-contact-block">
+              <span class="contact-sublabel">Direct / WhatsApp Hotline</span>
+              <a href="tel:+923390020309" class="footer-gold-link">+92 339 0020309</a>
+            </div>
+            <div class="footer-contact-block">
+              <span class="contact-sublabel">Mail to our private desk</span>
+              <a href="mailto:airwaystravelss@gmail.com" class="footer-gold-link">airwaystravelss@gmail.com</a>
+            </div>
+            <div class="footer-social-block">
+              <span class="contact-sublabel">Follow our journey</span>
+              <div class="footer-social-icons">
+                <a href="https://www.facebook.com/share/1QckvSnoqT/" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Facebook">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.597 1.323-1.326V1.326C24 .597 23.403 0 22.675 0z"/>
+                  </svg>
+                </a>
+                <a href="https://www.instagram.com/airways.travelofficial" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: Navigation -->
+          <div class="footer-col">
+            <h3 class="footer-heading">Navigation</h3>
+            <ul class="footer-nav-list">
+              <li><a href="../index.html#hero">Home</a></li>
+              <li><a href="../about.html">About Us</a></li>
+              <li><a href="../services.html">Services Hub</a></li>
+              <li><a href="../services/visa.html">Visa Services</a></li>
+              <li><a href="../destinations.html">Destinations</a></li>
+              <li><a href="../index.html#contact">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Support -->
+          <div class="footer-col">
+            <h3 class="footer-heading">Support</h3>
+            <ul class="footer-nav-list">
+              <li><a href="tel:02135631822">021 35631822</a></li>
+              <li><a href="tel:+923390020309">+92 339 0020309</a></li>
+              <li><a href="mailto:airwaystravelss@gmail.com">Email Support</a></li>
+              <li><a href="../about.html#partners">Our Partners</a></li>
+              <li><a href="../services/visa.html">Visa Desk</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Services -->
+          <div class="footer-col">
+            <h3 class="footer-heading">Services</h3>
+            <ul class="footer-nav-list">
+              <li><a href="../services.html#services-grid">Flight Bookings</a></li>
+              <li><a href="../services.html#services-grid">Holiday Planning</a></li>
+              <li><a href="../services.html#services-grid">Accommodation</a></li>
+              <li><a href="../services.html#services-grid">Tailored Trips</a></li>
+              <li><a href="../services.html#services-grid">Corporate Travel</a></li>
+              <li><a href="../services/visa.html">Visa Facilitation</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 5: Destinations -->
+          <div class="footer-col">
+            <h3 class="footer-heading">Destinations</h3>
+            <ul class="footer-nav-list">
+              <li><a href="../destinations.html">Japan</a></li>
+              <li><a href="../destinations.html">France</a></li>
+              <li><a href="../destinations.html">Switzerland</a></li>
+              <li><a href="../destinations.html">Pakistan (Skardu)</a></li>
+              <li><a href="../destinations.html">Australia</a></li>
+              <li><a href="../destinations.html">Saudi Arabia</a></li>
+            </ul>
+          </div>
+
+        </div><!-- /.footer-grid -->
+      </div><!-- /.footer-main-container -->
+
+      <!-- Bottom Copyright Strip -->
+      <div class="footer-bottom-bar">
+        <div class="footer-bottom-content">
+          <p>Copyright &copy; 2026 Airways Travel &amp; Tours. All Rights Reserved &nbsp;|&nbsp; Developed with precision by <span class="footer-brand-highlight">Nascent Innovations</span></p>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /.page-container -->
+
+  <!-- Slide-out Mobile Navigation Drawer -->
+  <aside class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <a href="../index.html#hero" class="drawer-brand-logo" aria-label="Airways Travel & Tours Home">
+        <img src="../assets/airways_logo.png" alt="Airways Travel & Tours" class="drawer-logo-img">
+      </a>
+      <button class="drawer-close-btn" id="drawer-close" aria-label="Close menu">&times;</button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="../index.html#hero" class="drawer-link">Home</a></li>
+      <li><a href="../about.html" class="drawer-link">About Us</a></li>
+      <li><a href="../services.html" class="drawer-link">Services</a></li>
+      <li><a href="visa.html" class="drawer-link" style="color: #38bdf8; font-weight: 700;">Visa Services</a></li>
+      <li><a href="../index.html#features" class="drawer-link">Destinations</a></li>
+      <li><a href="#visa-inquiry-section" class="drawer-link">Apply Now</a></li>
+    </ul>
+    <div class="drawer-footer">
+      <a href="#visa-inquiry-section" class="drawer-cta-btn">Start Application</a>
+    </div>
+  </aside>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <!-- Reusable Visa Component Script -->
+  <script src="../visa-component.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Lenis Smooth Scroll
+      if (typeof Lenis !== 'undefined') {
+        const lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+          touchMultiplier: 1.8
+        });
+
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+      }
+
+      // Mobile Drawer logic
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileDrawer = document.getElementById('mobile-drawer');
+      const drawerClose = document.getElementById('drawer-close');
+      const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-cta-btn');
+
+      function openDrawer() {
+        if (!mobileDrawer) return;
+        mobileDrawer.classList.add('open');
+        mobileDrawer.setAttribute('aria-hidden', 'false');
+        if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeDrawer() {
+        if (!mobileDrawer) return;
+        mobileDrawer.classList.remove('open');
+        mobileDrawer.setAttribute('aria-hidden', 'true');
+        if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      if (menuToggle) menuToggle.addEventListener('click', openDrawer);
+      if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+      drawerLinks.forEach(link => link.addEventListener('click', closeDrawer));
+
+      // Initialize Reusable Visa Component with relative asset prefix
+      if (typeof initVisaGrid === 'function') {
+        initVisaGrid({
+          containerId: 'visa-cards-grid',
+          searchInputId: 'visa-search-input',
+          counterId: 'visa-counter-val',
+          assetPrefix: '../'
+        });
+      }
+
+      // Clear selected country tag
+      const clearBtn = document.getElementById('clear-selected-country');
+      const tagNotice = document.getElementById('visa-selected-tag');
+      const subjectInput = document.getElementById('contact-subject');
+      if (clearBtn && tagNotice) {
+        clearBtn.addEventListener('click', () => {
+          tagNotice.style.display = 'none';
+          if (subjectInput) subjectInput.value = '';
+        });
+      }
+    });
+  </script>
+</body>
+</html>

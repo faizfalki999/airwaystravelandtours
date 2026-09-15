@@ -14,13 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const airplaneWrapper = document.getElementById('airplane-wrapper');
   const heroLeftColumn = document.getElementById('hero-left-column');
   const heroSkyImg = document.getElementById('hero-sky-img');
-  const cloudWisps = document.getElementById('hero-cloud-wisps');
-  const heroNav = document.querySelector('.hero-nav');
-  const scrollHint = document.getElementById('hero-scroll-hint');
   const heroCta = document.getElementById('hero-cta');
 
   // Navigation & Modals Elements
-  const navBookTripBtn = document.getElementById('nav-book-trip-btn');
   const bookingModal = document.getElementById('booking-modal');
   const cartToggle = document.getElementById('cart-toggle');
   const modalClose = document.getElementById('modal-close');
@@ -55,10 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const countryBookingForm = document.getElementById('country-booking-form');
   const bookingConfirmationMsg = document.getElementById('booking-confirmation-msg');
 
-  // Curated Destination Packages Data
+  // Curated Destination Packages Data (Frozen Lakes & Signature Expeditions)
   const destinationsData = [
     {
-      id: 'skardu',
+      id: 'shauser',
       tagElevation: '4250m',
       tagRegion: 'BALTISTAN · PAKISTAN',
       cardTag: '↑ 4250m',
@@ -66,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
       country: 'PAKISTAN',
       cardTitle: 'Shauser Lake',
       narrative: "Surrounded by untouched snow and crisp winter air, it's the ideal spot for both beginners and seasoned skaters looking for peace, beauty, and unforgettable views.",
-      heritage: "Nestled high in the Deosai alpine plateau under the shadows of K2 and Karakoram giants, Skardu is a legendary crossroad of ancient Balti kingdoms, Silk Route trading forts, and crystal-clear glacial waters.",
+      heritage: "Nestled high in the Deosai alpine plateau under the shadows of K2 and Karakoram giants, Shauser Lake is a legendary high-altitude jewel of crystal-clear glacial waters and untouched wilderness.",
       image: 'assets/dest_skardu.jpg',
       price: '$2,450',
       duration: '8 Days · 7 Nights Luxury Itinerary',
@@ -78,83 +74,83 @@ document.addEventListener('DOMContentLoaded', () => {
       ]
     },
     {
-      id: 'swiss',
-      tagElevation: '3454m',
-      tagRegion: 'BERNESE ALPS · SWITZERLAND',
-      cardTag: '↑ 3454m',
-      title: 'Jungfrau<br>Alps',
-      country: 'SWITZERLAND',
-      cardTitle: 'Jungfrau Alps',
-      narrative: "Cradled among glacial peaks and timeless chalet villages. Experience premier cogwheel railways, alpine serenity, and world-class ski trails.",
-      heritage: "A UNESCO World Heritage sanctuary where historic cogwheel rail has transported voyagers to the Top of Europe since 1898, celebrating centuries of Swiss alpine craftsmanship and hospitality.",
+      id: 'kharfak',
+      tagElevation: '3350m',
+      tagRegion: 'BALTISTAN · PAKISTAN',
+      cardTag: '↑ 3350m',
+      title: 'Lake<br>Kharfak',
+      country: 'PAKISTAN',
+      cardTitle: 'Lake Kharfak',
+      narrative: "An emerald alpine jewel hidden amidst glacial ridges, offering pristine crystalline ice and peaceful reflection under towering Karakoram peaks.",
+      heritage: "Perched above the historic village of Kharfak in the valleys of Baltistan, this secluded glacial mirror has inspired local folklore and mountain voyagers for centuries.",
       image: 'assets/dest_swiss_alps.jpg',
-      price: '$3,800',
+      price: '$2,250',
       duration: '7 Days · 6 Nights Luxury Itinerary',
-      pkgTitle: 'Jungfrau & Glacier Express Alpine Voyage',
+      pkgTitle: 'Lake Kharfak High-Altitude Trek & Retreat',
       highlights: [
-        { icon: '🚆', title: 'Glacier Express Excellence', desc: 'First Class panoramic rail pass across Swiss passes' },
-        { icon: '★', title: 'Luxury St. Moritz Lodges', desc: 'Five-star ski-in/ski-out chalet suites with private spa' },
-        { icon: '🚁', title: 'Matterhorn Heli-Tour', desc: 'Private helicopter flight over glaciers and Matterhorn' }
+        { icon: '🏔', title: 'Alpine Glacial Excursions', desc: 'Guided treks across untouched ridges with master sherpas' },
+        { icon: '★', title: 'Luxury Mountain Camp', desc: 'Heated all-weather geodesic domes with panoramic sky roofs' },
+        { icon: '🔥', title: 'Balti Cultural Evenings', desc: 'Traditional hearth fireside feasts & storytelling' }
       ]
     },
     {
-      id: 'japan',
-      tagElevation: '3776m',
-      tagRegion: 'HONSHU · JAPAN',
-      cardTag: '↑ 3776m',
-      title: 'Mount<br>Fuji',
-      country: 'JAPAN',
-      cardTitle: 'Mount Fuji',
-      narrative: "A mesmerizing harmony of sacred pagodas, blooming cherry blossoms, and snow-capped volcanic summits across imperial ancient paths.",
-      heritage: "Centuries of spiritual reverence, Zen rock gardens of Kyoto, imperial shogunate castles, and UNESCO-honored Kaiseki gastronomy passed down through generations.",
+      id: 'jarba-zhou',
+      tagElevation: '2500m',
+      tagRegion: 'SHIGAR VALLEY · PAKISTAN',
+      cardTag: '↑ 2500m',
+      title: 'Jarba<br>Zhou',
+      country: 'PAKISTAN',
+      cardTitle: 'Jarba Zhou',
+      narrative: "A legendary high-altitude oasis tucked beside the cold desert of Shigar, famous for mirror-like frozen surfaces and serenity.",
+      heritage: "Situated at the gateway to the mighty Baltoro glacier, Jarba Zhou blends tranquil waters with the dramatic sand dunes and royal Raja palaces of ancient Shigar.",
       image: 'assets/dest_japan.jpg',
-      price: '$4,200',
-      duration: '10 Days · 9 Nights Luxury Itinerary',
-      pkgTitle: 'Imperial Kyoto & Mount Fuji Onsen Escape',
-      highlights: [
-        { icon: '🚅', title: 'Shinkansen Gran Class', desc: 'Reserved bullet train travel between Tokyo, Fuji & Kyoto' },
-        { icon: '♨', title: 'Private Onsen Ryokan', desc: 'Authentic tatami suites with private hot spring baths' },
-        { icon: '🍵', title: 'Exclusive Tea Ceremony', desc: 'Private tea master ceremony & geiko cultural performance' }
-      ]
-    },
-    {
-      id: 'greece',
-      tagElevation: '330m',
-      tagRegion: 'CYCLADES · GREECE',
-      cardTag: '↑ 330m',
-      title: 'Santorini<br>Caldera',
-      country: 'GREECE',
-      cardTitle: 'Santorini Caldera',
-      narrative: "Iconic whitewashed villas and sapphire domes cascading down dramatic volcanic cliffs, crowned with the Aegean Sea's most legendary golden sunsets.",
-      heritage: "Home to the prehistoric Minoan city of Akrotiri, Byzantine clifftop monasteries, and traditional maritime seafaring vineyards thriving in volcanic soil.",
-      image: 'assets/dest_santorini.jpg',
-      price: '$3,150',
+      price: '$2,100',
       duration: '6 Days · 5 Nights Luxury Itinerary',
-      pkgTitle: 'Aegean Caldera Cruise & Clifftop Villas',
+      pkgTitle: 'Jarba Zhou & Shigar Heritage Sanctuary',
       highlights: [
-        { icon: '⛵', title: 'Private Catamaran Cruise', desc: 'Sunset cruise to volcanic hot springs & Red Beach' },
-        { icon: '★', title: 'Infinity Cave Villa', desc: 'Private heated infinity plunge pool overlooking caldera' },
-        { icon: '🍷', title: 'Volcanic Wine Tasting', desc: 'Sommelier-led tasting at Greece’s oldest vineyards' }
+        { icon: '🏰', title: 'Serena Shigar Fort Residency', desc: 'Stay in the 400-year-old restored Raja palace of Baltistan' },
+        { icon: '🏜', title: 'Sarfaranga Cold Desert Safari', desc: 'Sunset vintage 4WD dune runs across golden winter sands' },
+        { icon: '⛸', title: 'Exclusive Ice Skating Access', desc: 'Private reserved lake surface with gear & instructors' }
       ]
     },
     {
-      id: 'tropical',
-      tagElevation: '1717m',
-      tagRegion: 'UBUD · INDONESIA',
-      cardTag: '↑ 1717m',
-      title: 'Bali<br>Sanctuary',
-      country: 'INDONESIA',
-      cardTitle: 'Bali Sanctuary',
-      narrative: "Emerald jungle canopies, tiered sacred rice terraces, and turquoise coral lagoons. An ethereal haven of spiritual tranquility and rejuvenation.",
-      heritage: "Ancient Subak irrigation temples dating back to the 9th century, sacred water purification blessings, and Royal Ubud art collectives.",
-      image: 'assets/dest_tropical.jpg',
-      price: '$2,200',
+      id: 'kachura',
+      tagElevation: '2500m',
+      tagRegion: 'SKARDU · PAKISTAN',
+      cardTag: '↑ 2500m',
+      title: 'Kachura<br>Lake',
+      country: 'PAKISTAN',
+      cardTitle: 'Kachura Lake',
+      narrative: "Famed for its turquoise depths and winter frost, Kachura presents a winter wonderland framed by wild conifers and snow-capped crags.",
+      heritage: "Known worldwide as Shangrila or Heaven on Earth, the twin Kachura lakes have captivated wanderers with fruit orchards, tranquil waters, and iconic red-roofed pagoda villas.",
+      image: 'assets/dest_santorini.jpg',
+      price: '$2,350',
       duration: '7 Days · 6 Nights Luxury Itinerary',
-      pkgTitle: 'Tropical Rainforest Sanctuary & Temple Retreat',
+      pkgTitle: 'Upper Kachura Winter Wonder Voyage',
       highlights: [
-        { icon: '🌿', title: 'Private Jungle Pool Villa', desc: 'Secluded river valley pavilion with dedicated butler' },
-        { icon: '🪷', title: 'Sacred Water Blessing', desc: 'Exclusive purification ceremony with high priest' },
-        { icon: '🛥', title: 'Nusa Island Yacht Charter', desc: 'Private yacht cruise with manta ray snorkeling' }
+        { icon: '🌲', title: 'Conifer Forest Snowshoeing', desc: 'Private guided trails through ancient juniper and pine groves' },
+        { icon: '★', title: 'Shangrila Resort Lodging', desc: 'Signature waterside VIP villas overlooking frosted shores' },
+        { icon: '☕', title: 'Lakeside Kashmiri Chai Pavilions', desc: 'Artisanal warm saffron tea and traditional bakery' }
+      ]
+    },
+    {
+      id: 'sadpara',
+      tagElevation: '2637m',
+      tagRegion: 'SKARDU · PAKISTAN',
+      cardTag: '↑ 2637m',
+      title: 'Sadpara<br>Lake',
+      country: 'PAKISTAN',
+      cardTitle: 'Sadpara Lake',
+      narrative: "Named after the mountaineering legends of Baltistan, offering breathtaking alpine vistas, crystal blue waters, and pristine icy shores.",
+      heritage: "Honoring the legendary climbers of Sadpara village who conquered K2 and Himalayan giants in midwinter, Sadpara Lake is the spiritual heart of Karakoram mountaineering.",
+      image: 'assets/dest_tropical.jpg',
+      price: '$2,500',
+      duration: '8 Days · 7 Nights Luxury Itinerary',
+      pkgTitle: 'Sadpara Lake & Mountaineers Tribute Tour',
+      highlights: [
+        { icon: '🧗', title: 'Mountaineering Masters Meet', desc: 'Exclusive session with high-altitude K2 expedition leaders' },
+        { icon: '🚤', title: 'Electric Ice-Breaker Cruise', desc: 'Eco-cruising through crystalline winter glacial channels' },
+        { icon: '🌌', title: 'Dark Sky Stargazing', desc: 'Certified astronomer telescope sessions beneath Karakoram skies' }
       ]
     }
   ];
@@ -173,108 +169,61 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // --- 3. Hero Flight & Text Scroll Animation ---
-  // - On initial page load: only pristine empty sky & gentle scroll hint.
-  // - First scroll: Airplane swoops in along approach corridor into center; text slides in.
-  // - Second scroll: Airplane climbs & accelerates into clouds, dissolving as page scrolls.
+  // --- 3. Hero Flight Scroll Animation (Bottom-to-Up Climbing Flight) ---
+  // - As user scrolls down, the plane ascends and soars from down to up
+  //   into the sky and clouds, climbing smoothly along its flight vector.
   // ==========================================================================
-  function updateFlightOnScroll() {
-    if (!heroSection) return;
+  function updateFlightOnScroll(customScrollY) {
+    if (!heroSection || !airplaneWrapper) return;
+    if (airplaneWrapper.classList.contains('is-flying-one-shot')) return;
 
-    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollY = customScrollY !== undefined ? customScrollY : (window.pageYOffset || document.documentElement.scrollTop);
     const isMobile = window.innerWidth <= 768;
 
-    const step1Distance = isMobile ? 280 : 360;
-    const step2Distance = isMobile ? 280 : 360;
+    // Flight takeoff distance: smooth climb-out as user scrolls past hero
+    const takeoffDistance = isMobile ? 380 : 500;
 
+    // Hero Resting Stance (center):
     const midX = 0;
     const midY = 0;
     const midScale = 1.0;
     const midRot = -11;
 
-    let planeX, planeY, planeScale, planeRot, planeOpacity;
-    let textOpacity, textY;
-    let hintOpacity;
+    // Departure Vector (climbing up and right into clouds as page scrolls down):
+    const endX = isMobile ? window.innerWidth * 0.65 : 480;
+    const endY = isMobile ? -window.innerHeight * 0.45 : -420;
+    const endScale = 1.35;
+    const endRot = -18;
 
-    if (scrollY <= step1Distance) {
-      // Phase 1: Materializing from Pristine Empty Sky to Center Resting Stance
-      const p1 = clamp(scrollY / step1Distance, 0, 1);
-      const t1 = easeOutCubic(p1);
+    const progress = clamp(scrollY / takeoffDistance, 0, 1);
+    const t = easeInOutQuad(progress);
 
-      // Natural flight approach corridor: glides in from bottom-left / distance
-      const startX = isMobile ? -260 : -440;
-      const startY = isMobile ? 220 : 300;
-      const startScale = 0.38;
-      const startRot = -5;
+    const planeX = midX + (endX - midX) * t;
+    const planeY = midY + (endY - midY) * t;
+    const planeScale = midScale + (endScale - midScale) * t;
+    const planeRot = midRot + (endRot - midRot) * t;
 
-      planeX = startX + (midX - startX) * t1;
-      planeY = startY + (midY - startY) * t1;
-      planeScale = startScale + (midScale - startScale) * t1;
-      planeRot = startRot + (midRot - startRot) * t1;
-
-      // At scrollY === 0, plane is completely invisible: PRISTINE EMPTY SKY
-      // Materializes smoothly as user scrolls
-      planeOpacity = clamp(t1 * 1.35, 0, 1);
-
-      // Hero text slides up and fades in
-      const textP = clamp((p1 - 0.12) / 0.88, 0, 1);
-      textOpacity = easeInOutQuad(textP);
-      textY = (1 - easeOutCubic(textP)) * 48;
-
-      // Scroll hint is visible on pristine sky, fades out as user scrolls
-      hintOpacity = clamp(1.0 - p1 * 2.2, 0, 1);
-    } else {
-      // Phase 2: Departure Vector - plane accelerates up and right into high clouds
-      const p2 = clamp((scrollY - step1Distance) / step2Distance, 0, 1);
-      const t2 = easeInOutQuad(p2);
-
-      const endX = isMobile ? window.innerWidth * 0.65 : 480;
-      const endY = isMobile ? -window.innerHeight * 0.45 : -440;
-      const endScale = 1.4;
-      const endRot = -19;
-
-      planeX = midX + (endX - midX) * t2;
-      planeY = midY + (endY - midY) * t2;
-      planeScale = midScale + (endScale - midScale) * t2;
-      planeRot = midRot + (endRot - midRot) * t2;
-
-      // Plane dissolves into upper cloud layer
-      planeOpacity = 1.0;
-      if (t2 > 0.35) {
-        planeOpacity = clamp(1.0 - (t2 - 0.35) / 0.65, 0, 1);
-      }
-
-      // Text glides up with parallax & dissolves
-      textOpacity = clamp(1.0 - t2 * 1.6, 0, 1);
-      textY = -t2 * 60;
-
-      hintOpacity = 0;
+    // Plane is fully visible on load; dissolves smoothly into high clouds as it climbs away
+    let planeOpacity = 1.0;
+    if (t > 0.45) {
+      planeOpacity = clamp(1.0 - (t - 0.45) / 0.55, 0, 1);
     }
 
-    // Apply transforms to DOM
-    if (airplaneWrapper) {
-      airplaneWrapper.style.transform = `translate3d(${planeX.toFixed(1)}px, ${planeY.toFixed(1)}px, 0) rotate(${planeRot.toFixed(1)}deg) scale(${planeScale.toFixed(3)})`;
-      airplaneWrapper.style.opacity = planeOpacity.toFixed(3);
-    }
-
-    if (heroNav) {
-      heroNav.style.opacity = '1';
-      heroNav.style.transform = 'translate3d(0, 0, 0)';
-    }
-
+    // Hero text glides with subtle upward parallax as page scrolls
     if (heroLeftColumn) {
+      const textOpacity = clamp(1.0 - t * 1.4, 0, 1);
+      const textY = -t * 60;
       heroLeftColumn.style.opacity = textOpacity.toFixed(3);
       heroLeftColumn.style.transform = `translate3d(0, ${textY.toFixed(1)}px, 0)`;
       heroLeftColumn.style.pointerEvents = textOpacity > 0.5 ? 'auto' : 'none';
     }
 
-    if (scrollHint) {
-      scrollHint.style.opacity = hintOpacity.toFixed(3);
-      scrollHint.style.pointerEvents = hintOpacity > 0.2 ? 'auto' : 'none';
-    }
+    // Direct scroll physics
+    airplaneWrapper.style.animation = 'none';
+    airplaneWrapper.style.transform = `translate3d(${planeX.toFixed(1)}px, ${planeY.toFixed(1)}px, 0) rotate(${planeRot.toFixed(1)}deg) scale(${planeScale.toFixed(3)})`;
+    airplaneWrapper.style.opacity = planeOpacity.toFixed(3);
 
     if (heroSkyImg) heroSkyImg.style.transform = 'none';
-    if (cloudWisps) cloudWisps.style.transform = 'none';
   }
 
   // ==========================================================================
@@ -288,6 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const introHint = document.getElementById(suffix ? `intro-hint-${suffix}` : 'intro-hint-1');
     const controlsBar = stickyViewport ? stickyViewport.querySelector('.showcase-controls-bar') : null;
     const infoPanel = document.getElementById(`showcase-info-panel${s}`);
+    const elevationBadge = document.getElementById(suffix ? `showcase-badge-${suffix}` : 'showcase-badge');
     const elevation = document.getElementById(`showcase-elevation${s}`);
     const region = document.getElementById(`showcase-region${s}`);
     const headline = document.getElementById(`showcase-headline${s}`);
@@ -295,6 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bookBtn = document.getElementById(`showcase-book-btn${s}`);
     const btnLabel = document.getElementById(`showcase-btn-label${s}`);
     const cardsDeck = document.getElementById(`showcase-cards-deck${s}`);
+    const cardsTrack = document.getElementById(suffix ? `showcase-cards-track-${suffix}` : 'showcase-cards-track');
     const prevBtn = document.getElementById(`showcase-prev-btn${s}`);
     const nextBtn = document.getElementById(`showcase-next-btn${s}`);
     const progressFill = document.getElementById(`showcase-progress-fill${s}`);
@@ -306,33 +257,199 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let slide = initialSlide;
 
-    function updateView(slideIndex) {
-      bgLayers.forEach((layer) => {
-        const layerSlide = parseInt(layer.getAttribute('data-slide'), 10);
-        layer.classList.toggle('active', layerSlide === slideIndex);
-      });
+    function animateCardToFullscreen(targetSlideIndex) {
+      if (!stickyViewport || !cardsTrack) {
+        bgLayers.forEach((layer) => {
+          const layerSlide = parseInt(layer.getAttribute('data-slide'), 10);
+          layer.classList.toggle('active', layerSlide === targetSlideIndex);
+        });
+        return;
+      }
 
+      const targetCard = cardsTrack.querySelector(`.showcase-card[data-index="${targetSlideIndex}"]`);
+      if (!targetCard) {
+        bgLayers.forEach((layer) => {
+          const layerSlide = parseInt(layer.getAttribute('data-slide'), 10);
+          layer.classList.toggle('active', layerSlide === targetSlideIndex);
+        });
+        return;
+      }
+
+      const sourceRect = targetCard.getBoundingClientRect();
+      const viewportRect = stickyViewport.getBoundingClientRect();
+
+      // If card is hidden or zero dimensions, fallback to direct background switch
+      if (sourceRect.width <= 0 || sourceRect.height <= 0 || sourceRect.right <= 0 || sourceRect.left >= window.innerWidth) {
+        bgLayers.forEach((layer) => {
+          const layerSlide = parseInt(layer.getAttribute('data-slide'), 10);
+          layer.classList.toggle('active', layerSlide === targetSlideIndex);
+        });
+        return;
+      }
+
+      const startTop = sourceRect.top - viewportRect.top;
+      const startLeft = sourceRect.left - viewportRect.left;
+      const startWidth = sourceRect.width;
+      const startHeight = sourceRect.height;
+
+      // Clean up any ongoing clones
+      const oldClone = stickyViewport.querySelector('.showcase-expanding-clone');
+      if (oldClone) {
+        if (typeof gsap !== 'undefined') gsap.killTweensOf(oldClone);
+        oldClone.remove();
+      }
+      cardsTrack.querySelectorAll('.showcase-card.is-expanding').forEach(c => c.classList.remove('is-expanding'));
+
+      // Create expanding clone element
+      const clone = document.createElement('div');
+      clone.className = 'showcase-expanding-clone';
+      clone.style.position = 'absolute';
+      clone.style.top = `${startTop}px`;
+      clone.style.left = `${startLeft}px`;
+      clone.style.width = `${startWidth}px`;
+      clone.style.height = `${startHeight}px`;
+      clone.style.borderRadius = '22px';
+      clone.style.overflow = 'hidden';
+      clone.style.zIndex = '1';
+      clone.style.pointerEvents = 'none';
+      clone.style.boxShadow = '0 16px 36px rgba(0, 0, 0, 0.4)';
+      clone.style.willChange = 'top, left, width, height, border-radius, box-shadow, opacity';
+
+      const dest = destinationsData[targetSlideIndex - 1];
+      const cardImg = targetCard.querySelector('.showcase-card-img');
+      const imgSrc = dest ? dest.image : (cardImg ? cardImg.src : '');
+
+      const img = document.createElement('img');
+      img.src = imgSrc;
+      img.alt = dest ? dest.title : 'Destination';
+      img.style.width = '100%';
+      img.style.height = '100%';
+      img.style.objectFit = 'cover';
+      img.style.objectPosition = 'center center';
+      img.style.display = 'block';
+
+      clone.appendChild(img);
+
+      // Insert clone into .showcase-bg-container UNDER the permanent .showcase-vignette-overlay
+      const bgContainer = stickyViewport.querySelector('.showcase-bg-container') || stickyViewport;
+      const vignetteEl = bgContainer.querySelector('.showcase-vignette-overlay');
+      if (vignetteEl) {
+        bgContainer.insertBefore(clone, vignetteEl);
+      } else {
+        bgContainer.appendChild(clone);
+      }
+
+      targetCard.classList.add('is-expanding');
+
+      if (typeof gsap !== 'undefined') {
+        gsap.to(clone, {
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          borderRadius: 0,
+          boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
+          duration: 0.82,
+          ease: 'power3.inOut',
+          onComplete: () => {
+            // Activate destination background layer instantly with matching appearance
+            bgLayers.forEach((layer) => {
+              const layerSlide = parseInt(layer.getAttribute('data-slide'), 10);
+              if (layerSlide === targetSlideIndex) {
+                layer.style.transition = 'none';
+                layer.classList.add('active');
+                void layer.offsetWidth;
+                layer.style.transition = '';
+              } else {
+                layer.classList.remove('active');
+              }
+            });
+
+            clone.remove();
+            targetCard.classList.remove('is-expanding');
+          }
+        });
+      } else {
+        bgLayers.forEach((layer) => {
+          const layerSlide = parseInt(layer.getAttribute('data-slide'), 10);
+          layer.classList.toggle('active', layerSlide === targetSlideIndex);
+        });
+        clone.remove();
+        targetCard.classList.remove('is-expanding');
+      }
+    }
+
+    function updateView(slideIndex, prevSlideIndex = null) {
+      // 1. Toggle background layers with card enlarging animation if navigating to a destination
+      if (prevSlideIndex !== null && prevSlideIndex !== slideIndex) {
+        if (slideIndex >= 1) {
+          animateCardToFullscreen(slideIndex);
+        } else {
+          // Returning to Slide 0 (Landing View: Plain solid color, no picture)
+          bgLayers.forEach((layer) => {
+            const layerSlide = parseInt(layer.getAttribute('data-slide'), 10);
+            layer.classList.toggle('active', layerSlide === 0);
+          });
+        }
+      } else {
+        // Initial setup
+        bgLayers.forEach((layer) => {
+          const layerSlide = parseInt(layer.getAttribute('data-slide'), 10);
+          layer.classList.toggle('active', layerSlide === slideIndex);
+        });
+      }
+
+      // Toggle vignette overlay (only active on destination photo slides)
+      const vignetteOverlay = stickyViewport.querySelector('.showcase-vignette-overlay');
+      if (vignetteOverlay) {
+        vignetteOverlay.classList.toggle('active', slideIndex >= 1);
+      }
+
+      // 2. Animate left info panel text transition
       if (infoPanel && infoPanel.dataset.lastSlide !== String(slideIndex)) {
         infoPanel.dataset.lastSlide = String(slideIndex);
         infoPanel.classList.add('animating');
         setTimeout(() => {
           infoPanel.classList.remove('animating');
-        }, 200);
+        }, 220);
       }
 
+      // 3. State 1 & State 2: Landing View (Slide 0)
       if (slideIndex === 0) {
-        if (elevation) elevation.textContent = '4250m';
-        if (region) region.textContent = 'BALTISTAN · PAKISTAN';
-        if (headline) headline.innerHTML = 'SHAUSER<br>LAKE';
+        if (elevationBadge) {
+          elevationBadge.classList.add('hidden-badge');
+          elevationBadge.style.display = 'none';
+        }
+        if (headline) {
+          if (suffix === '2') {
+            headline.innerHTML = 'DISCOVER<br>DOMESTIC<br>DESTINATIONS';
+          } else {
+            headline.innerHTML = 'FIND YOUR<br>FROZEN<br>ESCAPE';
+          }
+        }
         if (narrative) {
-          narrative.textContent = "Surrounded by untouched snow and crisp winter air, it's the ideal spot for both beginners and seasoned skaters looking for peace, beauty, and unforgettable views.";
+          if (suffix === '2') {
+            narrative.textContent = "Explore our high-altitude glacial valleys, ancient Silk Route plateaus, and serene alpine wonders across Pakistan.";
+          } else {
+            narrative.textContent = "Explore our frozen lake locations, each offering a unique skating experience in the heart of Skardu.";
+          }
         }
         if (btnLabel) btnLabel.textContent = 'BOOK NOW';
-        if (counterCurrent) counterCurrent.textContent = '01';
-        if (progressFill) progressFill.style.width = '20%';
+        if (counterCurrent) counterCurrent.textContent = '00';
+        if (progressFill) progressFill.style.width = '0%';
+
+        // Reset cards track shift
+        if (cardsTrack) {
+          cardsTrack.style.transform = 'translate3d(0px, 0, 0)';
+        }
       } else {
+        // State 3: Full-Screen Destination View (Slide 1+)
         const dest = destinationsData[slideIndex - 1];
         if (dest) {
+          if (elevationBadge) {
+            elevationBadge.classList.remove('hidden-badge');
+            elevationBadge.style.display = 'inline-flex';
+          }
           if (elevation) elevation.textContent = dest.tagElevation;
           if (region) region.textContent = dest.tagRegion;
           if (headline) headline.innerHTML = dest.title;
@@ -342,24 +459,36 @@ document.addEventListener('DOMContentLoaded', () => {
           if (counterCurrent) counterCurrent.textContent = slideNumStr;
           const progressPercent = (slideIndex / destinationsData.length) * 100;
           if (progressFill) progressFill.style.width = `${progressPercent}%`;
+
+          // Shift cards track so upcoming destinations are presented cleanly (card width 248px + gap 24px = 272px)
+          if (cardsTrack) {
+            const slotWidth = window.innerWidth <= 768 ? 216 : 272;
+            const shiftX = -(slideIndex) * slotWidth;
+            cardsTrack.style.transform = `translate3d(${shiftX}px, 0, 0)`;
+          }
         }
       }
 
+      // Card active highlight
       cards.forEach((card) => {
         const cardIdx = parseInt(card.getAttribute('data-index'), 10);
-        const isCardActive = (slideIndex === 0 && cardIdx === 1) || cardIdx === slideIndex;
-        card.classList.toggle('active', isCardActive);
+        card.classList.toggle('active', cardIdx === slideIndex);
       });
     }
 
     function goToSlide(newIndex) {
-      if (newIndex < 1) {
+      if (newIndex < 0) {
         newIndex = destinationsData.length;
       } else if (newIndex > destinationsData.length) {
-        newIndex = 1;
+        newIndex = 0;
       }
+      // Ensure cards are visible whenever user interacts with controls
+      if (cardsDeck && !cardsDeck.classList.contains('cards-entered')) {
+        cardsDeck.classList.add('cards-entered');
+      }
+      const prev = slide;
       slide = newIndex;
-      updateView(slide);
+      updateView(slide, prev);
     }
 
     if (introHint) {
@@ -419,22 +548,61 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Touch swipe
+    // Enhanced Touch Swipe for Mobile & Tablet (Horizontal Intent Detection)
     let touchStartX = 0;
+    let touchStartY = 0;
     let touchEndX = 0;
-    if (cardsDeck) {
-      cardsDeck.addEventListener('touchstart', (e) => {
+    let touchEndY = 0;
+
+    const swipeTarget = stickyViewport || cardsDeck;
+    if (swipeTarget) {
+      swipeTarget.addEventListener('touchstart', (e) => {
+        if (e.target.closest('button, a, input, select, textarea, .country-modal-window')) return;
         touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
       }, { passive: true });
 
-      cardsDeck.addEventListener('touchend', (e) => {
+      swipeTarget.addEventListener('touchend', (e) => {
+        if (e.target.closest('button, a, input, select, textarea, .country-modal-window')) return;
         touchEndX = e.changedTouches[0].screenX;
-        if (touchStartX - touchEndX > 50) {
-          goToSlide(slide + 1);
-        } else if (touchEndX - touchStartX > 50) {
-          goToSlide(slide - 1);
+        touchEndY = e.changedTouches[0].screenY;
+
+        const diffX = touchStartX - touchEndX;
+        const diffY = touchStartY - touchEndY;
+
+        // Ensure clear horizontal intent (horizontal distance significantly exceeds vertical distance)
+        if (Math.abs(diffX) > 42 && Math.abs(diffX) > Math.abs(diffY) * 1.3) {
+          if (diffX > 0) {
+            goToSlide(slide + 1);
+          } else {
+            goToSlide(slide - 1);
+          }
         }
       }, { passive: true });
+    }
+
+    // Responsive Track Recalibration on Resize & Orientation Change
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (cardsTrack && slide > 0) {
+          const slotWidth = window.innerWidth <= 768 ? 216 : 272;
+          cardsTrack.style.transform = `translate3d(${-slide * slotWidth}px, 0, 0)`;
+        }
+      }, 80);
+    }, { passive: true });
+
+    // Scroll Observer for entrance animation (State 1 -> State 2)
+    if (typeof IntersectionObserver !== 'undefined' && sectionElem && !introCurtain) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.15) {
+            if (cardsDeck) cardsDeck.classList.add('cards-entered');
+          }
+        });
+      }, { threshold: [0.15, 0.4] });
+      observer.observe(sectionElem);
     }
 
     function updateOnScroll(scrollY, windowH) {
@@ -444,48 +612,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const showcaseH = sectionElem.offsetHeight;
       const pinDist = showcaseH - windowH;
 
-      if (pinDist <= 0) return;
+      // Section with intro curtain (e.g. features-2)
+      if (introCurtain) {
+        if (pinDist <= 0) return;
 
-      // 1. Approaching from above
-      if (scrollY < showcaseTop) {
-        if (introCurtain) {
+        if (scrollY < showcaseTop) {
           introCurtain.style.opacity = '1';
           introCurtain.style.transform = 'translate3d(0, 0, 0)';
           introCurtain.style.pointerEvents = 'auto';
-        }
-        if (cardsDeck) {
-          cardsDeck.style.opacity = '0';
-          cardsDeck.style.transform = 'translate3d(240px, 0, 0)';
-        }
-        if (infoPanel) {
-          infoPanel.style.opacity = '0';
-          infoPanel.style.transform = 'translate3d(-30px, 40px, 0)';
-        }
-        if (controlsBar) {
-          controlsBar.style.opacity = '0';
-        }
-
-        stickyViewport.style.transform = 'translate3d(0, 0, 0) scale(1)';
-        stickyViewport.style.opacity = '1';
-        return;
-      }
-
-      // 2. Inside pinned track
-      const scrollInside = scrollY - showcaseTop;
-      const progress = clamp(scrollInside / pinDist, 0, 1);
-
-      const INTRO_THRESHOLD = 0.50;
-      const fadeStart = 0.12;
-
-      // Phase A: Plain Color Intro Screen (progress 0.00 to INTRO_THRESHOLD)
-      if (progress < INTRO_THRESHOLD) {
-        if (progress <= fadeStart) {
-          // 100% solid plain color screen with text
-          if (introCurtain) {
-            introCurtain.style.opacity = '1';
-            introCurtain.style.transform = 'translate3d(0, 0, 0)';
-            introCurtain.style.pointerEvents = 'auto';
-          }
           if (cardsDeck) {
             cardsDeck.style.opacity = '0';
             cardsDeck.style.transform = 'translate3d(240px, 0, 0)';
@@ -494,75 +628,100 @@ document.addEventListener('DOMContentLoaded', () => {
             infoPanel.style.opacity = '0';
             infoPanel.style.transform = 'translate3d(-30px, 40px, 0)';
           }
-          if (controlsBar) {
-            controlsBar.style.opacity = '0';
-          }
-        } else {
-          // Smooth dissolution of plain intro screen & reveal of showcase page
-          const t = (progress - fadeStart) / (INTRO_THRESHOLD - fadeStart);
-          const easeOut = easeOutCubic(t);
-          const easeIn = easeInOutQuad(t);
+          if (controlsBar) controlsBar.style.opacity = '0';
+          stickyViewport.style.transform = 'translate3d(0, 0, 0) scale(1)';
+          stickyViewport.style.opacity = '1';
+          return;
+        }
 
-          if (introCurtain) {
+        const scrollInside = scrollY - showcaseTop;
+        const progress = clamp(scrollInside / pinDist, 0, 1);
+        const INTRO_THRESHOLD = 0.50;
+        const fadeStart = 0.12;
+
+        if (progress < INTRO_THRESHOLD) {
+          if (progress <= fadeStart) {
+            introCurtain.style.opacity = '1';
+            introCurtain.style.transform = 'translate3d(0, 0, 0)';
+            introCurtain.style.pointerEvents = 'auto';
+            if (cardsDeck) {
+              cardsDeck.style.opacity = '0';
+              cardsDeck.style.transform = 'translate3d(240px, 0, 0)';
+            }
+            if (infoPanel) {
+              infoPanel.style.opacity = '0';
+              infoPanel.style.transform = 'translate3d(-30px, 40px, 0)';
+            }
+            if (controlsBar) controlsBar.style.opacity = '0';
+          } else {
+            const t = (progress - fadeStart) / (INTRO_THRESHOLD - fadeStart);
+            const easeOut = easeOutCubic(t);
+            const easeIn = easeInOutQuad(t);
+
             introCurtain.style.opacity = (1 - easeIn).toFixed(3);
             introCurtain.style.transform = `translate3d(0, ${(-easeIn * 60).toFixed(1)}px, 0)`;
             introCurtain.style.pointerEvents = t > 0.8 ? 'none' : 'auto';
-          }
 
-          if (cardsDeck) {
-            const slideX = (1 - easeOut) * 240;
-            cardsDeck.style.transform = `translate3d(${slideX.toFixed(1)}px, 0, 0)`;
-            cardsDeck.style.opacity = easeOut.toFixed(3);
+            if (cardsDeck) {
+              const slideX = (1 - easeOut) * 240;
+              cardsDeck.style.transform = `translate3d(${slideX.toFixed(1)}px, 0, 0)`;
+              cardsDeck.style.opacity = easeOut.toFixed(3);
+            }
+            if (infoPanel) {
+              const textY = (1 - easeOut) * 40;
+              const textX = -(1 - easeOut) * 30;
+              infoPanel.style.transform = `translate3d(${textX.toFixed(1)}px, ${textY.toFixed(1)}px, 0)`;
+              infoPanel.style.opacity = easeOut.toFixed(3);
+            }
+            if (controlsBar) controlsBar.style.opacity = easeOut.toFixed(3);
           }
-          if (infoPanel) {
-            const textY = (1 - easeOut) * 40;
-            const textX = -(1 - easeOut) * 30;
-            infoPanel.style.transform = `translate3d(${textX.toFixed(1)}px, ${textY.toFixed(1)}px, 0)`;
-            infoPanel.style.opacity = easeOut.toFixed(3);
-          }
-          if (controlsBar) {
-            controlsBar.style.opacity = easeOut.toFixed(3);
-          }
+          stickyViewport.style.transform = 'translate3d(0, 0, 0) scale(1)';
+          stickyViewport.style.opacity = '1';
+          return;
         }
 
-        stickyViewport.style.transform = 'translate3d(0, 0, 0) scale(1)';
-        stickyViewport.style.opacity = '1';
-        return;
-      }
-
-      // Phase B: Past Intro Screen, Full Showcase Active (No slide changes on scroll)
-      if (introCurtain) {
         introCurtain.style.opacity = '0';
         introCurtain.style.pointerEvents = 'none';
         introCurtain.style.transform = 'translate3d(0, -70px, 0)';
-      }
-
-      if (cardsDeck) {
-        cardsDeck.style.transform = 'translate3d(0, 0, 0)';
-        cardsDeck.style.opacity = '1';
-      }
-
-      if (infoPanel) {
-        infoPanel.style.transform = 'translate3d(0, 0, 0)';
-        infoPanel.style.opacity = '1';
-      }
-
-      if (controlsBar) {
-        controlsBar.style.opacity = '1';
+        if (cardsDeck) {
+          cardsDeck.style.transform = 'translate3d(0, 0, 0)';
+          cardsDeck.style.opacity = '1';
+        }
+        if (infoPanel) {
+          infoPanel.style.transform = 'translate3d(0, 0, 0)';
+          infoPanel.style.opacity = '1';
+        }
+        if (controlsBar) controlsBar.style.opacity = '1';
+      } else {
+        // Section without curtain (#features): Trigger State 2 cards slide-in as user scrolls in
+        const rect = sectionElem.getBoundingClientRect();
+        if (rect.top < windowH * 0.75 && rect.bottom > 0) {
+          if (cardsDeck && !cardsDeck.classList.contains('cards-entered')) {
+            cardsDeck.classList.add('cards-entered');
+          }
+        } else if (rect.top >= windowH * 0.85) {
+          if (cardsDeck && slide === 0) {
+            cardsDeck.classList.remove('cards-entered');
+          }
+        }
       }
 
       // Exit transition at bottom of showcase as user scrolls down to next section
-      if (progress >= 0.90) {
-        const exitProgress = clamp((progress - 0.90) / 0.10, 0, 1);
-        const exitScale = 1.0 - exitProgress * 0.05;
-        const exitY = -exitProgress * 55;
-        const exitOpacity = 1.0 - exitProgress * 0.45;
+      if (pinDist > 0) {
+        const scrollInside = scrollY - showcaseTop;
+        const progress = clamp(scrollInside / pinDist, 0, 1);
+        if (progress >= 0.90) {
+          const exitProgress = clamp((progress - 0.90) / 0.10, 0, 1);
+          const exitScale = 1.0 - exitProgress * 0.05;
+          const exitY = -exitProgress * 55;
+          const exitOpacity = 1.0 - exitProgress * 0.45;
 
-        stickyViewport.style.transform = `translate3d(0, ${exitY.toFixed(1)}px, 0) scale(${exitScale.toFixed(3)})`;
-        stickyViewport.style.opacity = exitOpacity.toFixed(2);
-      } else {
-        stickyViewport.style.transform = 'translate3d(0, 0, 0) scale(1)';
-        stickyViewport.style.opacity = '1';
+          stickyViewport.style.transform = `translate3d(0, ${exitY.toFixed(1)}px, 0) scale(${exitScale.toFixed(3)})`;
+          stickyViewport.style.opacity = exitOpacity.toFixed(2);
+        } else {
+          stickyViewport.style.transform = 'translate3d(0, 0, 0) scale(1)';
+          stickyViewport.style.opacity = '1';
+        }
       }
     }
 
@@ -582,11 +741,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Instantiate Both Showcase Sliders
-  const showcase1 = initShowcaseInstance({ suffix: '', initialSlide: 1 });
-  const showcase2 = initShowcaseInstance({ suffix: '2', initialSlide: 1 });
+  const showcase1 = initShowcaseInstance({ suffix: '', initialSlide: 0 });
+  const showcase2 = initShowcaseInstance({ suffix: '2', initialSlide: 0 });
 
-  function updateShowcasesOnScroll() {
-    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+  function updateShowcasesOnScroll(customScrollY) {
+    const scrollY = customScrollY !== undefined ? customScrollY : (window.pageYOffset || document.documentElement.scrollTop);
     const windowH = window.innerHeight;
     if (showcase1) showcase1.updateOnScroll(scrollY, windowH);
     if (showcase2) showcase2.updateOnScroll(scrollY, windowH);
@@ -683,16 +842,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ==========================================================================
-  // --- 6. Modals & Navigation Event Listeners ---
-  // ==========================================================================
-  if (scrollHint) {
-    scrollHint.addEventListener('click', () => {
-      const isMobile = window.innerWidth <= 768;
-      const arrivalTrack = isMobile ? 280 : 360;
-      window.scrollTo({ top: arrivalTrack, behavior: 'smooth' });
-    });
-  }
 
   const featuresSec = document.getElementById('features');
   if (heroCta) {
@@ -793,12 +942,6 @@ document.addEventListener('DOMContentLoaded', () => {
     bookingModal.setAttribute('aria-hidden', 'true');
   }
 
-  if (navBookTripBtn) {
-    navBookTripBtn.addEventListener('click', () => {
-      openModal();
-    });
-  }
-
   if (cartToggle && bookingModal) {
     cartToggle.addEventListener('click', openModal);
 
@@ -827,28 +970,203 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================================================
-  // --- 7. Optimized Scroll & Resize Event Listeners ---
+  // --- 7. Lenis Smooth Scrolling Initialization & ScrollTrigger Synchronization ---
   // ==========================================================================
-  let isTicking = false;
-  window.addEventListener('scroll', () => {
-    if (!isTicking) {
-      requestAnimationFrame(() => {
-        updateFlightOnScroll();
-        updateShowcasesOnScroll();
-        isTicking = false;
-      });
-      isTicking = true;
+  const heroNav = document.querySelector('.hero-nav');
+  function updateNavOnScroll(scrollY) {
+    if (!heroNav) return;
+    if (scrollY > 35) {
+      heroNav.classList.add('nav-scrolled');
+    } else {
+      heroNav.classList.remove('nav-scrolled');
     }
-  }, { passive: true });
+  }
 
+  function onPageScroll(scrollY) {
+    updateNavOnScroll(scrollY);
+    updateFlightOnScroll(scrollY);
+    updateShowcasesOnScroll(scrollY);
+  }
+
+  // Initialize Lenis Smooth Scrolling
+  let lenis = null;
+  if (typeof Lenis !== 'undefined') {
+    lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 1.8,
+      infinite: false,
+    });
+
+    // Synchronize ScrollTrigger with Lenis
+    if (typeof ScrollTrigger !== 'undefined') {
+      lenis.on('scroll', ScrollTrigger.update);
+    }
+
+    // Drive Lenis RAF loop via GSAP ticker
+    if (typeof gsap !== 'undefined') {
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+    } else {
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+    }
+
+    // Listen to Lenis scroll
+    lenis.on('scroll', (e) => {
+      onPageScroll(e.scroll);
+    });
+  } else {
+    // Fallback standard scroll listener if Lenis is unavailable
+    let isTicking = false;
+    window.addEventListener('scroll', () => {
+      if (!isTicking) {
+        requestAnimationFrame(() => {
+          const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+          onPageScroll(scrollY);
+          isTicking = false;
+        });
+        isTicking = true;
+      }
+    }, { passive: true });
+  }
+
+  // ==========================================================================
+  // --- 8. GSAP Hero-to-Showcase Smooth Animated Transition ---
+  // ==========================================================================
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const heroElem = document.getElementById('hero');
+    const heroSkyImg = document.getElementById('hero-sky-img');
+    const heroSkyGradient = document.querySelector('.hero-sky-gradient');
+    const featuresElem = document.getElementById('features');
+    const infoPanel = document.getElementById('showcase-info-panel');
+    const cardsDeck = document.getElementById('showcase-cards-deck');
+    const controlsBar = document.querySelector('#features .showcase-controls-bar');
+
+    if (heroElem && featuresElem) {
+      // Synchronized scrubbed timeline linking hero flight to destination showcase
+      const transitionTL = gsap.timeline({
+        scrollTrigger: {
+          trigger: featuresElem,
+          start: 'top bottom',
+          end: 'top top',
+          scrub: 0.5,
+          onEnter: () => {
+            if (cardsDeck) cardsDeck.classList.add('cards-entered');
+          },
+          onLeaveBack: () => {
+            if (cardsDeck && showcase1 && showcase1.slide === 0) {
+              cardsDeck.classList.remove('cards-entered');
+            }
+          }
+        }
+      });
+
+      // 1. Hero atmospheric horizon elevation into high altitude clouds
+      if (heroSkyImg) {
+        transitionTL.to(heroSkyImg, {
+          scale: 1.08,
+          yPercent: -10,
+          opacity: 0.35,
+          ease: 'power1.out',
+          duration: 1
+        }, 0);
+      }
+
+      if (heroSkyGradient) {
+        transitionTL.to(heroSkyGradient, {
+          opacity: 0.6,
+          ease: 'none',
+          duration: 1
+        }, 0);
+      }
+
+      // 3. Showcase Content: Left Info Panel floats smoothly into place
+      if (infoPanel) {
+        transitionTL.fromTo(infoPanel,
+          {
+            y: 60,
+            x: -30,
+            opacity: 0
+          },
+          {
+            y: 0,
+            x: 0,
+            opacity: 1,
+            ease: 'power2.out',
+            duration: 0.85
+          },
+          0.12
+        );
+      }
+
+      // 4. Showcase Content: Cards Deck glides in from the right
+      if (cardsDeck) {
+        transitionTL.fromTo(cardsDeck,
+          {
+            x: 220,
+            opacity: 0
+          },
+          {
+            x: 0,
+            opacity: 1,
+            ease: 'power2.out',
+            duration: 0.9
+          },
+          0.08
+        );
+      }
+
+      // 5. Showcase Content: Controls bar rises softly
+      if (controlsBar) {
+        transitionTL.fromTo(controlsBar,
+          {
+            y: 30,
+            opacity: 0
+          },
+          {
+            y: 0,
+            opacity: 1,
+            ease: 'power1.out',
+            duration: 0.7
+          },
+          0.25
+        );
+      }
+    }
+  }
+
+  // Window resize & orientation change handlers
   window.addEventListener('resize', () => {
-    updateFlightOnScroll();
-    updateShowcasesOnScroll();
+    const scrollY = lenis ? lenis.scroll : (window.pageYOffset || document.documentElement.scrollTop);
+    onPageScroll(scrollY);
+    if (typeof ScrollTrigger !== 'undefined') {
+      ScrollTrigger.refresh();
+    }
   });
 
-  // ==========================================================================
-  // --- 8. Initial Execution ---
-  // ==========================================================================
-  updateFlightOnScroll();
-  updateShowcasesOnScroll();
+  window.addEventListener('orientationchange', () => {
+    setTimeout(() => {
+      const scrollY = lenis ? lenis.scroll : (window.pageYOffset || document.documentElement.scrollTop);
+      onPageScroll(scrollY);
+      if (typeof ScrollTrigger !== 'undefined') {
+        ScrollTrigger.refresh();
+      }
+    }, 200);
+  });
+
+  // Initial execution
+  const initialScrollY = lenis ? lenis.scroll : (window.pageYOffset || document.documentElement.scrollTop);
+  onPageScroll(initialScrollY);
 });

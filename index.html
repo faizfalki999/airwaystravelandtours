@@ -11,11 +11,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.css">
   <link rel="stylesheet" href="style.css">
   
   <!-- Critical Image Preloads for Instant, Zero-Glitch Asset Rendering -->
   <link rel="preload" href="assets/airplane_cutout.png" as="image">
-  <link rel="preload" href="assets/sky_clouds_bg.jpg" as="image">
+  <link rel="preload" href="assets/sunset_sky_bg.jpg" as="image">
   <link rel="preload" href="assets/dest_skardu.jpg" as="image">
   <link rel="preload" href="assets/dest_swiss_alps.jpg" as="image">
   <link rel="preload" href="assets/dest_japan.jpg" as="image">
@@ -28,6 +29,40 @@
   <!-- Floating Page Wrapper with Rounded Corners and Ambient Drop Shadow -->
   <div class="page-container" id="page-container">
     
+    <!-- Top Navigation Bar (Fixed across entire site) -->
+    <nav class="hero-nav" aria-label="Main Navigation">
+      
+      <!-- Left: Mobile Menu Toggle & Brand Logo -->
+      <div class="nav-left">
+        <!-- Hamburger Menu Icon Button -->
+        <button class="menu-toggle-btn" id="menu-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <!-- Brand Logo -->
+        <a href="#hero" class="brand-logo" aria-label="Airways Travel & Tours Home">
+          <img src="assets/airways_logo.png" alt="Airways Travel & Tours" class="nav-logo-img">
+        </a>
+      </div>
+
+      <!-- Center Nav Links -->
+      <div class="nav-center">
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link">HOME</a></li>
+          <li><a href="about.html" class="nav-link">ABOUT</a></li>
+          <li><a href="services.html" class="nav-link">SERVICES</a></li>
+          <li><a href="services/visa.html" class="nav-link">VISAS</a></li>
+          <li><a href="destinations.html" class="nav-link">DESTINATIONS</a></li>
+          <li><a href="#contact" class="nav-link" id="contact-link">CONTACT</a></li>
+        </ul>
+      </div>
+
+      <!-- Far Right -->
+      <div class="nav-right"></div>
+    </nav>
+
     <!-- ========================================================
          SECTION 1: HERO
          ======================================================== -->
@@ -37,57 +72,16 @@
     <header class="hero-section" id="hero">
       <div class="hero-sticky-viewport" id="hero-sticky-viewport">
       
-      <!-- Sky and Dreamy Clouds Atmospheric Backdrop -->
+      <!-- Sky and Dreamy Sunset Clouds Atmospheric Backdrop -->
       <div class="hero-sky-backdrop" id="hero-sky-backdrop">
         <img 
-          src="assets/sky_clouds_bg.jpg" 
-          alt="Dreamy blue sky with soft white cumulus clouds" 
+          src="assets/sunset_sky_bg.jpg" 
+          alt="Breathtaking golden sunset sky with glowing peach and twilight clouds" 
           class="hero-sky-img"
           id="hero-sky-img"
         >
-        <!-- Floating Cloud Wisps (blend-mode: screen) for 3D depth -->
-        <div class="hero-cloud-wisps" id="hero-cloud-wisps" aria-hidden="true">
-          <img src="assets/cloud_wisps.jpg" alt="" class="cloud-wisp-img wisp-layer-1">
-          <img src="assets/cloud_wisps.jpg" alt="" class="cloud-wisp-img wisp-layer-2">
-        </div>
         <div class="hero-sky-gradient" aria-hidden="true"></div>
       </div>
-
-      <!-- Top Navigation Bar -->
-      <nav class="hero-nav" aria-label="Main Navigation">
-        
-        <!-- Left: Mobile Menu Toggle & Brand Logo -->
-        <div class="nav-left">
-          <!-- Hamburger Menu Icon Button -->
-          <button class="menu-toggle-btn" id="menu-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobile-drawer">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-          </button>
-
-          <!-- Brand Logo (Black) -->
-          <a href="#hero" class="brand-logo" aria-label="Airways Travel & Tours Home">
-            <img src="FINALx-01.webp" alt="Airways Travel & Tours" class="nav-logo-img">
-          </a>
-        </div>
-
-        <!-- Center Nav Links -->
-        <div class="nav-center">
-          <ul class="nav-links">
-            <li><a href="#narrative" class="nav-link">ABOUT</a></li>
-            <li><a href="#features" class="nav-link">TOUR</a></li>
-            <li><a href="#features" class="nav-link">PACKAGE</a></li>
-            <li><a href="#contact" class="nav-link" id="contact-link">CONTACT</a></li>
-          </ul>
-        </div>
-
-        <!-- Far Right: "Book Trip" Pill Button -->
-        <div class="nav-right">
-          <button class="btn-book-trip-nav" id="nav-book-trip-btn" aria-label="Book Trip Now">
-            Book Trip
-          </button>
-        </div>
-      </nav>
 
       <!-- Main Interactive Flight Stage: Left Content + Airplane Flight Layer -->
       <div class="hero-stage" id="hero-stage">
@@ -114,7 +108,7 @@
 
         </div><!-- /.hero-left-column -->
 
-        <!-- Right / Center: Airplane Flight Layer (Transforms dynamically on scroll) -->
+        <!-- Right / Center: Airplane Flight Layer (Scroll-Driven Upward Flight Animation) -->
         <div class="hero-airplane-stage" id="airplane-stage" aria-hidden="true">
           <div class="hero-airplane-wrapper" id="airplane-wrapper">
             <img 
@@ -123,20 +117,10 @@
               class="hero-airplane-img" 
               id="hero-airplane"
             >
-            <!-- Engine Thrust Shimmer & Wingtip Contrail Glow -->
-            <div class="airplane-thrust-glow"></div>
           </div>
         </div>
 
       </div><!-- /.hero-stage -->
-
-      <!-- Atmospheric Initial Scroll Hint (Visible only on pristine background) -->
-      <div class="hero-scroll-hint" id="hero-scroll-hint" aria-label="Scroll to explore">
-        <div class="mouse-scroll-indicator">
-          <div class="mouse-wheel-dot"></div>
-        </div>
-        <span class="scroll-hint-label">Scroll to Explore</span>
-      </div>
 
       </div><!-- /.hero-sticky-viewport -->
 
@@ -176,27 +160,9 @@
       <!-- Pinned Viewport Container (Locks in place & animates away on scroll) -->
       <div class="showcase-sticky-viewport" id="showcase-sticky-viewport">
 
-        <!-- Plain Color Intro Screen: International Destinations -->
-        <div class="showcase-intro-curtain" id="showcase-intro-curtain">
-          <div class="showcase-intro-content">
-            <span class="intro-curtain-eyebrow">CURATED GLOBAL COLLECTION</span>
-            <h2 class="intro-curtain-title">International<br>Destinations</h2>
-            <p class="intro-curtain-desc">Curated alpine chalets, Mediterranean calderas, and imperial sanctuaries across the globe.</p>
-            <div class="intro-curtain-hint" id="intro-hint-1" role="button" tabindex="0" aria-label="Scroll to explore international destinations">
-              <div class="intro-scroll-arrow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="12" y1="5" x2="12" y2="19"></line>
-                  <polyline points="19 12 12 19 5 12"></polyline>
-                </svg>
-              </div>
-              <span>Scroll to Explore</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Fullscreen Cross-fading Background Layers (Pre-rendered for Instant Display) -->
+        <!-- Fullscreen Cross-fading Background Layers (Slide 0 is plain color; Slides 1-5 are full-screen photo scenes) -->
         <div class="showcase-bg-container" id="showcase-bg-container">
-          <div class="showcase-bg-layer active" data-slide="0" style="background-image: url('assets/dest_skardu.jpg');"></div>
+          <div class="showcase-bg-layer showcase-bg-solid active" data-slide="0"></div>
           <div class="showcase-bg-layer" data-slide="1" style="background-image: url('assets/dest_skardu.jpg');"></div>
           <div class="showcase-bg-layer" data-slide="2" style="background-image: url('assets/dest_swiss_alps.jpg');"></div>
           <div class="showcase-bg-layer" data-slide="3" style="background-image: url('assets/dest_japan.jpg');"></div>
@@ -211,122 +177,121 @@
           <!-- Left Side: Country Information & Narrative -->
           <div class="showcase-info-panel" id="showcase-info-panel">
             
-            <!-- Elevation / Region Tag -->
-            <div class="showcase-elevation-badge" id="showcase-badge">
+            <!-- Elevation / Region Tag (Hidden on Slide 0, appears on Slide 1+) -->
+            <div class="showcase-elevation-badge" id="showcase-badge" style="display: none;">
               <span class="badge-arrow-icon">↑</span>
               <span class="badge-elevation-val" id="showcase-elevation">4250m</span>
               <span class="badge-region-sep">·</span>
-              <span class="badge-region-name" id="showcase-region">KARAKORAM</span>
+              <span class="badge-region-name" id="showcase-region">BALTISTAN · PAKISTAN</span>
             </div>
 
             <!-- Destination / Country Title -->
             <h2 class="showcase-headline" id="showcase-headline">
-              FIND YOUR<br>FROZEN ESCAPE
+              FIND YOUR<br>FROZEN<br>ESCAPE
             </h2>
 
             <!-- Descriptive Copy / Heritage Narrative -->
             <p class="showcase-narrative" id="showcase-narrative">
-              Explore our frozen lake locations, each offering a unique skating experience in the heart of Skardu and worldwide alpine wonderlands.
+              Explore our frozen lake locations, each offering a unique skating experience in the heart of Skardu.
             </p>
 
-            <!-- Action Button: Opens Dedicated Country Package & Booking View -->
+            <!-- Action Button: Minimalist pill button matching reference design -->
             <div class="showcase-cta-wrapper">
               <button class="showcase-book-btn" id="showcase-book-btn" aria-label="Book destination package">
                 <span id="showcase-btn-label">BOOK NOW</span>
-                <svg class="btn-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
               </button>
             </div>
 
           </div><!-- /.showcase-info-panel -->
 
-          <!-- Right Side: Destination Cards Carousel Deck (Pre-rendered for zero-glitch display) -->
-          <div class="showcase-cards-deck" id="showcase-cards-deck" aria-label="Destination Cards">
-            <!-- Card 1: Skardu -->
-            <article class="showcase-card" data-index="1" role="button" tabindex="0" aria-label="View Shauser Lake, Skardu">
-              <img src="assets/dest_skardu.jpg" alt="Shauser Lake, Skardu" class="showcase-card-img" loading="eager">
-              <div class="showcase-card-overlay"></div>
-              <div class="showcase-card-content">
-                <span class="showcase-card-tag">↑ 4250m</span>
-                <h3 class="showcase-card-title">Shauser Lake</h3>
-              </div>
-            </article>
+          <!-- Right Column: Destination Cards Carousel Deck & Controls -->
+          <div class="showcase-right-wrapper" id="showcase-right-wrapper">
+            <div class="showcase-cards-deck" id="showcase-cards-deck" aria-label="Destination Cards">
+              <div class="showcase-cards-track" id="showcase-cards-track">
+                <!-- Card 1: Shauser Lake -->
+                <article class="showcase-card" data-index="1" role="button" tabindex="0" aria-label="View Shauser Lake, Skardu">
+                  <img src="assets/dest_skardu.jpg" alt="Shauser Lake, Skardu" class="showcase-card-img" loading="eager">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">↑ 4250m</span>
+                    <h3 class="showcase-card-title">Shauser<br>Lake</h3>
+                  </div>
+                </article>
 
-            <!-- Card 2: Swiss Alps -->
-            <article class="showcase-card" data-index="2" role="button" tabindex="0" aria-label="View Jungfrau Alps, Switzerland">
-              <img src="assets/dest_swiss_alps.jpg" alt="Jungfrau Alps, Switzerland" class="showcase-card-img" loading="eager">
-              <div class="showcase-card-overlay"></div>
-              <div class="showcase-card-content">
-                <span class="showcase-card-tag">↑ 3454m</span>
-                <h3 class="showcase-card-title">Jungfrau Alps</h3>
-              </div>
-            </article>
+                <!-- Card 2: Lake Kharfak -->
+                <article class="showcase-card" data-index="2" role="button" tabindex="0" aria-label="View Lake Kharfak">
+                  <img src="assets/dest_swiss_alps.jpg" alt="Lake Kharfak" class="showcase-card-img" loading="eager">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">↑ 3350m</span>
+                    <h3 class="showcase-card-title">Lake<br>Kharfak</h3>
+                  </div>
+                </article>
 
-            <!-- Card 3: Japan -->
-            <article class="showcase-card" data-index="3" role="button" tabindex="0" aria-label="View Mount Fuji, Japan">
-              <img src="assets/dest_japan.jpg" alt="Mount Fuji, Japan" class="showcase-card-img" loading="eager">
-              <div class="showcase-card-overlay"></div>
-              <div class="showcase-card-content">
-                <span class="showcase-card-tag">↑ 3776m</span>
-                <h3 class="showcase-card-title">Mount Fuji</h3>
-              </div>
-            </article>
+                <!-- Card 3: Jarba Zhou -->
+                <article class="showcase-card" data-index="3" role="button" tabindex="0" aria-label="View Jarba Zhou">
+                  <img src="assets/dest_japan.jpg" alt="Jarba Zhou" class="showcase-card-img" loading="eager">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">↑ 2500m</span>
+                    <h3 class="showcase-card-title">Jarba<br>Zhou</h3>
+                  </div>
+                </article>
 
-            <!-- Card 4: Greece -->
-            <article class="showcase-card" data-index="4" role="button" tabindex="0" aria-label="View Santorini Caldera, Greece">
-              <img src="assets/dest_santorini.jpg" alt="Santorini Caldera, Greece" class="showcase-card-img" loading="eager">
-              <div class="showcase-card-overlay"></div>
-              <div class="showcase-card-content">
-                <span class="showcase-card-tag">↑ 330m</span>
-                <h3 class="showcase-card-title">Santorini Caldera</h3>
-              </div>
-            </article>
+                <!-- Card 4: Kachura Lake -->
+                <article class="showcase-card" data-index="4" role="button" tabindex="0" aria-label="View Kachura Lake">
+                  <img src="assets/dest_santorini.jpg" alt="Kachura Lake" class="showcase-card-img" loading="eager">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">↑ 2500m</span>
+                    <h3 class="showcase-card-title">Kachura<br>Lake</h3>
+                  </div>
+                </article>
 
-            <!-- Card 5: Bali -->
-            <article class="showcase-card" data-index="5" role="button" tabindex="0" aria-label="View Bali Sanctuary, Indonesia">
-              <img src="assets/dest_tropical.jpg" alt="Bali Sanctuary, Indonesia" class="showcase-card-img" loading="eager">
-              <div class="showcase-card-overlay"></div>
-              <div class="showcase-card-content">
-                <span class="showcase-card-tag">↑ 1717m</span>
-                <h3 class="showcase-card-title">Bali Sanctuary</h3>
+                <!-- Card 5: Sadpara Lake -->
+                <article class="showcase-card" data-index="5" role="button" tabindex="0" aria-label="View Sadpara Lake">
+                  <img src="assets/dest_tropical.jpg" alt="Sadpara Lake" class="showcase-card-img" loading="eager">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">↑ 2637m</span>
+                    <h3 class="showcase-card-title">Sadpara<br>Lake</h3>
+                  </div>
+                </article>
               </div>
-            </article>
-          </div>
+            </div>
+
+            <!-- Bottom Navigation Controls & Progress Track directly under cards -->
+            <div class="showcase-controls-bar" id="showcase-controls-bar">
+              <div class="showcase-controls-inner">
+                <!-- Circular Arrow Buttons -->
+                <div class="showcase-nav-arrows">
+                  <button class="nav-circle-btn prev-btn" id="showcase-prev-btn" aria-label="Previous destination">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                  </button>
+                  <button class="nav-circle-btn next-btn" id="showcase-next-btn" aria-label="Next destination">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Progress Bar Track -->
+                <div class="showcase-progress-wrapper" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="showcase-progress-track">
+                  <div class="showcase-progress-fill" id="showcase-progress-fill"></div>
+                </div>
+
+                <!-- Slide Counter (00, 01, 02, etc.) -->
+                <div class="showcase-counter-display" id="showcase-counter">
+                  <span class="counter-number" id="counter-current">00</span>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /.showcase-right-wrapper -->
 
         </div><!-- /.showcase-stage-container -->
-
-        <!-- Bottom Navigation Controls & Progress Track -->
-        <div class="showcase-controls-bar">
-          <div class="showcase-controls-inner">
-            
-            <!-- Circular Arrow Buttons -->
-            <div class="showcase-nav-arrows">
-              <button class="nav-circle-btn prev-btn" id="showcase-prev-btn" aria-label="Previous destination">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-              </button>
-              <button class="nav-circle-btn next-btn" id="showcase-next-btn" aria-label="Next destination">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Progress Bar Track -->
-            <div class="showcase-progress-wrapper" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="showcase-progress-track">
-              <div class="showcase-progress-fill" id="showcase-progress-fill"></div>
-            </div>
-
-            <!-- Slide Counter (00, 01, 02, etc.) -->
-            <div class="showcase-counter-display" id="showcase-counter">
-              <span class="counter-number" id="counter-current">00</span>
-            </div>
-
-          </div>
-        </div>
 
       </div><!-- /.showcase-sticky-viewport -->
     </section>
@@ -335,31 +300,17 @@
          SECTION 2B: SECOND INTERACTIVE SHOWCASE & SLIDER
          (Duplicated Destination Showcase with Independent Controls)
          ======================================================== -->
-    <section class="country-showcase-section" id="features-2" aria-label="Signature Expeditions Showcase">
+    <!-- ========================================================
+         SECTION 2B: SECOND INTERACTIVE SHOWCASE & SLIDER
+         (Domestic Destinations Showcase)
+         ======================================================== -->
+    <section class="showcase-section" id="features-2" aria-label="Domestic Destinations Showcase">
       <!-- Pinned Viewport Container -->
       <div class="showcase-sticky-viewport" id="showcase-sticky-viewport-2">
 
-        <!-- Plain Color Intro Screen: Domestic Destinations -->
-        <div class="showcase-intro-curtain" id="showcase-intro-curtain-2">
-          <div class="showcase-intro-content">
-            <span class="intro-curtain-eyebrow">DISCOVER PAKISTAN</span>
-            <h2 class="intro-curtain-title">Domestic<br>Destinations</h2>
-            <p class="intro-curtain-desc">High-altitude glacial valleys, ancient Silk Route plateaus, and serene alpine wonders.</p>
-            <div class="intro-curtain-hint" id="intro-hint-2" role="button" tabindex="0" aria-label="Scroll to explore domestic destinations">
-              <div class="intro-scroll-arrow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="12" y1="5" x2="12" y2="19"></line>
-                  <polyline points="19 12 12 19 5 12"></polyline>
-                </svg>
-              </div>
-              <span>Scroll to Explore</span>
-            </div>
-          </div>
-        </div>
-
         <!-- Fullscreen Cross-fading Background Layers -->
         <div class="showcase-bg-container" id="showcase-bg-container-2">
-          <div class="showcase-bg-layer active" data-slide="0" style="background-image: url('assets/dest_skardu.jpg');"></div>
+          <div class="showcase-bg-layer showcase-bg-solid active" data-slide="0"></div>
           <div class="showcase-bg-layer" data-slide="1" style="background-image: url('assets/dest_skardu.jpg');"></div>
           <div class="showcase-bg-layer" data-slide="2" style="background-image: url('assets/dest_swiss_alps.jpg');"></div>
           <div class="showcase-bg-layer" data-slide="3" style="background-image: url('assets/dest_japan.jpg');"></div>
@@ -375,7 +326,7 @@
           <div class="showcase-info-panel" id="showcase-info-panel-2">
             
             <!-- Elevation / Region Tag -->
-            <div class="showcase-elevation-badge" id="showcase-badge-2">
+            <div class="showcase-elevation-badge" id="showcase-badge-2" style="display: none;">
               <span class="badge-arrow-icon">↑</span>
               <span class="badge-elevation-val" id="showcase-elevation-2">4250m</span>
               <span class="badge-region-sep">·</span>
@@ -384,118 +335,120 @@
 
             <!-- Destination / Country Title -->
             <h2 class="showcase-headline" id="showcase-headline-2">
-              SHAUSER<br>LAKE
+              DISCOVER<br>DOMESTIC<br>DESTINATIONS
             </h2>
 
             <!-- Descriptive Copy / Heritage Narrative -->
             <p class="showcase-narrative" id="showcase-narrative-2">
-              Surrounded by untouched snow and crisp winter air, it's the ideal spot for both beginners and seasoned skaters looking for peace, beauty, and unforgettable views.
+              Explore our high-altitude glacial valleys, ancient Silk Route plateaus, and serene alpine wonders across Pakistan.
             </p>
 
             <!-- Action Button -->
             <div class="showcase-cta-wrapper">
               <button class="showcase-book-btn" id="showcase-book-btn-2" aria-label="Book destination package">
                 <span id="showcase-btn-label-2">BOOK NOW</span>
-                <svg class="btn-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
               </button>
             </div>
 
           </div><!-- /.showcase-info-panel -->
 
-          <!-- Right Side: Destination Cards Carousel Deck -->
-          <div class="showcase-cards-deck" id="showcase-cards-deck-2" aria-label="Destination Cards">
-            <!-- Card 1: Skardu -->
-            <article class="showcase-card active" data-index="1" role="button" tabindex="0" aria-label="View Shauser Lake, Skardu">
-              <img src="assets/dest_skardu.jpg" alt="Shauser Lake, Skardu" class="showcase-card-img" loading="eager">
-              <div class="showcase-card-overlay"></div>
-              <div class="showcase-card-content">
-                <span class="showcase-card-tag">↑ 4250m</span>
-                <h3 class="showcase-card-title">Shauser Lake</h3>
-              </div>
-            </article>
+          <!-- Right Side: Destination Cards Carousel Deck & Controls -->
+          <div class="showcase-right-wrapper" id="showcase-right-wrapper-2">
+            <div class="showcase-cards-deck" id="showcase-cards-deck-2" aria-label="Destination Cards">
+              <div class="showcase-cards-track" id="showcase-cards-track-2">
+                <!-- Card 1: Skardu -->
+                <article class="showcase-card" data-index="1" role="button" tabindex="0" aria-label="View Shauser Lake, Skardu">
+                  <img src="assets/dest_skardu.jpg" alt="Shauser Lake, Skardu" class="showcase-card-img" loading="eager">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">↑ 4250m</span>
+                    <h3 class="showcase-card-title">Shauser<br>Lake</h3>
+                  </div>
+                </article>
 
-            <!-- Card 2: Swiss Alps -->
-            <article class="showcase-card" data-index="2" role="button" tabindex="0" aria-label="View Jungfrau Alps, Switzerland">
-              <img src="assets/dest_swiss_alps.jpg" alt="Jungfrau Alps, Switzerland" class="showcase-card-img" loading="eager">
-              <div class="showcase-card-overlay"></div>
-              <div class="showcase-card-content">
-                <span class="showcase-card-tag">↑ 3454m</span>
-                <h3 class="showcase-card-title">Jungfrau Alps</h3>
-              </div>
-            </article>
+                <!-- Card 2: Lake Kharfak -->
+                <article class="showcase-card" data-index="2" role="button" tabindex="0" aria-label="View Lake Kharfak">
+                  <img src="assets/dest_swiss_alps.jpg" alt="Lake Kharfak" class="showcase-card-img" loading="eager">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">↑ 3350m</span>
+                    <h3 class="showcase-card-title">Lake<br>Kharfak</h3>
+                  </div>
+                </article>
 
-            <!-- Card 3: Japan -->
-            <article class="showcase-card" data-index="3" role="button" tabindex="0" aria-label="View Mount Fuji, Japan">
-              <img src="assets/dest_japan.jpg" alt="Mount Fuji, Japan" class="showcase-card-img" loading="eager">
-              <div class="showcase-card-overlay"></div>
-              <div class="showcase-card-content">
-                <span class="showcase-card-tag">↑ 3776m</span>
-                <h3 class="showcase-card-title">Mount Fuji</h3>
-              </div>
-            </article>
+                <!-- Card 3: Jarba Zhou -->
+                <article class="showcase-card" data-index="3" role="button" tabindex="0" aria-label="View Jarba Zhou">
+                  <img src="assets/dest_japan.jpg" alt="Jarba Zhou" class="showcase-card-img" loading="eager">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">↑ 2500m</span>
+                    <h3 class="showcase-card-title">Jarba<br>Zhou</h3>
+                  </div>
+                </article>
 
-            <!-- Card 4: Greece -->
-            <article class="showcase-card" data-index="4" role="button" tabindex="0" aria-label="View Santorini Caldera, Greece">
-              <img src="assets/dest_santorini.jpg" alt="Santorini Caldera, Greece" class="showcase-card-img" loading="eager">
-              <div class="showcase-card-overlay"></div>
-              <div class="showcase-card-content">
-                <span class="showcase-card-tag">↑ 330m</span>
-                <h3 class="showcase-card-title">Santorini Caldera</h3>
-              </div>
-            </article>
+                <!-- Card 4: Kachura Lake -->
+                <article class="showcase-card" data-index="4" role="button" tabindex="0" aria-label="View Kachura Lake">
+                  <img src="assets/dest_santorini.jpg" alt="Kachura Lake" class="showcase-card-img" loading="eager">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">↑ 2500m</span>
+                    <h3 class="showcase-card-title">Kachura<br>Lake</h3>
+                  </div>
+                </article>
 
-            <!-- Card 5: Bali -->
-            <article class="showcase-card" data-index="5" role="button" tabindex="0" aria-label="View Bali Sanctuary, Indonesia">
-              <img src="assets/dest_tropical.jpg" alt="Bali Sanctuary, Indonesia" class="showcase-card-img" loading="eager">
-              <div class="showcase-card-overlay"></div>
-              <div class="showcase-card-content">
-                <span class="showcase-card-tag">↑ 1717m</span>
-                <h3 class="showcase-card-title">Bali Sanctuary</h3>
+                <!-- Card 5: Sadpara Lake -->
+                <article class="showcase-card" data-index="5" role="button" tabindex="0" aria-label="View Sadpara Lake">
+                  <img src="assets/dest_tropical.jpg" alt="Sadpara Lake" class="showcase-card-img" loading="eager">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">↑ 2637m</span>
+                    <h3 class="showcase-card-title">Sadpara<br>Lake</h3>
+                  </div>
+                </article>
               </div>
-            </article>
-          </div>
+            </div>
+
+            <!-- Bottom Navigation Controls & Progress Track -->
+            <div class="showcase-controls-bar" id="showcase-controls-bar-2">
+              <div class="showcase-controls-inner">
+                <!-- Circular Arrow Buttons -->
+                <div class="showcase-nav-arrows">
+                  <button class="nav-circle-btn prev-btn" id="showcase-prev-btn-2" aria-label="Previous destination">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                  </button>
+                  <button class="nav-circle-btn next-btn" id="showcase-next-btn-2" aria-label="Next destination">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Progress Bar Track -->
+                <div class="showcase-progress-wrapper" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="showcase-progress-track-2">
+                  <div class="showcase-progress-fill" id="showcase-progress-fill-2" style="width: 0%;"></div>
+                </div>
+
+                <!-- Slide Counter -->
+                <div class="showcase-counter-display" id="showcase-counter-2">
+                  <span class="counter-number" id="counter-current-2">00</span>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /.showcase-right-wrapper -->
 
         </div><!-- /.showcase-stage-container -->
-
-        <!-- Bottom Navigation Controls & Progress Track -->
-        <div class="showcase-controls-bar">
-          <div class="showcase-controls-inner">
-            
-            <!-- Circular Arrow Buttons -->
-            <div class="showcase-nav-arrows">
-              <button class="nav-circle-btn prev-btn" id="showcase-prev-btn-2" aria-label="Previous destination">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-              </button>
-              <button class="nav-circle-btn next-btn" id="showcase-next-btn-2" aria-label="Next destination">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Progress Bar Track -->
-            <div class="showcase-progress-wrapper" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" id="showcase-progress-track-2">
-              <div class="showcase-progress-fill" id="showcase-progress-fill-2" style="width: 20%;"></div>
-            </div>
-
-            <!-- Slide Counter -->
-            <div class="showcase-counter-display" id="showcase-counter-2">
-              <span class="counter-number" id="counter-current-2">01</span>
-            </div>
-
-          </div>
-        </div>
 
       </div><!-- /.showcase-sticky-viewport -->
     </section>
 
     <!-- ========================================================
          SECTION 3: LUXURY TRAVEL FOOTER (World Landmarks Motif)
+         ======================================================== -->
+        <!-- ========================================================
+         SECTION: LUXURY TRAVEL FOOTER (World Landmarks Motif)
          ======================================================== -->
     <footer class="luxury-footer" id="contact">
       <!-- Watermark Architectural Skyline Backdrop -->
@@ -505,68 +458,54 @@
         <!-- 5-Column Grid Matching Reference Design -->
         <div class="footer-grid">
           
-          <!-- Column 1: Need Any Help? -->
-          <div class="footer-col col-help">
+          <!-- Column 1: Need Any Help? / Brand -->
+          <div class="footer-col col-help brand-col">
             <div class="footer-brand-badge">
-              <a href="#hero" class="footer-brand-logo" aria-label="Airways Travel & Tours">
-                <img src="FINALx-01.webp" alt="Airways Travel & Tours" class="footer-logo-img">
+              <a href="index.html#hero" class="footer-brand-logo" aria-label="Airways Travel & Tours">
+                <img src="assets/airways_logo.png" alt="Airways Travel & Tours" class="footer-logo-img">
               </a>
               <span class="footer-brand-tagline">Curated Luxury Journeys</span>
             </div>
             <h3 class="footer-heading">Need any help?</h3>
             <div class="footer-contact-block">
               <span class="contact-sublabel">Call 24/7 Concierge</span>
-              <a href="tel:02132410444" class="footer-gold-link">(021) 32410444</a>
+              <a href="tel:02135631822" class="footer-gold-link">021 35631822</a>
+            </div>
+            <div class="footer-contact-block">
+              <span class="contact-sublabel">Direct / WhatsApp Hotline</span>
+              <a href="tel:+923390020309" class="footer-gold-link">+92 339 0020309</a>
             </div>
             <div class="footer-contact-block">
               <span class="contact-sublabel">Mail to our private desk</span>
-              <a href="mailto:info@airwaystravel.com" class="footer-gold-link">info@airwaystravel.com</a>
+              <a href="mailto:airwaystravelss@gmail.com" class="footer-gold-link">airwaystravelss@gmail.com</a>
             </div>
             <div class="footer-social-block">
               <span class="contact-sublabel">Follow our journey</span>
               <div class="footer-social-icons">
-                <!-- Facebook -->
-                <a href="#" class="social-icon-link" aria-label="Facebook">
+                <a href="https://www.facebook.com/share/1QckvSnoqT/" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Facebook">
                   <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.597 1.323-1.326V1.326C24 .597 23.403 0 22.675 0z"/>
                   </svg>
                 </a>
-                <!-- Instagram -->
-                <a href="#" class="social-icon-link" aria-label="Instagram">
+                <a href="https://www.instagram.com/airways.travelofficial" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Instagram">
                   <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                  </svg>
-                </a>
-                <!-- Instagram -->
-                <a href="#" class="social-icon-link" aria-label="Instagram">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                  </svg>
-                </a>
-                <!-- YouTube -->
-                <a href="#" class="social-icon-link" aria-label="YouTube">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                  </svg>
-                </a>
-                <!-- TikTok -->
-                <a href="#" class="social-icon-link" aria-label="TikTok">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
                   </svg>
                 </a>
               </div>
             </div>
           </div>
 
-          <!-- Column 2: Company -->
+          <!-- Column 2: Navigation -->
           <div class="footer-col">
-            <h3 class="footer-heading">Company</h3>
+            <h3 class="footer-heading">Navigation</h3>
             <ul class="footer-nav-list">
-              <li><a href="#hero">About Us</a></li>
-              <li><a href="#">Hajj 2027</a></li>
-              <li><a href="#">Blogs</a></li>
-              <li><a href="#">Media</a></li>
+              <li><a href="index.html#hero">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="services.html">Services Hub</a></li>
+              <li><a href="services/visa.html">Visa Services</a></li>
+              <li><a href="destinations.html">Destinations</a></li>
+              <li><a href="index.html#contact">Contact Us</a></li>
             </ul>
           </div>
 
@@ -574,32 +513,37 @@
           <div class="footer-col">
             <h3 class="footer-heading">Support</h3>
             <ul class="footer-nav-list">
-              <li><a href="#">FAQ</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="tel:02135631822">021 35631822</a></li>
+              <li><a href="tel:+923390020309">+92 339 0020309</a></li>
+              <li><a href="mailto:airwaystravelss@gmail.com">Email Support</a></li>
+              <li><a href="about.html#partners">Our Partners</a></li>
+              <li><a href="services/visa.html">Visa Desk</a></li>
             </ul>
           </div>
 
-          <!-- Column 4: Other Services -->
+          <!-- Column 4: Services -->
           <div class="footer-col">
-            <h3 class="footer-heading">Other Services</h3>
+            <h3 class="footer-heading">Services</h3>
             <ul class="footer-nav-list">
-              <li><a href="#">Corporate Travel</a></li>
-              <li><a href="#">Travel Consulting</a></li>
-              <li><a href="#">Religious Travel</a></li>
-              <li><a href="#">Visa</a></li>
+              <li><a href="services.html#services-grid">Flight Bookings</a></li>
+              <li><a href="services.html#services-grid">Holiday Planning</a></li>
+              <li><a href="services.html#services-grid">Accommodation</a></li>
+              <li><a href="services.html#services-grid">Tailored Trips</a></li>
+              <li><a href="services.html#services-grid">Corporate Travel</a></li>
+              <li><a href="services/visa.html">Visa Facilitation</a></li>
             </ul>
           </div>
 
-          <!-- Column 5: Top Cities -->
+          <!-- Column 5: Destinations -->
           <div class="footer-col">
-            <h3 class="footer-heading">Top cities</h3>
+            <h3 class="footer-heading">Destinations</h3>
             <ul class="footer-nav-list">
-              <li><a href="#">Chicago</a></li>
-              <li><a href="#">New York</a></li>
-              <li><a href="#">San Francisco</a></li>
-              <li><a href="#">California</a></li>
-              <li><a href="#">Alaska</a></li>
+              <li><a href="destinations.html">Japan</a></li>
+              <li><a href="destinations.html">France</a></li>
+              <li><a href="destinations.html">Switzerland</a></li>
+              <li><a href="destinations.html">Pakistan (Skardu)</a></li>
+              <li><a href="destinations.html">Australia</a></li>
+              <li><a href="destinations.html">Saudi Arabia</a></li>
             </ul>
           </div>
 
@@ -609,7 +553,7 @@
       <!-- Bottom Copyright Strip -->
       <div class="footer-bottom-bar">
         <div class="footer-bottom-content">
-          <p>Copyright &copy; 2026 Airways Travel & Tours. All Rights Reserved &nbsp;|&nbsp; Developed with precision by <span class="footer-brand-highlight">Nascent Innovations</span></p>
+          <p>Copyright &copy; 2026 Airways Travel &amp; Tours. All Rights Reserved &nbsp;|&nbsp; Developed with precision by <span class="footer-brand-highlight">Nascent Innovations</span></p>
         </div>
       </div>
     </footer>
@@ -620,18 +564,20 @@
   <aside class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
     <div class="drawer-header">
       <a href="#hero" class="drawer-brand-logo" aria-label="Airways Travel & Tours Home">
-        <img src="FINALx-01.webp" alt="Airways Travel & Tours" class="drawer-logo-img">
+        <img src="assets/airways_logo.png" alt="Airways Travel & Tours" class="drawer-logo-img">
       </a>
       <button class="drawer-close-btn" id="drawer-close" aria-label="Close menu">&times;</button>
     </div>
     <ul class="drawer-links">
       <li><a href="#hero" class="drawer-link">Home</a></li>
-      <li><a href="#features" class="drawer-link">Destinations</a></li>
-      <li><a href="#narrative" class="drawer-link">About Us</a></li>
+      <li><a href="about.html" class="drawer-link">About Us</a></li>
+      <li><a href="services.html" class="drawer-link">Services</a></li>
+      <li><a href="services/visa.html" class="drawer-link">Visa Services</a></li>
+      <li><a href="destinations.html" class="drawer-link">Destinations</a></li>
       <li><a href="#contact" class="drawer-link">Contact</a></li>
     </ul>
     <div class="drawer-footer">
-      <a href="#features" class="drawer-cta-btn">Start Exploring</a>
+      <a href="destinations.html" class="drawer-cta-btn">Explore Destinations</a>
     </div>
   </aside>
 
@@ -760,6 +706,11 @@
     </div>
   </div>
 
+  <!-- GSAP Core & ScrollTrigger Plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
