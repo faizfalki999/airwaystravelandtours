@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frequently Asked Questions | Airways Travel &amp; Tours</title>
+  <meta name="description" content="Find answers to common questions about international flight bookings, tourist visa processing times, bespoke holiday itineraries, and payment security with Airways Travel & Tours Karachi.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="about-page">
+  <div class="page-container">
+
+    <!-- Global Hero Navigation -->
+    <nav class="hero-nav" aria-label="Main Navigation">
+      <div class="nav-left">
+        <button class="nav-menu-btn" id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <a href="../index.html#hero" class="brand-logo" aria-label="Airways Travel & Tours Home">
+          <img src="../assets/airways_logo.png" alt="Airways Travel & Tours" class="nav-logo-img">
+        </a>
+      </div>
+
+      <!-- Center Nav Links -->
+      <div class="nav-center">
+        <ul class="nav-links">
+          <li><a href="../index.html#hero" class="nav-link">HOME</a></li>
+          <li><a href="../about.html" class="nav-link">ABOUT</a></li>
+          <li><a href="../services.html" class="nav-link">SERVICES</a></li>
+          <li><a href="../services/visa.html" class="nav-link">VISAS</a></li>
+          <li><a href="../destinations.html" class="nav-link">DESTINATIONS</a></li>
+          <li><a href="index.html" class="nav-link" style="color: #38bdf8; font-weight: 700;">FAQS</a></li>
+          <li><a href="../contact.html" class="nav-link">CONTACT</a></li>
+        </ul>
+      </div>
+
+      <!-- Far Right CTA -->
+      <div class="nav-right">
+        <a href="../contact.html" class="nav-cta-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; border-radius: 999px; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); color: #7dd3fc; text-decoration: none; font-size: 0.85rem; font-weight: 600;">
+          <span>Inquire Now &rarr;</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Subpage Hero Header -->
+    <header class="subpage-hero-section">
+      <div class="subpage-hero-content">
+        <div class="subpage-breadcrumb">
+          <a href="../index.html#hero">Home</a>
+          <span class="subpage-breadcrumb-sep">/</span>
+          <span>FAQs</span>
+        </div>
+        <span class="about-eyebrow">HELP &amp; KNOWLEDGE BASE</span>
+        <h1 class="subpage-hero-title">Frequently Asked Questions</h1>
+        <p class="subpage-hero-lead">
+          Find clear, verified answers to common questions about international flight reservations, tourist visa requirements &amp; processing times, bespoke tour curation, and transparent payment terms.
+        </p>
+      </div>
+    </header>
+
+    <!-- Main FAQ Container -->
+    <main class="faqs-section" id="faqs-main">
+      
+      <!-- Interactive Search & Filter Toolbar -->
+      <div class="faq-toolbar">
+        <div class="faq-search-wrapper">
+          <span class="faq-search-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <input type="text" id="faq-search-input" class="faq-search-input" placeholder="Search questions by keyword (e.g. visa, Skardu, payment, refund, flights)..." aria-label="Search frequently asked questions">
+          <button id="faq-search-clear" class="faq-search-clear" aria-label="Clear search">&times;</button>
+        </div>
+
+        <div class="faq-filter-pills" role="tablist" aria-label="FAQ Categories">
+          <button class="faq-pill-btn active" data-category="all" role="tab" aria-selected="true">
+            <span>All FAQs</span>
+          </button>
+          <button class="faq-pill-btn" data-category="visa" role="tab" aria-selected="false">
+            <span>Visa Services</span>
+          </button>
+          <button class="faq-pill-btn" data-category="flights" role="tab" aria-selected="false">
+            <span>Flight Bookings</span>
+          </button>
+          <button class="faq-pill-btn" data-category="holidays" role="tab" aria-selected="false">
+            <span>Holidays &amp; Tours</span>
+          </button>
+          <button class="faq-pill-btn" data-category="payments" role="tab" aria-selected="false">
+            <span>Payments &amp; Policies</span>
+          </button>
+
+          <span class="faq-counter-indicator" id="faq-counter">Showing 15 Questions</span>
+        </div>
+      </div>
+
+      <!-- FAQ Accordion List -->
+      <div class="faq-accordion-list" id="faq-list">
+
+        <!-- ==================== VISA SERVICES ==================== -->
+        <!-- Question 1 -->
+        <article class="faq-item" data-category="visa">
+          <button class="faq-question-btn" aria-expanded="false">
+            <div class="faq-question-title-wrap">
+              <span class="faq-category-badge">Visa Services</span>
+              <h3 class="faq-question-text">Which countries do you provide visa facilitation and filing assistance for?</h3>
+            </div>
+            <div class="faq-toggle-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-content">
+              <p>We provide end-to-end tourist, business, and visit visa facilitation for all premier destinations worldwide, including:</p>
+              <ul>
+                <li><strong>Schengen Area</strong> (France, Germany, Italy, Switzerland, Sweden, Netherlands, Spain)</li>
+                <li><strong>North America &amp; Oceania</strong> (Australia, Canada, United States)</li>
+                <li><strong>Asia &amp; Eurasia</strong> (Azerbaijan, Cambodia, China, Indonesia, Japan, Thailand, Malaysia)</li>
+                <li><strong>Middle East &amp; Africa</strong> (Saudi Arabia, UAE, Bahrain, Qatar, Egypt)</li>
+              </ul>
+              <p>You can check our country starting rates and apply directly through our dedicated <a href="../services/visa.html" style="color: #38bdf8; text-decoration: underline;">Visa Services Page</a>.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Question 2 -->
+        <article class="faq-item" data-category="visa">
+          <button class="faq-question-btn" aria-expanded="false">
+            <div class="faq-question-title-wrap">
+              <span class="faq-category-badge">Visa Services</span>
+              <h3 class="faq-question-text">Can Airways Travel &amp; Tours guarantee an approved visa?</h3>
+            </div>
+            <div class="faq-toggle-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-content">
+              <p>No legal or ethical travel agency can guarantee a 100% visa grant, as final adjudication rests solely with the immigration authorities and consular officers of each respective embassy.</p>
+              <p>However, our visa team maintains an <strong>industry-leading 98%+ approval track record</strong>. We conduct rigorous pre-assessment of your documentation, verify bank statements, prepare verified hotel vouchers and flight itineraries, draft customized cover letters, and eliminate discrepancies before submission.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Question 3 -->
+        <article class="faq-item" data-category="visa">
+          <button class="faq-question-btn" aria-expanded="false">
+            <div class="faq-question-title-wrap">
+              <span class="faq-category-badge">Visa Services</span>
+              <h3 class="faq-question-text">How long does visa processing typically take?</h3>
+            </div>
+            <div class="faq-toggle-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-content">
+              <p>Processing time varies significantly by country and visa type:</p>
+              <ul>
+                <li><strong>Electronic Visas (eVisa)</strong>: Azerbaijan (3–5 working days), Cambodia (3–5 working days), Bahrain (3–7 working days), Egypt (5–10 working days).</li>
+                <li><strong>Schengen Visas (France, Germany, Italy, Switzerland)</strong>: Typically 15 calendar days from your biometric appointment date at VFS/Gerry's.</li>
+                <li><strong>Australia &amp; Canada</strong>: Usually 4 to 8 weeks depending on embassy workload.</li>
+              </ul>
+              <p>We advise submitting applications at least 4 to 6 weeks in advance of planned travel dates for sticker/embassy visas.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Question 4 -->
+        <article class="faq-item" data-category="visa">
+          <button class="faq-question-btn" aria-expanded="false">
+            <div class="faq-question-title-wrap">
+              <span class="faq-category-badge">Visa Services</span>
+              <h3 class="faq-question-text">Do you assist with biometric appointment scheduling at VFS / Gerry's?</h3>
+            </div>
+            <div class="faq-toggle-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-content">
+              <p>Yes. Our visa facilitation service includes monitoring available biometric appointment slots for Schengen countries, the UK, Australia, and Canada, and securing your preferred date and time at the relevant visa application center in Karachi, Islamabad, or Lahore.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ==================== FLIGHT BOOKINGS ==================== -->
+        <!-- Question 5 -->
+        <article class="faq-item" data-category="flights">
+          <button class="faq-question-btn" aria-expanded="false">
+            <div class="faq-question-title-wrap">
+              <span class="faq-category-badge">Flight Bookings</span>
+              <h3 class="faq-question-text">Can you arrange multi-city flights, complex stopovers, and open-jaw tickets?</h3>
+            </div>
+            <div class="faq-toggle-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-content">
+              <p>Absolutely. Complex multi-destination flight routing is one of our flagship aviation specialties. Whether you are flying Karachi &rarr; London &rarr; New York &rarr; Paris &rarr; Karachi or planning extended layovers in Istanbul, Doha, or Dubai, our global distribution systems optimize transit times, baggage transfers, and fare rules.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Question 6 -->
+        <article class="faq-item" data-category="flights">
+          <button class="faq-question-btn" aria-expanded="false">
+            <div class="faq-question-title-wrap">
+              <span class="faq-category-badge">Flight Bookings</span>
+              <h3 class="faq-question-text">How do your airline ticket rates compare with online travel sites?</h3>
+            </div>
+            <div class="faq-toggle-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-content">
+              <p>As an accredited agency with direct carrier contracts, we have access to consolidator fares, private inventory, and corporate flight desks that are frequently cheaper than public online booking engines. Furthermore, unlike impersonal automated booking apps, you receive a dedicated personal travel manager who handles date changes, cancellations, seat assignments, and baggage upgrades directly.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Question 7 -->
+        <article class="faq-item" data-category="flights">
+          <button class="faq-question-btn" aria-expanded="false">
+            <div class="faq-question-title-wrap">
+              <span class="faq-category-badge">Flight Bookings</span>
+              <h3 class="faq-question-text">What happens if my flight is rescheduled or cancelled by the airline?</h3>
+            </div>
+            <div class="faq-toggle-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-content">
+              <p>You never have to navigate long airline call center wait times. Our <strong>24/7 Concierge Desk</strong> immediately manages your ticket on your behalf, providing alternative connections, complimentary rebooking onto partner carriers, or claiming full airline refunds as applicable.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Question 8 -->
+        <article class="faq-item" data-category="flights">
+          <button class="faq-question-btn" aria-expanded="false">
+            <div class="faq-question-title-wrap">
+              <span class="faq-category-badge">Flight Bookings</span>
+              <h3 class="faq-question-text">Can I request specific seats, extra luggage, or halal dietary meals?</h3>
+            </div>
+            <div class="faq-toggle-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-content">
+              <p>Yes. Simply inform our concierge when issuing your tickets. We arrange pre-assigned seating (extra legroom, window, or aisle), special dietary meals (Halal, Asian Vegetarian, Child Meal, Diabetic), frequent flyer loyalty point crediting, and pre-purchased excess baggage allowances.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ==================== HOLIDAYS & TOURS ==================== -->
+        <!-- Question 9 -->
+        <article class="faq-item" data-category="holidays">
+          <button class="faq-question-btn" aria-expanded="false">
+            <div class="faq-question-title-wrap">
+              <span class="faq-category-badge">Holidays &amp; Tours</span>
+              <h3 class="faq-question-text">Can your holiday packages be tailored completely from scratch?</h3>
+            </div>
+            <div class="faq-toggle-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-content">
+              <p>Yes, 100%. While we offer curated luxury itineraries, every single package can be customized to your exact timeframe, pace, accommodation tier, and bucket-list activities. Whether you are traveling as a couple, an extended family, or a private VIP group, we build the itinerary around you.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Question 10 -->
+        <article class="faq-item" data-category="holidays">
+          <button class="faq-question-btn" aria-expanded="false">
+            <div class="faq-question-title-wrap">
+              <span class="faq-category-badge">Holidays &amp; Tours</span>
+              <h3 class="faq-question-text">What is included in the domestic Skardu &amp; Northern Pakistan expeditions?</h3>
+            </div>
+            <div class="faq-toggle-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-content">
+              <p>Our premium Skardu &amp; Gilgit-Baltistan luxury packages include:</p>
+              <ul>
+                <li>Direct scenic mountain flights (Islamabad &harr; Skardu)</li>
+                <li>Exclusive lodging in 4-star and 5-star mountain retreats (Serena Shigar Fort, Khaplu Palace, Shangrila Resort)</li>
+                <li>Private heated 4x4 Prado / Land Cruiser with seasoned alpine chauffeurs</li>
+                <li>Curated private tours to Shauser Lake, Deosai Plains, Cold Desert, and Kachura Lakes</li>
+                <li>Certified local English and Urdu-speaking guides and permits</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Question 11 -->
+        <article class="faq-item" data-category="holidays">
+          <button class="faq-question-btn" aria-expanded="false">
+            <div class="faq-question-title-wrap">
+              <span class="faq-category-badge">Holidays &amp; Tours</span>
+              <h3 class="faq-question-text">Do you organize executive corporate delegations and corporate travel?</h3>
+            </div>
+            <div class="faq-toggle-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-content">
+              <p>Yes. Our corporate division handles executive group ticketing, conference and exhibition arrangements (GITEX, Canton Fair, Arab Health), priority hotel reservations, and consolidated billing for organizations and multinationals across Pakistan.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ==================== PAYMENTS & POLICIES ==================== -->
+        <!-- Question 12 -->
+        <article class="faq-item" data-category="payments">
+          <button class="faq-question-btn" aria-expanded="false">
+            <div class="faq-question-title-wrap">
+              <span class="faq-category-badge">Payments &amp; Policies</span>
+              <h3 class="faq-question-text">What payment methods are accepted at Airways Travel &amp; Tours?</h3>
+            </div>
+            <div class="faq-toggle-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-content">
+              <p>We accept multiple convenient and secure payment channels:</p>
+              <ul>
+                <li><strong>Direct Online Bank Transfer (IBFT)</strong> to our verified corporate bank accounts in Pakistan.</li>
+                <li><strong>Corporate Pay Order / Cheque</strong> payable to Airways Travel &amp; Tours.</li>
+                <li><strong>Credit &amp; Debit Cards</strong> (Visa, MasterCard, UnionPay).</li>
+                <li><strong>In-Person Cash Settlement</strong> at our Karachi office against official printed receipts.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Question 13 -->
+        <article class="faq-item" data-category="payments">
+          <button class="faq-question-btn" aria-expanded="false">
+            <div class="faq-question-title-wrap">
+              <span class="faq-category-badge">Payments &amp; Policies</span>
+              <h3 class="faq-question-text">Are there any hidden fees or surprise surcharges?</h3>
+            </div>
+            <div class="faq-toggle-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-content">
+              <p>Never. Complete financial transparency is our core founding principle. Every quote we issue breaks down the exact government embassy fees, airline base fare &amp; taxes, and our service fee upfront. You will never encounter unexpected fees upon checkout.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Question 14 -->
+        <article class="faq-item" data-category="payments">
+          <button class="faq-question-btn" aria-expanded="false">
+            <div class="faq-question-title-wrap">
+              <span class="faq-category-badge">Payments &amp; Policies</span>
+              <h3 class="faq-question-text">What is your cancellation and refund procedure?</h3>
+            </div>
+            <div class="faq-toggle-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-content">
+              <p>Flight refunds are processed in strict accordance with the operating carrier's fare conditions. When an eligible ticket or hotel booking is cancelled, we promptly initiate the refund with the airline or supplier and credit your account as soon as the funds are settled.</p>
+              <p><em>Please note that government visa application fees are non-refundable once an application has been lodged with the respective embassy or immigration department.</em></p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Question 15 -->
+        <article class="faq-item" data-category="payments">
+          <button class="faq-question-btn" aria-expanded="false">
+            <div class="faq-question-title-wrap">
+              <span class="faq-category-badge">Payments &amp; Policies</span>
+              <h3 class="faq-question-text">How do I contact emergency support while traveling overseas?</h3>
+            </div>
+            <div class="faq-toggle-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-content">
+              <p>Every passenger traveling under an Airways itinerary is provided with a dedicated 24/7 WhatsApp emergency hotline: <strong>+92 339 0020309</strong>. Whether facing an unexpected delay, needing an emergency hotel extension, or requiring transit guidance, our duty manager is reachable at any hour across any time zone.</p>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- /.faq-accordion-list -->
+
+      <!-- No Results State -->
+      <div id="faq-no-results" class="faq-no-results">
+        <h3>No Matching Questions Found</h3>
+        <p>We couldn't find any questions matching your search keyword. Our concierge team is ready to answer your specific query directly.</p>
+        <a href="../contact.html" class="contact-submit-btn" style="display: inline-flex; text-decoration: none; padding: 12px 24px;">
+          <span>Ask Our Travel Desk</span>
+        </a>
+      </div>
+
+      <!-- Bottom Help Banner -->
+      <div class="faq-help-banner">
+        <div class="faq-help-info">
+          <h3>Still Have Questions?</h3>
+          <p>Can't find the answer you need? Connect directly with our bespoke travel advisors in Karachi.</p>
+        </div>
+        <div class="faq-help-actions">
+          <a href="../contact.html" class="faq-contact-btn">Send Inquiry</a>
+          <a href="https://wa.me/923390020309" target="_blank" rel="noopener noreferrer" class="faq-whatsapp-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.956.818 2.802.818 3.18 0 5.767-2.587 5.767-5.766.001-3.182-2.585-5.804-5.773-5.804zm8.681 5.766c.002 4.802-3.904 8.712-8.706 8.712-.042 0-.083-.001-.125-.002-1.503-.032-2.924-.46-4.18-1.229l-4.721 1.238 1.26-4.598c-.854-1.332-1.338-2.898-1.34-4.551-.002-4.804 3.904-8.715 8.707-8.715 4.802 0 8.705 3.91 8.705 8.715z"/>
+            </svg>
+            <span>WhatsApp Us</span>
+          </a>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- ========================================================
+         SECTION: LUXURY TRAVEL FOOTER (World Landmarks Motif)
+         ======================================================== -->
+    <footer class="luxury-footer" id="contact">
+      <!-- Watermark Architectural Skyline Backdrop -->
+      <div class="footer-skyline-bg" aria-hidden="true"></div>
+
+      <div class="footer-main-container">
+        <!-- 5-Column Grid Matching Reference Design -->
+        <div class="footer-grid">
+          
+          <!-- Column 1: Need Any Help? / Brand -->
+          <div class="footer-col col-help brand-col">
+            <div class="footer-brand-badge">
+              <a href="../index.html#hero" class="footer-brand-logo" aria-label="Airways Travel & Tours">
+                <img src="../assets/airways_logo.png" alt="Airways Travel & Tours" class="footer-logo-img">
+              </a>
+              <span class="footer-brand-tagline">Curated Luxury Journeys</span>
+            </div>
+            <h3 class="footer-heading">Need any help?</h3>
+            <div class="footer-contact-block">
+              <span class="contact-sublabel">Call 24/7 Concierge</span>
+              <a href="tel:02135631822" class="footer-gold-link">021 35631822</a>
+            </div>
+            <div class="footer-contact-block">
+              <span class="contact-sublabel">Direct / WhatsApp Hotline</span>
+              <a href="tel:+923390020309" class="footer-gold-link">+92 339 0020309</a>
+            </div>
+            <div class="footer-contact-block">
+              <span class="contact-sublabel">Mail to our private desk</span>
+              <a href="mailto:airwaystravelss@gmail.com" class="footer-gold-link">airwaystravelss@gmail.com</a>
+            </div>
+            <div class="footer-social-block">
+              <span class="contact-sublabel">Follow our journey</span>
+              <div class="footer-social-icons">
+                <a href="https://www.facebook.com/share/1QckvSnoqT/" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Facebook">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.597 1.323-1.326V1.326C24 .597 23.403 0 22.675 0z"/>
+                  </svg>
+                </a>
+                <a href="https://www.instagram.com/airways.travelofficial" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                </a>
+                <a href="https://www.instagram.com/airways.travelofficial" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: Navigation -->
+          <div class="footer-col">
+            <h3 class="footer-heading">Navigation</h3>
+            <ul class="footer-nav-list">
+              <li><a href="../index.html#hero">Home</a></li>
+              <li><a href="../about.html">About Us</a></li>
+              <li><a href="../services.html">Services Hub</a></li>
+              <li><a href="../services/visa.html">Visa Services</a></li>
+              <li><a href="../destinations.html">Destinations</a></li>
+              <li><a href="index.html">FAQs</a></li>
+              <li><a href="../contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Support -->
+          <div class="footer-col">
+            <h3 class="footer-heading">Support</h3>
+            <ul class="footer-nav-list">
+              <li><a href="tel:02135631822">021 35631822</a></li>
+              <li><a href="tel:+923390020309">+92 339 0020309</a></li>
+              <li><a href="mailto:airwaystravelss@gmail.com">Email Support</a></li>
+              <li><a href="../about.html#partners">Our Partners</a></li>
+              <li><a href="../services/visa.html">Visa Desk</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Services -->
+          <div class="footer-col">
+            <h3 class="footer-heading">Services</h3>
+            <ul class="footer-nav-list">
+              <li><a href="../services.html#services-grid">Flight Bookings</a></li>
+              <li><a href="../services.html#services-grid">Holiday Planning</a></li>
+              <li><a href="../services.html#services-grid">Accommodation</a></li>
+              <li><a href="../services.html#services-grid">Tailored Trips</a></li>
+              <li><a href="../services.html#services-grid">Corporate Travel</a></li>
+              <li><a href="../services/visa.html">Visa Facilitation</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 5: Destinations -->
+          <div class="footer-col">
+            <h3 class="footer-heading">Destinations</h3>
+            <ul class="footer-nav-list">
+              <li><a href="../destinations.html">Japan</a></li>
+              <li><a href="../destinations.html">France</a></li>
+              <li><a href="../destinations.html">Switzerland</a></li>
+              <li><a href="../destinations.html">Pakistan (Skardu)</a></li>
+              <li><a href="../destinations.html">Australia</a></li>
+              <li><a href="../destinations.html">Saudi Arabia</a></li>
+            </ul>
+          </div>
+
+        </div><!-- /.footer-grid -->
+      </div><!-- /.footer-main-container -->
+
+      <!-- Bottom Copyright Strip -->
+      <div class="footer-bottom-bar">
+        <div class="footer-bottom-content">
+          <p>Copyright &copy; 2026 Airways Travel &amp; Tours. All Rights Reserved &nbsp;|&nbsp; Developed with precision by <span class="footer-brand-highlight">Nascent Innovations</span></p>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /.page-container -->
+
+  <!-- Slide-out Mobile Navigation Drawer -->
+  <aside class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <a href="../index.html#hero" class="drawer-brand-logo" aria-label="Airways Travel & Tours Home">
+        <img src="../assets/airways_logo.png" alt="Airways Travel & Tours" class="drawer-logo-img">
+      </a>
+      <button class="drawer-close-btn" id="drawer-close" aria-label="Close menu">&times;</button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="../index.html#hero" class="drawer-link">Home</a></li>
+      <li><a href="../about.html" class="drawer-link">About Us</a></li>
+      <li><a href="../services.html" class="drawer-link">Services</a></li>
+      <li><a href="../services/visa.html" class="drawer-link">Visa Services</a></li>
+      <li><a href="../destinations.html" class="drawer-link">Destinations</a></li>
+      <li><a href="index.html" class="drawer-link" style="color: #38bdf8; font-weight: 700;">FAQs</a></li>
+      <li><a href="../contact.html" class="drawer-link">Contact</a></li>
+    </ul>
+    <div class="drawer-footer">
+      <a href="../contact.html" class="drawer-cta-btn">Contact Our Desk</a>
+    </div>
+  </aside>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Lenis Smooth Scroll
+      if (typeof Lenis !== 'undefined') {
+        const lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+          touchMultiplier: 1.8
+        });
+
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+      }
+
+      // Mobile Drawer logic
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileDrawer = document.getElementById('mobile-drawer');
+      const drawerClose = document.getElementById('drawer-close');
+      const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-cta-btn');
+
+      function openDrawer() {
+        if (!mobileDrawer) return;
+        mobileDrawer.classList.add('open');
+        mobileDrawer.setAttribute('aria-hidden', 'false');
+        if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeDrawer() {
+        if (!mobileDrawer) return;
+        mobileDrawer.classList.remove('open');
+        mobileDrawer.setAttribute('aria-hidden', 'true');
+        if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      if (menuToggle) menuToggle.addEventListener('click', openDrawer);
+      if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+      drawerLinks.forEach(link => link.addEventListener('click', closeDrawer));
+
+      // Fixed nav background on scroll
+      const heroNav = document.querySelector('.hero-nav');
+      window.addEventListener('scroll', () => {
+        if (!heroNav) return;
+        if (window.scrollY > 35) {
+          heroNav.classList.add('nav-scrolled');
+        } else {
+          heroNav.classList.remove('nav-scrolled');
+        }
+      }, { passive: true });
+
+      // FAQ Accordion Interaction
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const btn = item.querySelector('.faq-question-btn');
+        const answerWrap = item.querySelector('.faq-answer-wrap');
+
+        btn.addEventListener('click', () => {
+          const isOpen = item.classList.contains('open');
+
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item && otherItem.classList.contains('open')) {
+              otherItem.classList.remove('open');
+              otherItem.querySelector('.faq-question-btn').setAttribute('aria-expanded', 'false');
+              otherItem.querySelector('.faq-answer-wrap').style.maxHeight = '0px';
+            }
+          });
+
+          if (isOpen) {
+            item.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+            answerWrap.style.maxHeight = '0px';
+          } else {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+            answerWrap.style.maxHeight = answerWrap.scrollHeight + 30 + 'px';
+          }
+        });
+      });
+
+      // Filter & Search Functionality
+      const searchInput = document.getElementById('faq-search-input');
+      const clearBtn = document.getElementById('faq-search-clear');
+      const pills = document.querySelectorAll('.faq-pill-btn');
+      const counter = document.getElementById('faq-counter');
+      const noResults = document.getElementById('faq-no-results');
+
+      let currentCategory = 'all';
+      let currentQuery = '';
+
+      function filterFaqs() {
+        let visibleCount = 0;
+
+        faqItems.forEach(item => {
+          const cat = item.getAttribute('data-category');
+          const text = item.textContent.toLowerCase();
+
+          const matchesCategory = (currentCategory === 'all' || cat === currentCategory);
+          const matchesSearch = (!currentQuery || text.includes(currentQuery));
+
+          if (matchesCategory && matchesSearch) {
+            item.style.display = 'block';
+            visibleCount++;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        if (counter) {
+          counter.textContent = `Showing ${visibleCount} Question${visibleCount === 1 ? '' : 's'}`;
+        }
+
+        if (noResults) {
+          noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+      }
+
+      // Pill Category Click Handler
+      pills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          pills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          currentCategory = pill.getAttribute('data-category');
+          filterFaqs();
+        });
+      });
+
+      // Search Input Handler
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          currentQuery = e.target.value.trim().toLowerCase();
+          if (clearBtn) {
+            clearBtn.style.display = currentQuery.length > 0 ? 'block' : 'none';
+          }
+          filterFaqs();
+        });
+      }
+
+      // Clear Search Handler
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          if (searchInput) {
+            searchInput.value = '';
+            currentQuery = '';
+            clearBtn.style.display = 'none';
+            searchInput.focus();
+            filterFaqs();
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

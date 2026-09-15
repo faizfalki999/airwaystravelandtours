@@ -4492,3 +4492,541 @@ a.footer-gold-link[href^="mailto:"] {
     font-size: 0.74rem;
   }
 }
+
+/* ==========================================================================
+   SECTION: CONTACT PAGE & FAQ PAGE SPECIFIC STYLES
+   ========================================================================== */
+
+/* Top 4-Column Contact Cards Grid */
+.contact-hero-channels {
+  max-width: 1360px;
+  margin: -40px auto 70px;
+  padding: 0 5vw;
+  position: relative;
+  z-index: 10;
+}
+
+.contact-channels-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.contact-feature-card {
+  background: rgba(14, 42, 60, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 20px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contact-feature-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(56, 189, 248, 0.55);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.5), 0 0 24px rgba(56, 189, 248, 0.15);
+}
+
+.contact-feature-card:hover::before {
+  opacity: 1;
+}
+
+.contact-feature-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.contact-feature-card:hover .contact-feature-icon {
+  transform: scale(1.08);
+  background: rgba(56, 189, 248, 0.22);
+  color: #7dd3fc;
+}
+
+.contact-feature-label {
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7dd3fc;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.contact-feature-val {
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.contact-feature-sub {
+  font-size: 0.86rem;
+  color: #94a3b8;
+  margin-top: auto;
+  line-height: 1.45;
+}
+
+/* Contact Office Location Highlight */
+.contact-map-card {
+  background: rgba(14, 42, 60, 0.5);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 20px;
+  padding: 26px;
+  margin-top: 24px;
+}
+
+.office-hours-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+}
+
+.office-hours-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  font-size: 0.92rem;
+}
+
+.office-hours-row:last-child {
+  border-bottom: none;
+}
+
+.office-hours-day {
+  color: #e2e8f0;
+}
+
+.office-hours-time {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+/* WhatsApp Highlight Button */
+.whatsapp-chat-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.96rem;
+  padding: 14px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 18px rgba(37, 211, 102, 0.3);
+  width: 100%;
+  margin-top: 18px;
+}
+
+.whatsapp-chat-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+  filter: brightness(1.06);
+}
+
+/* ==========================================================================
+   FAQS PAGE STYLES
+   ========================================================================== */
+.faqs-section {
+  padding: 70px 5vw 120px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* FAQ Live Search & Category Toolbar */
+.faq-toolbar {
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.faq-search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.faq-search-input {
+  width: 100%;
+  background: rgba(14, 42, 60, 0.65);
+  border: 1.5px solid rgba(56, 189, 248, 0.25);
+  border-radius: 16px;
+  padding: 18px 22px 18px 52px;
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.faq-search-input:focus {
+  outline: none;
+  border-color: #38bdf8;
+  background: rgba(14, 42, 60, 0.9);
+  box-shadow: 0 0 24px rgba(56, 189, 248, 0.25), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.faq-search-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #38bdf8;
+  pointer-events: none;
+}
+
+.faq-search-clear {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 4px;
+  display: none;
+  transition: color 0.2s;
+}
+
+.faq-search-clear:hover {
+  color: #ffffff;
+}
+
+/* Category Filter Pills */
+.faq-filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.faq-pill-btn {
+  background: rgba(14, 42, 60, 0.5);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 999px;
+  padding: 9px 20px;
+  color: #94a3b8;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.faq-pill-btn:hover {
+  color: #ffffff;
+  border-color: rgba(56, 189, 248, 0.5);
+  background: rgba(14, 42, 60, 0.85);
+}
+
+.faq-pill-btn.active {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.25) 0%, rgba(14, 42, 60, 0.9) 100%);
+  border-color: #38bdf8;
+  color: #38bdf8;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.2);
+}
+
+.faq-counter-indicator {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin-left: auto;
+}
+
+/* FAQ Accordion List */
+.faq-accordion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.faq-item {
+  background: rgba(14, 42, 60, 0.55);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.faq-item.open {
+  background: rgba(14, 42, 60, 0.85);
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35), 0 0 20px rgba(56, 189, 248, 0.12);
+}
+
+.faq-question-btn {
+  width: 100%;
+  padding: 24px 28px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  cursor: pointer;
+  color: inherit;
+  font-family: inherit;
+}
+
+.faq-question-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+}
+
+.faq-category-badge {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  color: #7dd3fc;
+  white-space: nowrap;
+}
+
+.faq-question-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.4;
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+.faq-item.open .faq-question-text {
+  color: #38bdf8;
+}
+
+.faq-toggle-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #38bdf8;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+}
+
+.faq-item.open .faq-toggle-icon {
+  transform: rotate(180deg);
+  background: rgba(56, 189, 248, 0.2);
+}
+
+.faq-answer-wrap {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+
+.faq-item.open .faq-answer-wrap {
+  opacity: 1;
+}
+
+.faq-answer-content {
+  padding: 0 28px 26px;
+  color: #cbd5e1;
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+.faq-answer-content p {
+  margin: 0 0 12px;
+}
+
+.faq-answer-content p:last-child {
+  margin-bottom: 0;
+}
+
+.faq-answer-content ul {
+  margin: 8px 0 12px 20px;
+  padding: 0;
+}
+
+.faq-answer-content li {
+  margin-bottom: 6px;
+}
+
+.faq-no-results {
+  text-align: center;
+  padding: 50px 20px;
+  background: rgba(14, 42, 60, 0.4);
+  border: 1px dashed rgba(56, 189, 248, 0.25);
+  border-radius: 20px;
+  display: none;
+}
+
+.faq-no-results h3 {
+  color: #ffffff;
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.faq-no-results p {
+  color: #94a3b8;
+  margin-bottom: 20px;
+}
+
+/* Bottom Still Have Questions Banner */
+.faq-help-banner {
+  margin-top: 60px;
+  background: linear-gradient(135deg, rgba(14, 42, 60, 0.8) 0%, rgba(7, 23, 34, 0.95) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 24px;
+  padding: 44px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+.faq-help-info h3 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin: 0 0 8px;
+}
+
+.faq-help-info p {
+  color: #94a3b8;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.faq-help-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.faq-contact-btn {
+  background: #38bdf8;
+  color: #071722;
+  font-weight: 700;
+  padding: 13px 26px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.faq-contact-btn:hover {
+  background: #7dd3fc;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+  transform: translateY(-2px);
+}
+
+.faq-whatsapp-btn {
+  background: rgba(37, 211, 102, 0.15);
+  border: 1px solid #25D366;
+  color: #25D366;
+  font-weight: 700;
+  padding: 13px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+.faq-whatsapp-btn:hover {
+  background: #25D366;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+}
+
+/* Responsive Rules for Contact & FAQs */
+@media (max-width: 1024px) {
+  .contact-channels-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .faq-help-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .faq-help-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .faq-contact-btn,
+  .faq-whatsapp-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-hero-channels {
+    margin-top: -20px;
+    margin-bottom: 40px;
+  }
+  .contact-channels-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .contact-feature-card {
+    padding: 22px 18px;
+  }
+  .faq-question-btn {
+    padding: 18px 20px;
+  }
+  .faq-answer-content {
+    padding: 0 20px 20px;
+  }
+  .faq-filter-pills {
+    gap: 8px;
+  }
+  .faq-pill-btn {
+    padding: 7px 14px;
+    font-size: 0.8rem;
+  }
+}
