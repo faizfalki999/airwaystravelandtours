@@ -164,10 +164,6 @@ function initDestinationsGrid(options = {}) {
         </div>
         <div class="service-card-body">
           <h3 class="service-card-title">${dest.name}</h3>
-          <div class="dest-card-action-hint">
-            <span>Explore Options</span>
-            <span aria-hidden="true">→</span>
-          </div>
         </div>
       </a>
     `;

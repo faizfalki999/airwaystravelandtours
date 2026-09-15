@@ -4162,12 +4162,25 @@ a.footer-gold-link[href^="mailto:"] {
   margin: 0 auto;
   perspective: 1200px;
 }
-
-/* Bento Card Span Variations */
+/* Bento Card Span Variations & Aesthetics */
 .destinations-bento-grid .service-feature-card {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #091c29;
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
+  transition: transform 0.25s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.destinations-bento-grid .service-feature-card:hover {
+  border-color: rgba(56, 189, 248, 0.65);
+  box-shadow: 0 20px 45px -8px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.25);
 }
 
 /* Tall portrait cards */
@@ -4175,26 +4188,14 @@ a.footer-gold-link[href^="mailto:"] {
   grid-row: span 2;
 }
 
-.destinations-bento-grid .bento-tall .service-card-banner {
-  height: 290px;
-}
-
 /* Extra-tall standout cards */
 .destinations-bento-grid .bento-extra-tall {
   grid-row: span 3;
 }
 
-.destinations-bento-grid .bento-extra-tall .service-card-banner {
-  height: 440px;
-}
-
 /* Wide cards spanning 2 columns */
 .destinations-bento-grid .bento-wide {
   grid-column: span 2;
-}
-
-.destinations-bento-grid .bento-wide .service-card-banner {
-  height: 210px;
 }
 
 /* Large featured card spanning 2 columns and 2 rows */
@@ -4203,33 +4204,86 @@ a.footer-gold-link[href^="mailto:"] {
   grid-row: span 2;
 }
 
-.destinations-bento-grid .bento-feature-large .service-card-banner {
-  height: 290px;
+/* Full-bleed responsive image banner filling available height */
+.destinations-bento-grid .service-card-banner {
+  flex: 1 1 auto;
+  min-height: 0;
+  height: auto !important;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Standard tile banner height */
-.destinations-bento-grid .bento-standard .service-card-banner {
-  height: 140px;
+.destinations-bento-grid .service-card-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+  filter: brightness(1.03) contrast(1.05);
 }
 
-/* Bento card link indicators */
-.dest-card-action-hint {
-  display: inline-flex;
+.destinations-bento-grid .service-feature-card:hover .service-card-banner img {
+  transform: scale(1.08);
+  filter: brightness(1.1) contrast(1.08);
+}
+
+/* Crystal-clear overlay that lets photography shine */
+.destinations-bento-grid .service-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(7, 23, 34, 0.45) 100%);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.destinations-bento-grid .service-feature-card:hover .service-banner-overlay {
+  opacity: 0.7;
+}
+
+/* Emoji icon badge positioned nicely in photo corner */
+.destinations-bento-grid .service-icon-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 16px;
+  width: 38px;
+  height: 38px;
+  font-size: 1.15rem;
+  border-radius: 10px;
+  background: rgba(7, 23, 34, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
   align-items: center;
-  gap: 6px;
-  margin-top: auto;
-  padding-top: 10px;
-  color: #38bdf8;
-  font-size: 0.84rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  transition: transform 0.25s ease, color 0.25s ease;
+  justify-content: center;
+  z-index: 2;
 }
 
-.service-feature-card:hover .dest-card-action-hint {
-  transform: translateX(4px);
-  color: #7dd3fc;
+/* Sleek compact destination card body with zero empty space */
+.destinations-bento-grid .service-card-body {
+  flex: 0 0 auto;
+  padding: 14px 18px 15px;
+  background: rgba(7, 23, 34, 0.95);
+  border-top: 1px solid rgba(56, 189, 248, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.destinations-bento-grid .service-card-title {
+  margin: 0;
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  transition: color 0.25s ease;
+}
+
+.destinations-bento-grid .service-feature-card:hover .service-card-title {
+  color: #38bdf8;
 }
 
 /* Responsive adjustments for About Us, Services, Visa, and Destinations */
@@ -4385,7 +4439,8 @@ a.footer-gold-link[href^="mailto:"] {
 @media (max-width: 640px) {
   .destinations-bento-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    grid-auto-rows: 280px;
+    gap: 18px;
   }
   .destinations-bento-grid .bento-tall,
   .destinations-bento-grid .bento-extra-tall,
@@ -4395,7 +4450,8 @@ a.footer-gold-link[href^="mailto:"] {
     grid-row: span 1 !important;
   }
   .destinations-bento-grid .service-card-banner {
-    height: 160px !important;
+    flex: 1 1 auto;
+    height: auto !important;
   }
 }
 
