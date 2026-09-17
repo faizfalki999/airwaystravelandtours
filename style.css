@@ -682,12 +682,13 @@ img {
   font-family: var(--font-serif-luxury);
   font-size: clamp(3.2rem, 5.6vw, 5.6rem);
   font-weight: 800;
-  line-height: 1.05;
+  line-height: 1.15;
   color: #0b1320;
   letter-spacing: -0.025em;
   margin-bottom: 34px;
   text-rendering: optimizeLegibility;
   text-shadow: 0 4px 30px rgba(255, 255, 255, 0.9), 0 2px 12px rgba(186, 230, 253, 0.6);
+  overflow: visible;
 }
 
 .hero-headline .headline-word-lead {
@@ -711,6 +712,11 @@ img {
   display: inline-block;
   font-weight: 900;
   letter-spacing: -0.02em;
+  padding-top: 0.05em;
+  padding-bottom: 0.25em;
+  padding-right: 0.1em;
+  margin-top: -0.05em;
+  margin-bottom: -0.25em;
   background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 45%, #1d4ed8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -2651,8 +2657,9 @@ a.footer-gold-link[href^="mailto:"] {
 
   .hero-headline {
     font-size: clamp(2.8rem, 5.2vw, 4.2rem);
-    line-height: 1.06;
+    line-height: 1.14;
     margin-bottom: 24px;
+    overflow: visible;
   }
 
   .hero-airplane-stage {
@@ -2781,9 +2788,10 @@ a.footer-gold-link[href^="mailto:"] {
 
   .hero-headline {
     font-size: clamp(2.4rem, 11vw, 3.6rem);
-    line-height: 1.08;
+    line-height: 1.15;
     margin-bottom: 24px;
     text-shadow: 0 3px 20px rgba(255, 255, 255, 0.95);
+    overflow: visible;
   }
 
   .hero-actions-row {
