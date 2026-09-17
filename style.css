@@ -194,7 +194,7 @@ img {
 }
 
 /* --------------------------------------------------------------------------
-   Top Navigation Bar (Fixed at the top with high z-index)
+   Top Navigation Bar (Glossy Transparent White Glassmorphism)
    -------------------------------------------------------------------------- */
 .hero-nav {
   position: fixed;
@@ -207,18 +207,25 @@ img {
   align-items: center;
   justify-content: space-between;
   padding: 18px 5vw 16px;
-  background: linear-gradient(180deg, rgba(8, 17, 26, 0.65) 0%, rgba(8, 17, 26, 0.2) 65%, transparent 100%);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.4);
   pointer-events: auto;
-  transition: background 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.35s ease, padding 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
   will-change: background, padding;
 }
 
 .hero-nav.nav-scrolled {
-  background: rgba(8, 20, 30, 0.88);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  padding: 14px 5vw;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.36);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.14),
+              inset 0 1px 1.5px rgba(255, 255, 255, 0.65),
+              inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+  padding: 13px 5vw;
 }
 
 
@@ -326,10 +333,11 @@ img {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   position: relative;
   padding: 6px 0;
-  transition: color 0.25s ease;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
 }
 
 .nav-link::after {
