@@ -5105,14 +5105,13 @@ a.footer-gold-link[href^="mailto:"] {
 .destinations-bento-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 240px;
-  grid-auto-flow: dense;
   gap: 24px;
   max-width: 1380px;
   margin: 0 auto;
   perspective: 1200px;
 }
-/* Bento Card Span Variations & Aesthetics */
+
+/* Uniform Destination Card Styling - Zero Useless Space */
 .destinations-bento-grid .service-feature-card {
   text-decoration: none;
   color: inherit;
@@ -5125,40 +5124,31 @@ a.footer-gold-link[href^="mailto:"] {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
-  transition: transform 0.25s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  grid-column: span 1 !important;
+  grid-row: span 1 !important;
 }
 
 .destinations-bento-grid .service-feature-card:hover {
   border-color: rgba(56, 189, 248, 0.65);
   box-shadow: 0 20px 45px -8px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.25);
+  transform: translateY(-5px);
 }
 
-/* Tall portrait cards */
-.destinations-bento-grid .bento-tall {
-  grid-row: span 2;
+/* Ensure all legacy bento span variants resolve to 1x1 cells with zero holes */
+.destinations-bento-grid .bento-tall,
+.destinations-bento-grid .bento-extra-tall,
+.destinations-bento-grid .bento-wide,
+.destinations-bento-grid .bento-feature-large,
+.destinations-bento-grid .bento-standard {
+  grid-column: span 1 !important;
+  grid-row: span 1 !important;
 }
 
-/* Extra-tall standout cards */
-.destinations-bento-grid .bento-extra-tall {
-  grid-row: span 3;
-}
-
-/* Wide cards spanning 2 columns */
-.destinations-bento-grid .bento-wide {
-  grid-column: span 2;
-}
-
-/* Large featured card spanning 2 columns and 2 rows */
-.destinations-bento-grid .bento-feature-large {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-
-/* Full-bleed responsive image banner filling available height */
+/* Crisp uniform banner height eliminating mismatched gaps */
 .destinations-bento-grid .service-card-banner {
-  flex: 1 1 auto;
-  min-height: 0;
-  height: auto !important;
+  flex: 0 0 auto;
+  height: 220px !important;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -5237,6 +5227,13 @@ a.footer-gold-link[href^="mailto:"] {
 }
 
 /* Responsive adjustments for About Us, Services, Visa, and Destinations */
+@media (max-width: 1200px) {
+  .destinations-bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
 @media (max-width: 1100px) {
   .services-hub-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -5249,17 +5246,10 @@ a.footer-gold-link[href^="mailto:"] {
 @media (max-width: 1024px) {
   .destinations-bento-grid {
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: auto;
-  }
-  .destinations-bento-grid .bento-tall,
-  .destinations-bento-grid .bento-extra-tall,
-  .destinations-bento-grid .bento-wide,
-  .destinations-bento-grid .bento-feature-large {
-    grid-column: span 1;
-    grid-row: span 1;
+    gap: 18px;
   }
   .destinations-bento-grid .service-card-banner {
-    height: 180px !important;
+    height: 190px !important;
   }
   .footer-main-container,
   .about-footer-container {
@@ -5389,19 +5379,10 @@ a.footer-gold-link[href^="mailto:"] {
 @media (max-width: 640px) {
   .destinations-bento-grid {
     grid-template-columns: 1fr;
-    grid-auto-rows: 280px;
-    gap: 18px;
-  }
-  .destinations-bento-grid .bento-tall,
-  .destinations-bento-grid .bento-extra-tall,
-  .destinations-bento-grid .bento-wide,
-  .destinations-bento-grid .bento-feature-large {
-    grid-column: span 1 !important;
-    grid-row: span 1 !important;
+    gap: 16px;
   }
   .destinations-bento-grid .service-card-banner {
-    flex: 1 1 auto;
-    height: auto !important;
+    height: 205px !important;
   }
 }
 
