@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Services — Airways Travel &amp; Tours</title>
+    <!-- Favicon / Brand App Icon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
   <meta name="description" content="Discover Airways Travel & Tours' bespoke travel services: Flight bookings, worldwide holiday planning, luxury accommodations, tailored expeditions, corporate delegations, and international visa facilitation.">
   
   <!-- Google Fonts: Playfair Display, Outfit, Plus Jakarta Sans, Syne -->
@@ -32,8 +35,46 @@
         <ul class="nav-links">
           <li><a href="index.html#hero" class="nav-link">HOME</a></li>
           <li><a href="about.html" class="nav-link">ABOUT</a></li>
-          <li><a href="services.html" class="nav-link" style="color: #38bdf8; font-weight: 700;">SERVICES</a></li>
-          <li><a href="services/visa.html" class="nav-link">VISAS</a></li>
+          <li class="nav-item-dropdown">
+            <a href="services.html" class="nav-link nav-dropdown-trigger" style="color: #38bdf8; font-weight: 700;" aria-haspopup="true" aria-expanded="false">
+              SERVICES
+              <svg class="dropdown-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+                        <div class="nav-dropdown-menu" role="menu">
+              <div class="nav-dropdown-inner">
+                <a href="services.html" class="nav-dropdown-item" role="menuitem">
+                  <span class="dropdown-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>
+                  <div class="dropdown-item-text">
+                    <span class="dropdown-item-title">All Services</span>
+                    <span class="dropdown-item-desc">Comprehensive travel solutions</span>
+                  </div>
+                </a>
+                <a href="services/visa.html" class="nav-dropdown-item" role="menuitem">
+                  <span class="dropdown-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="9" cy="10" r="2.5"></circle><line x1="14" y1="9" x2="18" y2="9"></line><line x1="14" y1="12" x2="18" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg></span>
+                  <div class="dropdown-item-text">
+                    <span class="dropdown-item-title">Visa Facilitation</span>
+                    <span class="dropdown-item-desc">Global visa consultation &amp; filing</span>
+                  </div>
+                </a>
+                <a href="hajj-umrah.html" class="nav-dropdown-item" role="menuitem">
+                  <span class="dropdown-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="6" width="16" height="14" rx="2"></rect><line x1="4" y1="11" x2="20" y2="11"></line><path d="M12 2l3 4H9z"></path></svg></span>
+                  <div class="dropdown-item-text">
+                    <span class="dropdown-item-title">Hajj &amp; Umrah</span>
+                    <span class="dropdown-item-desc">VIP pilgrimage packages &amp; luxury stays</span>
+                  </div>
+                </a>
+                <a href="ziyarat.html" class="nav-dropdown-item" role="menuitem">
+                  <span class="dropdown-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 0 0 0 18v-4a5 5 0 0 1 0-10V3z"></path><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5"></path><circle cx="16" cy="7" r="1" fill="currentColor"></circle></svg></span>
+                  <div class="dropdown-item-text">
+                    <span class="dropdown-item-title">Religious Travel &amp; Ziyarat</span>
+                    <span class="dropdown-item-desc">Sacred heritage &amp; spiritual tours</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </li>
           <li><a href="destinations.html" class="nav-link">DESTINATIONS</a></li>
           <li><a href="faqs.html" class="nav-link">FAQS</a></li>
           <li><a href="contact.html" class="nav-link">CONTACT</a></li>
@@ -51,6 +92,11 @@
 
     <!-- Subpage Hero Header -->
     <header class="subpage-hero-section">
+      <div class="subpage-hero-bg-media" aria-hidden="true">
+        <img src="assets/airplane_flight_clean.jpg" alt="Curated Travel & Global Aviation Services" class="subpage-hero-bg-img" loading="eager">
+        <div class="subpage-hero-gradient-overlay"></div>
+        <div class="subpage-hero-ambient-glow"></div>
+      </div>
       <div class="subpage-hero-content">
         <div class="subpage-breadcrumb">
           <a href="index.html#hero">Home</a>
@@ -67,14 +113,14 @@
 
     <!-- Services Grid Section -->
     <main class="services-hub-section" id="services-grid">
-      <div class="services-hub-grid">
+            <div class="services-hub-grid">
 
         <!-- Card 1: Flight Bookings -->
         <article class="service-hub-card">
           <div class="service-hub-banner">
             <img src="assets/dest_santorini.jpg" alt="Flight Bookings" loading="lazy">
             <div class="service-hub-overlay"></div>
-            <div class="service-hub-icon" aria-hidden="true">✈</div>
+            <div class="service-hub-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3.5c-.5-.5-2.5 0-4 1.5L13.5 8.5 5.3 6.7c-.6-.1-1.2.1-1.5.7l-.3.6c-.4.8-.1 1.7.6 2.1l4.7 2.8-2.6 2.6-2.5-.5c-.4-.1-.8.1-1 .4l-.4.5c-.3.4-.2.9.2 1.2l2.6 1.7 1.7 2.6c.3.4.8.5 1.2.2l.5-.4c.3-.2.5-.6.4-1l-.5-2.5 2.6-2.6 2.8 4.7c.4.7 1.3 1 2.1.6l.6-.3c.6-.3.8-.9.7-1.5z"></path></svg></div>
           </div>
           <div class="service-hub-body">
             <h2 class="service-hub-title">Flight Bookings</h2>
@@ -82,8 +128,8 @@
               Seamless commercial, first-class, and private charter flight reservations with optimized routing, seat preferences, and 24/7 rebooking assistance.
             </p>
             <a href="#contact-section" class="service-hub-action-row select-service-trigger" data-service="Flight Bookings">
-              <span>Inquire About Flights</span>
-              <span aria-hidden="true">→</span>
+              <span>Book Flight Itinerary</span>
+              <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
         </article>
@@ -93,7 +139,7 @@
           <div class="service-hub-banner">
             <img src="assets/dest_tropical.jpg" alt="Holiday Planning" loading="lazy">
             <div class="service-hub-overlay"></div>
-            <div class="service-hub-icon" aria-hidden="true">🌴</div>
+            <div class="service-hub-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg></div>
           </div>
           <div class="service-hub-body">
             <h2 class="service-hub-title">Holiday Planning</h2>
@@ -101,8 +147,8 @@
               Comprehensive worldwide holiday itineraries, seasonal family vacations, and honeymoon escapes crafted with local insight and luxury hospitality.
             </p>
             <a href="#contact-section" class="service-hub-action-row select-service-trigger" data-service="Holiday Planning">
-              <span>Plan Your Vacation</span>
-              <span aria-hidden="true">→</span>
+              <span>Plan Tailored Holiday</span>
+              <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
         </article>
@@ -112,7 +158,7 @@
           <div class="service-hub-banner">
             <img src="assets/dest_swiss_alps.jpg" alt="Accommodation & Transfers" loading="lazy">
             <div class="service-hub-overlay"></div>
-            <div class="service-hub-icon" aria-hidden="true">🏨</div>
+            <div class="service-hub-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"></path><path d="M5 21V7l8-4v18"></path><path d="M19 21V11l-6-4"></path><path d="M9 9h1"></path><path d="M9 13h1"></path><path d="M9 17h1"></path></svg></div>
           </div>
           <div class="service-hub-body">
             <h2 class="service-hub-title">Accommodation &amp; Transfers</h2>
@@ -121,7 +167,7 @@
             </p>
             <a href="#contact-section" class="service-hub-action-row select-service-trigger" data-service="Accommodation & Transfers">
               <span>Reserve Stays &amp; Transit</span>
-              <span aria-hidden="true">→</span>
+              <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
         </article>
@@ -131,7 +177,7 @@
           <div class="service-hub-banner">
             <img src="assets/dest_skardu.jpg" alt="Tailored Trips" loading="lazy">
             <div class="service-hub-overlay"></div>
-            <div class="service-hub-icon" aria-hidden="true">🧭</div>
+            <div class="service-hub-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg></div>
           </div>
           <div class="service-hub-body">
             <h2 class="service-hub-title">Tailored Trips</h2>
@@ -140,7 +186,7 @@
             </p>
             <a href="#contact-section" class="service-hub-action-row select-service-trigger" data-service="Tailored Trips">
               <span>Design Custom Route</span>
-              <span aria-hidden="true">→</span>
+              <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
         </article>
@@ -150,7 +196,7 @@
           <div class="service-hub-banner">
             <img src="assets/dest_japan.jpg" alt="Corporate Travel" loading="lazy">
             <div class="service-hub-overlay"></div>
-            <div class="service-hub-icon" aria-hidden="true">💼</div>
+            <div class="service-hub-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div>
           </div>
           <div class="service-hub-body">
             <h2 class="service-hub-title">Corporate Travel</h2>
@@ -159,28 +205,67 @@
             </p>
             <a href="#contact-section" class="service-hub-action-row select-service-trigger" data-service="Corporate Travel">
               <span>Corporate Consultation</span>
-              <span aria-hidden="true">→</span>
+              <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
         </article>
 
-        <!-- Card 6: Visa Services (Featured Card linking to /services/visa) -->
+        <!-- Card 6: Hajj & Umrah Pilgrimage -->
+        <article class="service-hub-card featured-card" id="religious-travel">
+          <div class="service-featured-badge">Sacred Pilgrimage</div>
+          <div class="service-hub-banner">
+            <img src="assets/dest_hajj_umrah.jpg" alt="Hajj and Umrah Pilgrimage Makkah" loading="lazy">
+            <div class="service-hub-overlay"></div>
+            <div class="service-hub-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="6" width="16" height="14" rx="1.5"></rect><line x1="4" y1="11" x2="20" y2="11"></line><path d="M12 2l3 4H9z"></path></svg></div>
+          </div>
+          <div class="service-hub-body">
+            <h2 class="service-hub-title">Hajj &amp; Umrah Pilgrimage</h2>
+            <p class="service-hub-desc">
+              Tailor-made luxury Umrah and comprehensive Hajj packages with 5-star hotel suites facing the Holy Haram in Makkah &amp; Madinah, VIP private transport, Nusuk registration support, and dedicated spiritual assistance.
+            </p>
+            <a href="hajj-umrah.html" class="service-hub-action-row">
+              <span>Explore Hajj &amp; Umrah Packages</span>
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 7: Religious Travel & Ziyarat -->
+        <article class="service-hub-card" id="ziyarat-travel">
+          <div class="service-featured-badge" style="background: rgba(16, 185, 129, 0.22); border-color: #10b981;">Spiritual Heritage</div>
+          <div class="service-hub-banner">
+            <img src="assets/dest_religious_travel.jpg" alt="Religious Travel and Ziyarat Madinah" loading="lazy">
+            <div class="service-hub-overlay"></div>
+            <div class="service-hub-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 0 0 0 18v-4a5 5 0 0 1 0-10V3z"></path><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5"></path><circle cx="16" cy="7" r="1" fill="currentColor"></circle></svg></div>
+          </div>
+          <div class="service-hub-body">
+            <h2 class="service-hub-title">Religious Travel &amp; Ziyarat</h2>
+            <p class="service-hub-desc">
+              Curated spiritual journeys and sacred heritage tours across the Islamic world: comprehensive historical Ziyarat in Makkah, Madinah, Jordan, Jerusalem, Karbala, and Najaf with certified scholar guides and comfortable accommodations.
+            </p>
+            <a href="ziyarat.html" class="service-hub-action-row">
+              <span>Explore Sacred Ziyarat Tours</span>
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 8: Visa Services -->
         <article class="service-hub-card featured-card">
           <div class="service-featured-badge">Featured Service</div>
           <div class="service-hub-banner">
             <img src="assets/travel_objects.jpg" alt="International Visa Services" loading="lazy">
             <div class="service-hub-overlay"></div>
-            <div class="service-hub-icon" aria-hidden="true">🛂</div>
+            <div class="service-hub-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="9" cy="10" r="2.5"></circle><line x1="14" y1="9" x2="18" y2="9"></line><line x1="14" y1="12" x2="18" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg></div>
           </div>
           <div class="service-hub-body">
             <h2 class="service-hub-title">Visa Services</h2>
             <p class="service-hub-desc">
               Streamlined worldwide visa consultation, document auditing, embassy appointment scheduling, and fast-track submission assistance for hassle-free travel.
             </p>
-            <!-- Primary Link pointing to /services/visa -->
             <a href="services/visa.html" class="service-hub-action-row">
               <span>Explore Visa Countries &amp; Rates</span>
-              <span aria-hidden="true">→</span>
+              <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
         </article>
@@ -194,58 +279,106 @@
         <span class="about-section-label" style="color: #7dd3fc;">GET IN TOUCH</span>
         <h2 class="about-approach-title">Consult Our Travel Specialists</h2>
         <p class="about-approach-text" style="font-size: 1.05rem;">
-          Whether you need flights, a tailor-made holiday, corporate coordination, or visa assistance, our Karachi advisors are here to help.
+          Whether you need flights, a tailor-made holiday, Hajj &amp; Umrah pilgrimage, corporate coordination, or visa assistance, our Karachi advisors are here to help.
         </p>
 
         <div class="contact-layout-grid" id="contact-form-container">
-          <!-- Column 1: Contact Form -->
-          <div class="contact-form-panel">
-            <h3 class="contact-form-title">Send a Request</h3>
-            <p class="contact-form-desc">Select your desired service and provide your travel preferences.</p>
+          <!-- Column 1: Request a Quote Form -->
+          <div class="contact-form-panel quote-form-card" id="quote-form-panel">
+            <span class="quote-form-badge">AIRWAYS TRAVEL &amp; TOURS</span>
+            <h3 class="quote-form-title">Request a Quote</h3>
+            <p class="quote-form-desc">Provide your travel requirements and our Karachi advisors will curate tailored options with competitive pricing.</p>
 
-            <form id="services-inquiry-form" onsubmit="event.preventDefault(); document.getElementById('contact-form-success').style.display = 'block'; this.reset();">
-              <div class="contact-form-group">
-                <label for="contact-name" class="contact-form-label">Your Full Name</label>
-                <input type="text" id="contact-name" class="contact-form-input" placeholder="e.g. Tariq Mansoor" required>
+            <form id="request-quote-form" class="quote-form" novalidate>
+              <!-- Two-column grid of fields: Row 1 (Name, Email), Row 2 (Phone, Select Service) -->
+              <div class="quote-fields-grid">
+                <!-- Row 1, Col 1: Full Name* (Required text input) -->
+                <div class="quote-field-group">
+                  <label for="quote-name" class="quote-field-label">Full Name <span class="quote-required-star">*</span></label>
+                  <div class="quote-input-wrapper">
+                    <input type="text" id="quote-name" name="fullName" class="quote-input" placeholder="e.g. Tariq Mansoor" required autocomplete="name">
+                    <span class="quote-error-msg" id="quote-name-error">Please enter your full name</span>
+                  </div>
+                </div>
+
+                <!-- Row 1, Col 2: Email Address (Email input) -->
+                <div class="quote-field-group">
+                  <label for="quote-email" class="quote-field-label">Email Address</label>
+                  <div class="quote-input-wrapper">
+                    <input type="email" id="quote-email" name="email" class="quote-input" placeholder="e.g. name@example.com" autocomplete="email">
+                  </div>
+                </div>
+
+                <!-- Row 2, Col 1: Phone Number* (Required tel input) -->
+                <div class="quote-field-group">
+                  <label for="quote-phone" class="quote-field-label">Phone Number <span class="quote-required-star">*</span></label>
+                  <div class="quote-input-wrapper">
+                    <input type="tel" id="quote-phone" name="phone" class="quote-input" placeholder="e.g. +92 339 0020309" required autocomplete="tel">
+                    <span class="quote-error-msg" id="quote-phone-error">Please enter a valid phone number</span>
+                  </div>
+                </div>
+
+                <!-- Row 2, Col 2: Select Service (Custom Dropdown) -->
+                <div class="quote-field-group">
+                  <label id="quote-service-label" class="quote-field-label">Select Service</label>
+                  <div class="custom-select-wrapper" id="custom-service-select">
+                    <!-- Hidden input to store chosen service value -->
+                    <input type="hidden" name="service" id="contact-service" value="">
+
+                    <!-- Trigger Box: Rounded field with rotating chevron -->
+                    <button type="button" class="custom-select-trigger" id="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="quote-service-label custom-select-trigger">
+                      <span class="custom-select-selected" id="custom-select-text">Select Service</span>
+                      <svg class="custom-select-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+
+                    <!-- Scrollable Panel listing options in exact order -->
+                    <div class="custom-select-panel" id="custom-select-panel" role="listbox" aria-labelledby="quote-service-label" tabindex="-1">
+                      <div class="custom-select-option" role="option" data-value="Corporate Travel" tabindex="0">Corporate Travel</div>
+                      <div class="custom-select-option" role="option" data-value="E-Ticket Services" tabindex="0">E-Ticket Services</div>
+                      <div class="custom-select-option" role="option" data-value="International Reservations" tabindex="0">International Reservations</div>
+                      <div class="custom-select-option" role="option" data-value="Domestic Reservations" tabindex="0">Domestic Reservations</div>
+                      <div class="custom-select-option" role="option" data-value="International Rail Booking" tabindex="0">International Rail Booking</div>
+                      <div class="custom-select-option" role="option" data-value="Car Rental" tabindex="0">Car Rental</div>
+                      <div class="custom-select-option" role="option" data-value="Worldwide Visa" tabindex="0">Worldwide Visa</div>
+                      <div class="custom-select-option" role="option" data-value="Passport Services" tabindex="0">Passport Services</div>
+                      <div class="custom-select-option" role="option" data-value="NADRA Services" tabindex="0">NADRA Services</div>
+                      <div class="custom-select-option" role="option" data-value="Travel Insurance" tabindex="0">Travel Insurance</div>
+                      <div class="custom-select-option" role="option" data-value="Holiday Packages" tabindex="0">Holiday Packages</div>
+                      <div class="custom-select-option" role="option" data-value="Cruise Packages" tabindex="0">Cruise Packages</div>
+                      <div class="custom-select-option" role="option" data-value="MICE Group Tours" tabindex="0">MICE Group Tours</div>
+                      <div class="custom-select-option" role="option" data-value="Hajj Services" tabindex="0">Hajj Services</div>
+                      <div class="custom-select-option" role="option" data-value="Umrah Services" tabindex="0">Umrah Services</div>
+                      <div class="custom-select-option" role="option" data-value="Ziarat Services" tabindex="0">Ziarat Services</div>
+                      <div class="custom-select-option" role="option" data-value="Other" tabindex="0">Other</div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div class="contact-form-group">
-                <label for="contact-email" class="contact-form-label">Email Address</label>
-                <input type="email" id="contact-email" class="contact-form-input" placeholder="e.g. name@example.com" required>
+              <!-- Full-width "Additional Details (Optional)" textarea below the grid -->
+              <div class="quote-field-group quote-full-width">
+                <label for="quote-details" class="quote-field-label">Additional Details (Optional)</label>
+                <div class="quote-input-wrapper">
+                  <textarea id="quote-details" name="additionalDetails" class="quote-textarea" placeholder="Provide dates, passenger count, preferred destinations, or any special requirements..."></textarea>
+                </div>
               </div>
 
-              <div class="contact-form-group">
-                <label for="contact-service" class="contact-form-label">Service of Interest</label>
-                <select id="contact-service" class="contact-form-input" style="color: #ffffff; background: rgba(7, 23, 34, 0.85);">
-                  <option value="Flight Bookings">Flight Bookings</option>
-                  <option value="Holiday Planning">Holiday Planning</option>
-                  <option value="Accommodation & Transfers">Accommodation &amp; Transfers</option>
-                  <option value="Tailored Trips">Tailored Trips</option>
-                  <option value="Corporate Travel">Corporate Travel</option>
-                  <option value="Visa Services">Visa Services</option>
-                </select>
+              <!-- Single "Submit" button, left-aligned, rounded, solid gold/tan fill (~#CE9A44) -->
+              <div class="quote-actions-row">
+                <button type="submit" class="quote-submit-btn" id="quote-submit-btn">
+                  <span>Submit</span>
+                </button>
               </div>
 
-              <div class="contact-form-group">
-                <label for="contact-subject" class="contact-form-label">Destination / Subject</label>
-                <input type="text" id="contact-subject" class="contact-form-input" placeholder="e.g. Flight to London or Swiss Alps Vacation">
-              </div>
-
-              <div class="contact-form-group">
-                <label for="contact-message" class="contact-form-label">Travel Details / Message</label>
-                <textarea id="contact-message" class="contact-form-textarea" placeholder="Provide dates, passenger count, or specific requirements..." required></textarea>
-              </div>
-
-              <button type="submit" class="contact-submit-btn">
-                <span>Submit Inquiry</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="22" y1="2" x2="11" y2="13"></line>
-                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                </svg>
-              </button>
-
-              <div id="contact-form-success" style="display: none; margin-top: 18px; padding: 14px 18px; background: rgba(56, 189, 248, 0.15); border: 1px solid #38bdf8; border-radius: 10px; color: #ffffff; font-size: 0.94rem;">
-                ✓ Thank you! Your inquiry has been received. Our team will contact you shortly.
+              <!-- Placeholder confirmation message -->
+              <div class="quote-confirmation-msg" id="quote-confirmation-msg" role="status" aria-live="polite" style="display: none;">
+                <div class="quote-confirm-icon">✓</div>
+                <div class="quote-confirm-content">
+                  <h4>Request Received Successfully</h4>
+                  <p>Thank you! Our travel advisors will review your requirements and reach out with a custom quote shortly.</p>
+                </div>
               </div>
             </form>
           </div>
@@ -287,6 +420,36 @@
             </div>
           </div>
         </div>
+
+        <!-- SECTION BELOW THE FORM — Newsletter signup -->
+        <div class="newsletter-signup-band" id="newsletter-section">
+          <div class="newsletter-band-inner">
+            <!-- Left Side: Circular outlined envelope icon, small label, large bold heading -->
+            <div class="newsletter-brand-block">
+              <div class="newsletter-icon-circle" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="newsletter-text-block">
+                <span class="newsletter-eyebrow">Get the latest news and offers</span>
+                <h3 class="newsletter-heading">Subscribe to our newsletter</h3>
+              </div>
+            </div>
+
+            <!-- Right Side: Email input + Subscribe button in same style as form above -->
+            <form class="newsletter-form" id="newsletter-form" onsubmit="event.preventDefault(); document.getElementById('newsletter-success').style.display = 'block'; this.querySelector('input').value = '';">
+              <div class="newsletter-input-group">
+                <input type="email" class="newsletter-input" placeholder="Enter your email address" required aria-label="Email address for newsletter">
+                <button type="submit" class="newsletter-submit-btn">Subscribe</button>
+              </div>
+              <div class="newsletter-success-msg" id="newsletter-success" style="display: none;">
+                ✓ Thank you! You're subscribed to exclusive travel offers and news.
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -294,7 +457,7 @@
         <!-- ========================================================
          SECTION: LUXURY TRAVEL FOOTER (World Landmarks Motif)
          ======================================================== -->
-    <footer class="luxury-footer" id="contact">
+        <footer class="luxury-footer" id="contact">
       <!-- Watermark Architectural Skyline Backdrop -->
       <div class="footer-skyline-bg" aria-hidden="true"></div>
 
@@ -305,8 +468,8 @@
           <!-- Column 1: Need Any Help? / Brand -->
           <div class="footer-col col-help brand-col">
             <div class="footer-brand-badge">
-              <a href="index.html#hero" class="footer-brand-logo" aria-label="Airways Travel & Tours">
-                <img src="assets/airways_logo.png" alt="Airways Travel & Tours" class="footer-logo-img">
+              <a href="index.html#hero" class="footer-brand-logo" aria-label="Airways Travel &amp; Tours">
+                <img src="assets/airways_logo.png" alt="Airways Travel &amp; Tours" class="footer-logo-img">
               </a>
               <span class="footer-brand-tagline">Curated Luxury Journeys</span>
             </div>
@@ -317,7 +480,7 @@
             </div>
             <div class="footer-contact-block">
               <span class="contact-sublabel">Direct / WhatsApp Hotline</span>
-              <a href="tel:+923390020309" class="footer-gold-link">+92 339 0020309</a>
+              <a href="https://wa.me/923390020309" target="_blank" rel="noopener noreferrer" class="footer-gold-link">+92 339 0020309</a>
             </div>
             <div class="footer-contact-block">
               <span class="contact-sublabel">Mail to our private desk</span>
@@ -359,7 +522,7 @@
             <h3 class="footer-heading">Support</h3>
             <ul class="footer-nav-list">
               <li><a href="tel:02135631822">021 35631822</a></li>
-              <li><a href="tel:+923390020309">+92 339 0020309</a></li>
+              <li><a href="https://wa.me/923390020309" target="_blank" rel="noopener noreferrer">+92 339 0020309</a></li>
               <li><a href="mailto:airwaystravelss@gmail.com">Email Support</a></li>
               <li><a href="about.html#partners">Our Partners</a></li>
               <li><a href="services/visa.html">Visa Desk</a></li>
@@ -376,6 +539,8 @@
               <li><a href="services.html#services-grid">Tailored Trips</a></li>
               <li><a href="services.html#services-grid">Corporate Travel</a></li>
               <li><a href="services/visa.html">Visa Facilitation</a></li>
+              <li><a href="hajj-umrah.html">Hajj &amp; Umrah</a></li>
+              <li><a href="ziyarat.html">Religious Travel &amp; Ziyarat</a></li>
             </ul>
           </div>
 
@@ -416,8 +581,18 @@
     <ul class="drawer-links">
       <li><a href="index.html#hero" class="drawer-link">Home</a></li>
       <li><a href="about.html" class="drawer-link">About Us</a></li>
-      <li><a href="services.html" class="drawer-link" style="color: #38bdf8; font-weight: 700;">Services</a></li>
-      <li><a href="services/visa.html" class="drawer-link">Visa Services</a></li>
+      <li class="drawer-item-dropdown open">
+        <div class="drawer-dropdown-header">
+          <a href="services.html" class="drawer-link" style="color: #38bdf8; font-weight: 700;">Services</a>
+          <button class="drawer-dropdown-toggle" aria-label="Toggle Services submenu" aria-expanded="true">▾</button>
+        </div>
+        <ul class="drawer-submenu">
+          <li><a href="services.html" class="drawer-sublink">All Services Overview</a></li>
+          <li><a href="services/visa.html" class="drawer-sublink">Visa Facilitation</a></li>
+          <li><a href="hajj-umrah.html" class="drawer-sublink">Hajj &amp; Umrah Packages</a></li>
+          <li><a href="ziyarat.html" class="drawer-sublink">Religious Travel &amp; Ziyarat</a></li>
+        </ul>
+      </li>
       <li><a href="destinations.html" class="drawer-link">Destinations</a></li>
       <li><a href="faqs.html" class="drawer-link">FAQs</a></li>
       <li><a href="contact.html" class="drawer-link">Contact</a></li>
@@ -452,7 +627,7 @@
       const menuToggle = document.getElementById('menu-toggle');
       const mobileDrawer = document.getElementById('mobile-drawer');
       const drawerClose = document.getElementById('drawer-close');
-      const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-cta-btn');
+      const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-sublink, .drawer-cta-btn');
 
       function openDrawer() {
         if (!mobileDrawer) return;
@@ -472,31 +647,240 @@
 
       if (menuToggle) menuToggle.addEventListener('click', openDrawer);
       if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
-      drawerLinks.forEach(link => link.addEventListener('click', closeDrawer));
+      // Close drawer on regular links, sublinks or CTA
+      const closableLinks = document.querySelectorAll('.drawer-links > li:not(.drawer-item-dropdown) > .drawer-link, .drawer-sublink, .drawer-cta-btn');
+      closableLinks.forEach(link => link.addEventListener('click', closeDrawer));
 
-      // Select Service Triggers on Cards
+      // Mobile drawer dropdown toggle (entire header row, link or chevron)
+      const drawerDropdownHeaders = document.querySelectorAll('.drawer-dropdown-header');
+      drawerDropdownHeaders.forEach(header => {
+        header.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const parent = header.closest('.drawer-item-dropdown');
+          if (parent) {
+            parent.classList.toggle('open');
+            const isOpen = parent.classList.contains('open');
+            const toggle = header.querySelector('.drawer-dropdown-toggle');
+            if (toggle) toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          }
+        });
+      });
+
+      // Desktop & touch navbar dropdown toggle
+      const navDropdowns = document.querySelectorAll('.nav-item-dropdown');
+      navDropdowns.forEach(dropdown => {
+        const trigger = dropdown.querySelector('.nav-dropdown-trigger');
+        if (trigger) {
+          trigger.addEventListener('click', (e) => {
+            if (window.matchMedia('(hover: none)').matches || window.innerWidth <= 1024) {
+              e.preventDefault();
+              const isOpen = dropdown.classList.contains('open');
+              navDropdowns.forEach(d => {
+                d.classList.remove('open');
+                const t = d.querySelector('.nav-dropdown-trigger');
+                if (t) t.setAttribute('aria-expanded', 'false');
+              });
+              if (!isOpen) {
+                dropdown.classList.add('open');
+                trigger.setAttribute('aria-expanded', 'true');
+              }
+            }
+          });
+        }
+      });
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.nav-item-dropdown')) {
+          navDropdowns.forEach(d => {
+            d.classList.remove('open');
+            const t = d.querySelector('.nav-dropdown-trigger');
+            if (t) t.setAttribute('aria-expanded', 'false');
+          });
+        }
+      });
+
+      // ========================================================
+      // Custom "Select Service" Dropdown Logic
+      // ========================================================
+      const customSelectWrapper = document.getElementById('custom-service-select');
+      const customSelectTrigger = document.getElementById('custom-select-trigger');
+      const customSelectText = document.getElementById('custom-select-text');
+      const customSelectPanel = document.getElementById('custom-select-panel');
+      const customSelectHiddenInput = document.getElementById('contact-service');
+      const customSelectOptions = document.querySelectorAll('.custom-select-option');
+
+      function closeCustomSelect() {
+        if (!customSelectWrapper) return;
+        customSelectWrapper.classList.remove('open');
+        if (customSelectTrigger) customSelectTrigger.setAttribute('aria-expanded', 'false');
+      }
+
+      function openCustomSelect() {
+        if (!customSelectWrapper) return;
+        customSelectWrapper.classList.add('open');
+        if (customSelectTrigger) customSelectTrigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function toggleCustomSelect() {
+        if (!customSelectWrapper) return;
+        const isOpen = customSelectWrapper.classList.contains('open');
+        if (isOpen) closeCustomSelect();
+        else openCustomSelect();
+      }
+
+      function selectServiceOption(val, text) {
+        if (customSelectHiddenInput) customSelectHiddenInput.value = val;
+        if (customSelectText) customSelectText.textContent = text || val;
+        if (customSelectWrapper) customSelectWrapper.classList.add('has-selection');
+
+        customSelectOptions.forEach(opt => {
+          if (opt.getAttribute('data-value') === val) {
+            opt.classList.add('selected');
+          } else {
+            opt.classList.remove('selected');
+          }
+        });
+        closeCustomSelect();
+      }
+
+      if (customSelectTrigger) {
+        customSelectTrigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleCustomSelect();
+        });
+
+        customSelectTrigger.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+            e.preventDefault();
+            openCustomSelect();
+            const firstOpt = customSelectPanel?.querySelector('.custom-select-option');
+            if (firstOpt) firstOpt.focus();
+          }
+        });
+      }
+
+      customSelectOptions.forEach(opt => {
+        opt.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const val = opt.getAttribute('data-value');
+          selectServiceOption(val, opt.textContent.trim());
+        });
+
+        opt.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const val = opt.getAttribute('data-value');
+            selectServiceOption(val, opt.textContent.trim());
+            customSelectTrigger?.focus();
+          } else if (e.key === 'Escape') {
+            closeCustomSelect();
+            customSelectTrigger?.focus();
+          }
+        });
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (customSelectWrapper && !customSelectWrapper.contains(e.target)) {
+          closeCustomSelect();
+        }
+      });
+
+      // ========================================================
+      // Quote Form Validation & Submission
+      // ========================================================
+      const quoteForm = document.getElementById('request-quote-form');
+      const quoteName = document.getElementById('quote-name');
+      const quotePhone = document.getElementById('quote-phone');
+      const quoteConfirmation = document.getElementById('quote-confirmation-msg');
+
+      if (quoteForm) {
+        // Clear error states on input
+        [quoteName, quotePhone].forEach(input => {
+          if (!input) return;
+          input.addEventListener('input', () => {
+            const wrapper = input.closest('.quote-input-wrapper');
+            if (wrapper) wrapper.classList.remove('has-error');
+          });
+        });
+
+        quoteForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          let isValid = true;
+
+          // Validate Name* (required)
+          if (!quoteName || !quoteName.value.trim()) {
+            isValid = false;
+            const wrapper = quoteName?.closest('.quote-input-wrapper');
+            if (wrapper) wrapper.classList.add('has-error');
+          } else {
+            quoteName.closest('.quote-input-wrapper')?.classList.remove('has-error');
+          }
+
+          // Validate Phone* (required, at least 6 digits/chars)
+          if (!quotePhone || quotePhone.value.trim().length < 6) {
+            isValid = false;
+            const wrapper = quotePhone?.closest('.quote-input-wrapper');
+            if (wrapper) wrapper.classList.add('has-error');
+          } else {
+            quotePhone.closest('.quote-input-wrapper')?.classList.remove('has-error');
+          }
+
+          if (!isValid) {
+            if (!quoteName || !quoteName.value.trim()) {
+              quoteName?.focus();
+            } else {
+              quotePhone?.focus();
+            }
+            return;
+          }
+
+          // Show confirmation message
+          if (quoteConfirmation) {
+            quoteConfirmation.style.display = 'flex';
+            quoteConfirmation.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+
+          // Reset form fields and custom dropdown
+          quoteForm.reset();
+          if (customSelectHiddenInput) customSelectHiddenInput.value = '';
+          if (customSelectText) customSelectText.textContent = 'Select Service';
+          if (customSelectWrapper) customSelectWrapper.classList.remove('has-selection');
+          customSelectOptions.forEach(opt => opt.classList.remove('selected'));
+        });
+      }
+
+      // ========================================================
+      // Card "Select Service" triggers compatibility
+      // ========================================================
       const triggers = document.querySelectorAll('.select-service-trigger');
-      const serviceSelect = document.getElementById('contact-service');
-      const subjectInput = document.getElementById('contact-subject');
-      const contactFormPanel = document.querySelector('.contact-form-panel');
+      const formCard = document.getElementById('quote-form-panel');
 
       triggers.forEach(trig => {
         trig.addEventListener('click', (e) => {
           const serviceName = trig.getAttribute('data-service');
-          if (serviceSelect && serviceName) {
-            serviceSelect.value = serviceName;
-            if (subjectInput) {
-              subjectInput.value = `${serviceName} Inquiry`;
-            }
-            if (contactFormPanel) {
-              contactFormPanel.classList.remove('form-pulse');
-              void contactFormPanel.offsetWidth;
-              contactFormPanel.classList.add('form-pulse');
+          if (serviceName) {
+            // Map legacy card values to our options if needed
+            let mappedName = serviceName;
+            if (serviceName === 'Visa Services') mappedName = 'Worldwide Visa';
+            if (serviceName === 'Hajj & Umrah') mappedName = 'Hajj Services';
+            if (serviceName === 'Religious Travel & Ziyarat') mappedName = 'Ziarat Services';
+            if (serviceName === 'Holiday Planning') mappedName = 'Holiday Packages';
+
+            selectServiceOption(mappedName, mappedName);
+
+            if (formCard) {
+              formCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              formCard.classList.remove('form-pulse');
+              void formCard.offsetWidth;
+              formCard.classList.add('form-pulse');
             }
           }
         });
       });
     });
   </script>
+  <script src="lux-enhancements.js" defer></script>
 </body>
 </html>

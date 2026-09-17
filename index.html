@@ -6,6 +6,10 @@
   <title>Airways Travel &amp; Tours — Seamless Global Journeys</title>
   <meta name="description" content="Airways Travel & Tours crafts bespoke travel experiences, flights, and curated itineraries worldwide. Effortless journeys tailored to every traveler.">
   
+  <!-- Favicon / Brand App Icon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
+  
   <!-- Google Fonts: Playfair Display (Luxury Editorial), Outfit, Plus Jakarta Sans, Syne -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +20,7 @@
   
   <!-- Critical Image Preloads for Instant, Zero-Glitch Asset Rendering -->
   <link rel="preload" href="assets/airplane_cutout.png" as="image">
-  <link rel="preload" href="assets/sunset_sky_bg.jpg" as="image">
+  <link rel="preload" href="assets/sky_clouds_bg.jpg" as="image">
   <link rel="preload" href="assets/dest_skardu.jpg" as="image">
   <link rel="preload" href="assets/dest_swiss_alps.jpg" as="image">
   <link rel="preload" href="assets/dest_japan.jpg" as="image">
@@ -47,8 +51,46 @@
         <ul class="nav-links">
           <li><a href="index.html#hero" class="nav-link" style="color: #38bdf8; font-weight: 700;">HOME</a></li>
           <li><a href="about.html" class="nav-link">ABOUT</a></li>
-          <li><a href="services.html" class="nav-link">SERVICES</a></li>
-          <li><a href="services/visa.html" class="nav-link">VISAS</a></li>
+          <li class="nav-item-dropdown">
+            <a href="services.html" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+              SERVICES
+              <svg class="dropdown-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+                        <div class="nav-dropdown-menu" role="menu">
+              <div class="nav-dropdown-inner">
+                <a href="services.html" class="nav-dropdown-item" role="menuitem">
+                  <span class="dropdown-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>
+                  <div class="dropdown-item-text">
+                    <span class="dropdown-item-title">All Services</span>
+                    <span class="dropdown-item-desc">Comprehensive travel solutions</span>
+                  </div>
+                </a>
+                <a href="services/visa.html" class="nav-dropdown-item" role="menuitem">
+                  <span class="dropdown-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="9" cy="10" r="2.5"></circle><line x1="14" y1="9" x2="18" y2="9"></line><line x1="14" y1="12" x2="18" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg></span>
+                  <div class="dropdown-item-text">
+                    <span class="dropdown-item-title">Visa Facilitation</span>
+                    <span class="dropdown-item-desc">Global visa consultation &amp; filing</span>
+                  </div>
+                </a>
+                <a href="hajj-umrah.html" class="nav-dropdown-item" role="menuitem">
+                  <span class="dropdown-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="6" width="16" height="14" rx="2"></rect><line x1="4" y1="11" x2="20" y2="11"></line><path d="M12 2l3 4H9z"></path></svg></span>
+                  <div class="dropdown-item-text">
+                    <span class="dropdown-item-title">Hajj &amp; Umrah</span>
+                    <span class="dropdown-item-desc">VIP pilgrimage packages &amp; luxury stays</span>
+                  </div>
+                </a>
+                <a href="ziyarat.html" class="nav-dropdown-item" role="menuitem">
+                  <span class="dropdown-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 0 0 0 18v-4a5 5 0 0 1 0-10V3z"></path><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5"></path><circle cx="16" cy="7" r="1" fill="currentColor"></circle></svg></span>
+                  <div class="dropdown-item-text">
+                    <span class="dropdown-item-title">Religious Travel &amp; Ziyarat</span>
+                    <span class="dropdown-item-desc">Sacred heritage &amp; spiritual tours</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </li>
           <li><a href="destinations.html" class="nav-link">DESTINATIONS</a></li>
           <li><a href="faqs.html" class="nav-link">FAQS</a></li>
           <li><a href="contact.html" class="nav-link">CONTACT</a></li>
@@ -74,12 +116,12 @@
     <header class="hero-section" id="hero">
       <div class="hero-sticky-viewport" id="hero-sticky-viewport">
       
-      <!-- Sky and Dreamy Sunset Clouds Atmospheric Backdrop -->
+      <!-- Sky and Dreamy Clouds Atmospheric Backdrop -->
       <div class="hero-sky-backdrop" id="hero-sky-backdrop">
         <img 
-          src="assets/sunset_sky_bg.jpg" 
-          alt="Breathtaking golden sunset sky with glowing peach and twilight clouds" 
-          class="hero-sky-img"
+          src="assets/sky_clouds_bg.jpg" 
+          alt="Dreamy blue sky with soft white cumulus clouds" 
+          class="hero-sky-img" 
           id="hero-sky-img"
         >
         <div class="hero-sky-gradient" aria-hidden="true"></div>
@@ -93,7 +135,10 @@
 
           <!-- Hero Typography Block -->
           <div class="hero-text-content">
-            <span class="hero-eyebrow">ELEVATE YOUR TRAVEL JOURNEY</span>
+            <div class="hero-brand-badge">
+              <img src="assets/airways_logo.png" alt="Airways Travel & Tours" class="hero-badge-logo">
+              <span class="hero-eyebrow">ELEVATE YOUR TRAVEL JOURNEY</span>
+            </div>
             <h1 class="hero-headline">
               <span class="headline-word-lead">Experience</span><br>
               <span class="headline-italic">The Magic Of</span><br>
@@ -104,6 +149,10 @@
             <div class="hero-actions-row">
               <a href="#features" class="btn-book-hero" id="hero-cta">
                 <span>Book A Trip Now</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
               </a>
             </div>
           </div>
@@ -162,14 +211,27 @@
       <!-- Pinned Viewport Container (Locks in place & animates away on scroll) -->
       <div class="showcase-sticky-viewport" id="showcase-sticky-viewport">
 
-        <!-- Fullscreen Cross-fading Background Layers (Slide 0 is plain color; Slides 1-5 are full-screen photo scenes) -->
+        <!-- Fullscreen Cross-fading Background Layers (Slide 0 is plain color; Slides 1-18 are full-screen photo scenes) -->
         <div class="showcase-bg-container" id="showcase-bg-container">
           <div class="showcase-bg-layer showcase-bg-solid active" data-slide="0"></div>
-          <div class="showcase-bg-layer" data-slide="1" style="background-image: url('assets/dest_skardu.jpg');"></div>
-          <div class="showcase-bg-layer" data-slide="2" style="background-image: url('assets/dest_swiss_alps.jpg');"></div>
-          <div class="showcase-bg-layer" data-slide="3" style="background-image: url('assets/dest_japan.jpg');"></div>
-          <div class="showcase-bg-layer" data-slide="4" style="background-image: url('assets/dest_santorini.jpg');"></div>
-          <div class="showcase-bg-layer" data-slide="5" style="background-image: url('assets/dest_tropical.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="1" style="background-image: url('assets/dest_dubai.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="2" style="background-image: url('assets/dest_france.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="3" style="background-image: url('assets/dest_london.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="4" style="background-image: url('assets/dest_istanbul.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="5" style="background-image: url('assets/dest_italy.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="6" style="background-image: url('assets/dest_new_york.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="7" style="background-image: url('assets/dest_singapore.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="8" style="background-image: url('assets/dest_thailand.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="9" style="background-image: url('assets/dest_barcelona.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="10" style="background-image: url('assets/dest_tropical.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="11" style="background-image: url('assets/dest_japan.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="12" style="background-image: url('assets/dest_switzerland.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="13" style="background-image: url('assets/dest_kuala_lumpur.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="14" style="background-image: url('assets/dest_australia.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="15" style="background-image: url('assets/dest_egypt.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="16" style="background-image: url('assets/dest_pattaya.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="17" style="background-image: url('assets/dest_shanghai.jpg');"></div>
+          <div class="showcase-bg-layer" data-slide="18" style="background-image: url('assets/dest_osaka.jpg');"></div>
           <div class="showcase-vignette-overlay"></div>
         </div>
 
@@ -182,19 +244,19 @@
             <!-- Elevation / Region Tag (Hidden on Slide 0, appears on Slide 1+) -->
             <div class="showcase-elevation-badge" id="showcase-badge" style="display: none;">
               <span class="badge-arrow-icon">↑</span>
-              <span class="badge-elevation-val" id="showcase-elevation">4250m</span>
+              <span class="badge-elevation-val" id="showcase-elevation">UAE</span>
               <span class="badge-region-sep">·</span>
-              <span class="badge-region-name" id="showcase-region">BALTISTAN · PAKISTAN</span>
+              <span class="badge-region-name" id="showcase-region">EMIRATES · UAE</span>
             </div>
 
             <!-- Destination / Country Title -->
             <h2 class="showcase-headline" id="showcase-headline">
-              FIND YOUR<br>FROZEN<br>ESCAPE
+              EXPLORE<br>INTERNATIONAL<br>DESTINATIONS
             </h2>
 
             <!-- Descriptive Copy / Heritage Narrative -->
             <p class="showcase-narrative" id="showcase-narrative">
-              Explore our frozen lake locations, each offering a unique skating experience in the heart of Skardu.
+              Explore our handpicked international getaways, from iconic world landmarks and scenic alpine retreats to breathtaking coastal escapes.
             </p>
 
             <!-- Action Button: Minimalist pill button matching reference design -->
@@ -210,53 +272,183 @@
           <div class="showcase-right-wrapper" id="showcase-right-wrapper">
             <div class="showcase-cards-deck" id="showcase-cards-deck" aria-label="Destination Cards">
               <div class="showcase-cards-track" id="showcase-cards-track">
-                <!-- Card 1: Shauser Lake -->
-                <article class="showcase-card" data-index="1" role="button" tabindex="0" aria-label="View Shauser Lake, Skardu">
-                  <img src="assets/dest_skardu.jpg" alt="Shauser Lake, Skardu" class="showcase-card-img" loading="eager">
+                <!-- Card 1: Dubai -->
+                <article class="showcase-card" data-index="1" role="button" tabindex="0" aria-label="View Dubai, UAE">
+                  <img src="assets/dest_dubai.jpg" alt="Dubai, UAE" class="showcase-card-img" loading="eager">
                   <div class="showcase-card-overlay"></div>
                   <div class="showcase-card-content">
-                    <span class="showcase-card-tag">↑ 4250m</span>
-                    <h3 class="showcase-card-title">Shauser<br>Lake</h3>
+                    <span class="showcase-card-tag">★ UAE</span>
+                    <h3 class="showcase-card-title">Dubai</h3>
                   </div>
                 </article>
 
-                <!-- Card 2: Lake Kharfak -->
-                <article class="showcase-card" data-index="2" role="button" tabindex="0" aria-label="View Lake Kharfak">
-                  <img src="assets/dest_swiss_alps.jpg" alt="Lake Kharfak" class="showcase-card-img" loading="eager">
+                <!-- Card 2: Paris -->
+                <article class="showcase-card" data-index="2" role="button" tabindex="0" aria-label="View Paris, France">
+                  <img src="assets/dest_france.jpg" alt="Paris, France" class="showcase-card-img" loading="eager">
                   <div class="showcase-card-overlay"></div>
                   <div class="showcase-card-content">
-                    <span class="showcase-card-tag">↑ 3350m</span>
-                    <h3 class="showcase-card-title">Lake<br>Kharfak</h3>
+                    <span class="showcase-card-tag">★ FRANCE</span>
+                    <h3 class="showcase-card-title">Paris</h3>
                   </div>
                 </article>
 
-                <!-- Card 3: Jarba Zhou -->
-                <article class="showcase-card" data-index="3" role="button" tabindex="0" aria-label="View Jarba Zhou">
-                  <img src="assets/dest_japan.jpg" alt="Jarba Zhou" class="showcase-card-img" loading="eager">
+                <!-- Card 3: London -->
+                <article class="showcase-card" data-index="3" role="button" tabindex="0" aria-label="View London, UK">
+                  <img src="assets/dest_london.jpg" alt="London, UK" class="showcase-card-img" loading="eager">
                   <div class="showcase-card-overlay"></div>
                   <div class="showcase-card-content">
-                    <span class="showcase-card-tag">↑ 2500m</span>
-                    <h3 class="showcase-card-title">Jarba<br>Zhou</h3>
+                    <span class="showcase-card-tag">★ UK</span>
+                    <h3 class="showcase-card-title">London</h3>
                   </div>
                 </article>
 
-                <!-- Card 4: Kachura Lake -->
-                <article class="showcase-card" data-index="4" role="button" tabindex="0" aria-label="View Kachura Lake">
-                  <img src="assets/dest_santorini.jpg" alt="Kachura Lake" class="showcase-card-img" loading="eager">
+                <!-- Card 4: Istanbul -->
+                <article class="showcase-card" data-index="4" role="button" tabindex="0" aria-label="View Istanbul, Turkey">
+                  <img src="assets/dest_istanbul.jpg" alt="Istanbul, Turkey" class="showcase-card-img" loading="eager">
                   <div class="showcase-card-overlay"></div>
                   <div class="showcase-card-content">
-                    <span class="showcase-card-tag">↑ 2500m</span>
-                    <h3 class="showcase-card-title">Kachura<br>Lake</h3>
+                    <span class="showcase-card-tag">★ TURKEY</span>
+                    <h3 class="showcase-card-title">Istanbul</h3>
                   </div>
                 </article>
 
-                <!-- Card 5: Sadpara Lake -->
-                <article class="showcase-card" data-index="5" role="button" tabindex="0" aria-label="View Sadpara Lake">
-                  <img src="assets/dest_tropical.jpg" alt="Sadpara Lake" class="showcase-card-img" loading="eager">
+                <!-- Card 5: Rome -->
+                <article class="showcase-card" data-index="5" role="button" tabindex="0" aria-label="View Rome, Italy">
+                  <img src="assets/dest_italy.jpg" alt="Rome, Italy" class="showcase-card-img" loading="eager">
                   <div class="showcase-card-overlay"></div>
                   <div class="showcase-card-content">
-                    <span class="showcase-card-tag">↑ 2637m</span>
-                    <h3 class="showcase-card-title">Sadpara<br>Lake</h3>
+                    <span class="showcase-card-tag">★ ITALY</span>
+                    <h3 class="showcase-card-title">Rome</h3>
+                  </div>
+                </article>
+
+                <!-- Card 6: New York -->
+                <article class="showcase-card" data-index="6" role="button" tabindex="0" aria-label="View New York, USA">
+                  <img src="assets/dest_new_york.jpg" alt="New York, USA" class="showcase-card-img" loading="lazy">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">★ USA</span>
+                    <h3 class="showcase-card-title">New York</h3>
+                  </div>
+                </article>
+
+                <!-- Card 7: Singapore -->
+                <article class="showcase-card" data-index="7" role="button" tabindex="0" aria-label="View Singapore">
+                  <img src="assets/dest_singapore.jpg" alt="Singapore" class="showcase-card-img" loading="lazy">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">★ SINGAPORE</span>
+                    <h3 class="showcase-card-title">Singapore</h3>
+                  </div>
+                </article>
+
+                <!-- Card 8: Bangkok -->
+                <article class="showcase-card" data-index="8" role="button" tabindex="0" aria-label="View Bangkok, Thailand">
+                  <img src="assets/dest_thailand.jpg" alt="Bangkok, Thailand" class="showcase-card-img" loading="lazy">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">★ THAILAND</span>
+                    <h3 class="showcase-card-title">Bangkok</h3>
+                  </div>
+                </article>
+
+                <!-- Card 9: Barcelona -->
+                <article class="showcase-card" data-index="9" role="button" tabindex="0" aria-label="View Barcelona, Spain">
+                  <img src="assets/dest_barcelona.jpg" alt="Barcelona, Spain" class="showcase-card-img" loading="lazy">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">★ SPAIN</span>
+                    <h3 class="showcase-card-title">Barcelona</h3>
+                  </div>
+                </article>
+
+                <!-- Card 10: Malé -->
+                <article class="showcase-card" data-index="10" role="button" tabindex="0" aria-label="View Malé, Maldives">
+                  <img src="assets/dest_tropical.jpg" alt="Malé, Maldives" class="showcase-card-img" loading="lazy">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">★ MALDIVES</span>
+                    <h3 class="showcase-card-title">Malé</h3>
+                  </div>
+                </article>
+
+                <!-- Card 11: Tokyo -->
+                <article class="showcase-card" data-index="11" role="button" tabindex="0" aria-label="View Tokyo, Japan">
+                  <img src="assets/dest_japan.jpg" alt="Tokyo, Japan" class="showcase-card-img" loading="lazy">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">★ JAPAN</span>
+                    <h3 class="showcase-card-title">Tokyo</h3>
+                  </div>
+                </article>
+
+                <!-- Card 12: Zurich -->
+                <article class="showcase-card" data-index="12" role="button" tabindex="0" aria-label="View Zurich, Switzerland">
+                  <img src="assets/dest_switzerland.jpg" alt="Zurich, Switzerland" class="showcase-card-img" loading="lazy">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">★ SWISS</span>
+                    <h3 class="showcase-card-title">Zurich</h3>
+                  </div>
+                </article>
+
+                <!-- Card 13: Kuala Lumpur -->
+                <article class="showcase-card" data-index="13" role="button" tabindex="0" aria-label="View Kuala Lumpur, Malaysia">
+                  <img src="assets/dest_kuala_lumpur.jpg" alt="Kuala Lumpur, Malaysia" class="showcase-card-img" loading="lazy">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">★ MALAYSIA</span>
+                    <h3 class="showcase-card-title">Kuala Lumpur</h3>
+                  </div>
+                </article>
+
+                <!-- Card 14: Sydney -->
+                <article class="showcase-card" data-index="14" role="button" tabindex="0" aria-label="View Sydney, Australia">
+                  <img src="assets/dest_australia.jpg" alt="Sydney, Australia" class="showcase-card-img" loading="lazy">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">★ AUSTRALIA</span>
+                    <h3 class="showcase-card-title">Sydney</h3>
+                  </div>
+                </article>
+
+                <!-- Card 15: Cairo -->
+                <article class="showcase-card" data-index="15" role="button" tabindex="0" aria-label="View Cairo, Egypt">
+                  <img src="assets/dest_egypt.jpg" alt="Cairo, Egypt" class="showcase-card-img" loading="lazy">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">★ EGYPT</span>
+                    <h3 class="showcase-card-title">Cairo</h3>
+                  </div>
+                </article>
+
+                <!-- Card 16: Pattaya -->
+                <article class="showcase-card" data-index="16" role="button" tabindex="0" aria-label="View Pattaya, Thailand">
+                  <img src="assets/dest_pattaya.jpg" alt="Pattaya, Thailand" class="showcase-card-img" loading="lazy">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">★ THAILAND</span>
+                    <h3 class="showcase-card-title">Pattaya</h3>
+                  </div>
+                </article>
+
+                <!-- Card 17: Shanghai -->
+                <article class="showcase-card" data-index="17" role="button" tabindex="0" aria-label="View Shanghai, China">
+                  <img src="assets/dest_shanghai.jpg" alt="Shanghai, China" class="showcase-card-img" loading="lazy">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">★ CHINA</span>
+                    <h3 class="showcase-card-title">Shanghai</h3>
+                  </div>
+                </article>
+
+                <!-- Card 18: Osaka -->
+                <article class="showcase-card" data-index="18" role="button" tabindex="0" aria-label="View Osaka, Japan">
+                  <img src="assets/dest_osaka.jpg" alt="Osaka, Japan" class="showcase-card-img" loading="lazy">
+                  <div class="showcase-card-overlay"></div>
+                  <div class="showcase-card-content">
+                    <span class="showcase-card-tag">★ JAPAN</span>
+                    <h3 class="showcase-card-title">Osaka</h3>
                   </div>
                 </article>
               </div>
@@ -452,7 +644,7 @@
         <!-- ========================================================
          SECTION: LUXURY TRAVEL FOOTER (World Landmarks Motif)
          ======================================================== -->
-    <footer class="luxury-footer" id="contact">
+        <footer class="luxury-footer" id="contact">
       <!-- Watermark Architectural Skyline Backdrop -->
       <div class="footer-skyline-bg" aria-hidden="true"></div>
 
@@ -463,8 +655,8 @@
           <!-- Column 1: Need Any Help? / Brand -->
           <div class="footer-col col-help brand-col">
             <div class="footer-brand-badge">
-              <a href="index.html#hero" class="footer-brand-logo" aria-label="Airways Travel & Tours">
-                <img src="assets/airways_logo.png" alt="Airways Travel & Tours" class="footer-logo-img">
+              <a href="index.html#hero" class="footer-brand-logo" aria-label="Airways Travel &amp; Tours">
+                <img src="assets/airways_logo.png" alt="Airways Travel &amp; Tours" class="footer-logo-img">
               </a>
               <span class="footer-brand-tagline">Curated Luxury Journeys</span>
             </div>
@@ -475,7 +667,7 @@
             </div>
             <div class="footer-contact-block">
               <span class="contact-sublabel">Direct / WhatsApp Hotline</span>
-              <a href="tel:+923390020309" class="footer-gold-link">+92 339 0020309</a>
+              <a href="https://wa.me/923390020309" target="_blank" rel="noopener noreferrer" class="footer-gold-link">+92 339 0020309</a>
             </div>
             <div class="footer-contact-block">
               <span class="contact-sublabel">Mail to our private desk</span>
@@ -517,7 +709,7 @@
             <h3 class="footer-heading">Support</h3>
             <ul class="footer-nav-list">
               <li><a href="tel:02135631822">021 35631822</a></li>
-              <li><a href="tel:+923390020309">+92 339 0020309</a></li>
+              <li><a href="https://wa.me/923390020309" target="_blank" rel="noopener noreferrer">+92 339 0020309</a></li>
               <li><a href="mailto:airwaystravelss@gmail.com">Email Support</a></li>
               <li><a href="about.html#partners">Our Partners</a></li>
               <li><a href="services/visa.html">Visa Desk</a></li>
@@ -534,6 +726,8 @@
               <li><a href="services.html#services-grid">Tailored Trips</a></li>
               <li><a href="services.html#services-grid">Corporate Travel</a></li>
               <li><a href="services/visa.html">Visa Facilitation</a></li>
+              <li><a href="hajj-umrah.html">Hajj &amp; Umrah</a></li>
+              <li><a href="ziyarat.html">Religious Travel &amp; Ziyarat</a></li>
             </ul>
           </div>
 
@@ -574,8 +768,18 @@
     <ul class="drawer-links">
       <li><a href="index.html#hero" class="drawer-link" style="color: #38bdf8; font-weight: 700;">Home</a></li>
       <li><a href="about.html" class="drawer-link">About Us</a></li>
-      <li><a href="services.html" class="drawer-link">Services</a></li>
-      <li><a href="services/visa.html" class="drawer-link">Visa Services</a></li>
+      <li class="drawer-item-dropdown">
+        <div class="drawer-dropdown-header">
+          <a href="services.html" class="drawer-link">Services</a>
+          <button class="drawer-dropdown-toggle" aria-label="Toggle Services submenu" aria-expanded="false">▾</button>
+        </div>
+        <ul class="drawer-submenu">
+          <li><a href="services.html" class="drawer-sublink">All Services Overview</a></li>
+          <li><a href="services/visa.html" class="drawer-sublink">Visa Facilitation</a></li>
+          <li><a href="hajj-umrah.html" class="drawer-sublink">Hajj &amp; Umrah Packages</a></li>
+          <li><a href="ziyarat.html" class="drawer-sublink">Religious Travel &amp; Ziyarat</a></li>
+        </ul>
+      </li>
       <li><a href="destinations.html" class="drawer-link">Destinations</a></li>
       <li><a href="faqs.html" class="drawer-link">FAQs</a></li>
       <li><a href="contact.html" class="drawer-link">Contact</a></li>
@@ -648,7 +852,9 @@
               </div>
             </div>
             <div class="highlight-card">
-              <span class="highlight-icon">🧭</span>
+              <span class="highlight-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+              </span>
               <div class="highlight-info">
                 <strong>Private Expedition</strong>
                 <span>Certified local mountain guides & private 4x4 chauffeurs</span>
@@ -716,5 +922,6 @@
   <!-- Lenis Smooth Scroll -->
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="script.js"></script>
+  <script src="lux-enhancements.js" defer></script>
 </body>
 </html>

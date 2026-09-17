@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuToggle = document.getElementById('menu-toggle');
   const mobileDrawer = document.getElementById('mobile-drawer');
   const drawerClose = document.getElementById('drawer-close');
-  const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-cta-btn');
+  const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-sublink, .drawer-cta-btn');
 
   // Country Detail & Booking Modal Elements
   const countryModal = document.getElementById('country-package-modal');
@@ -51,8 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const countryBookingForm = document.getElementById('country-booking-form');
   const bookingConfirmationMsg = document.getElementById('booking-confirmation-msg');
 
-  // Curated Destination Packages Data (Frozen Lakes & Signature Expeditions)
-  const destinationsData = [
+  // Curated Domestic Destination Packages Data (Pakistan Alpine Lakes & Expeditions)
+  const domesticDestinationsData = [
     {
       id: 'shauser',
       tagElevation: '4250m',
@@ -155,6 +155,373 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
+  // Curated International Destination Packages Data (18 World Escapes)
+  const internationalDestinationsData = [
+    {
+      id: 'dubai',
+      tagElevation: 'UAE',
+      tagRegion: 'EMIRATES · UAE',
+      cardTag: '★ UAE',
+      title: 'Dubai<br>UAE',
+      country: 'UNITED ARAB EMIRATES',
+      cardTitle: 'Dubai',
+      narrative: "Futuristic architectural marvels, golden desert dune safaris, world-renowned luxury shopping, and iconic skyline vistas along the Arabian Gulf.",
+      heritage: "From historic pearl-diving creek ports to the towering Burj Khalifa and Palm Jumeirah, Dubai is a visionary global hub of ultra-luxury and innovation.",
+      image: 'assets/dest_dubai.jpg',
+      price: '$1,850',
+      duration: '5 Days · 4 Nights Luxury Itinerary',
+      pkgTitle: 'Dubai Skyline & Desert Oasis Expedition',
+      highlights: [
+        { icon: '🏙', title: 'Burj Khalifa Sky Lounge', desc: 'VIP access to 148th floor observatory with private lounge hospitality' },
+        { icon: '🏜', title: 'Luxury Desert Dune Safari', desc: 'Sunset vintage 4x4 dune drives, falconry, and candlelit Arabian feast' },
+        { icon: '⛵', title: 'Private Marina Yacht Cruise', desc: 'Charter cruise around Palm Jumeirah, Atlantis, and Dubai Marina' }
+      ]
+    },
+    {
+      id: 'paris',
+      tagElevation: 'FRANCE',
+      tagRegion: 'ÎLE-DE-FRANCE · FRANCE',
+      cardTag: '★ FRANCE',
+      title: 'Paris<br>France',
+      country: 'FRANCE',
+      cardTitle: 'Paris',
+      narrative: "The global capital of romance and haute couture, featuring illuminated Seine riverbanks, world-class museums, and culinary artistry.",
+      heritage: "Centuries of architectural brilliance, from the Gothic majesty of Notre-Dame and the Louvre to the timeless silhouette of the Eiffel Tower.",
+      image: 'assets/dest_france.jpg',
+      price: '$2,650',
+      duration: '7 Days · 6 Nights Luxury Itinerary',
+      pkgTitle: 'Parisian Haute Elegance & Art Tour',
+      highlights: [
+        { icon: '🎨', title: 'Louvre After-Hours Access', desc: 'Exclusive curator-guided tour of Mona Lisa and Renaissance galleries' },
+        { icon: '🥂', title: 'Seine Sunset Champagne Cruise', desc: 'Private glass-canopy yacht gliding past the sparkling Eiffel Tower' },
+        { icon: '👑', title: 'Palace of Versailles VIP', desc: 'Private transport and skip-the-line access to the Royal Hall of Mirrors' }
+      ]
+    },
+    {
+      id: 'london',
+      tagElevation: 'UK',
+      tagRegion: 'ENGLAND · UNITED KINGDOM',
+      cardTag: '★ UK',
+      title: 'London<br>UK',
+      country: 'UNITED KINGDOM',
+      cardTitle: 'London',
+      narrative: "Royal palaces, timeless Thames river bridges, celebrated West End theater productions, and storied British landmarks.",
+      heritage: "From Roman Londinium and the Tower of London to Buckingham Palace, London weaves monarchical history with vibrant modern global culture.",
+      image: 'assets/dest_london.jpg',
+      price: '$2,850',
+      duration: '7 Days · 6 Nights Luxury Itinerary',
+      pkgTitle: 'Royal London Heritage & Culture Voyage',
+      highlights: [
+        { icon: '💎', title: 'Tower of London Crown Jewels', desc: 'Private early morning access before public opening with a Yeoman Warder' },
+        { icon: '🎭', title: 'West End Royal Box Evening', desc: 'Premium private box tickets with champagne intermission reception' },
+        { icon: '🏰', title: 'Windsor Castle Chauffeur Tour', desc: 'Private luxury transit and guided grounds tour of the royal residence' }
+      ]
+    },
+    {
+      id: 'istanbul',
+      tagElevation: 'TURKEY',
+      tagRegion: 'MARMARA · TURKEY',
+      cardTag: '★ TURKEY',
+      title: 'Istanbul<br>Turkey',
+      country: 'TURKEY',
+      cardTitle: 'Istanbul',
+      narrative: "Where East meets West across the shimmering Bosphorus Strait, adorned with Byzantine domes, Ottoman palaces, and bustling bazaars.",
+      heritage: "The historic crossroads of empires: ancient Constantinople, the majestic Hagia Sophia, Blue Mosque, and the labyrinthine Grand Bazaar.",
+      image: 'assets/dest_istanbul.jpg',
+      price: '$1,950',
+      duration: '6 Days · 5 Nights Luxury Itinerary',
+      pkgTitle: 'Istanbul Bosphorus & Ottoman Splendor',
+      highlights: [
+        { icon: '🛥', title: 'Bosphorus Sunset Yacht Cruise', desc: 'Private luxury cruise connecting the European and Asian shores' },
+        { icon: '🕌', title: 'Hagia Sophia & Topkapi Palace', desc: 'VIP historian guide through Ottoman imperial sultan residences' },
+        { icon: '☕', title: 'Grand Bazaar & Hammam Retreat', desc: 'Personal shopping concierge followed by historic Turkish thermal bath' }
+      ]
+    },
+    {
+      id: 'rome',
+      tagElevation: 'ITALY',
+      tagRegion: 'LAZIO · ITALY',
+      cardTag: '★ ITALY',
+      title: 'Rome<br>Italy',
+      country: 'ITALY',
+      cardTitle: 'Rome',
+      narrative: "The Eternal City of gladiatorial history, Renaissance piazzas, Vatican masterpieces, and romantic cobblestone dining.",
+      heritage: "Living history across the Colosseum, Roman Forum, Sistine Chapel, and the baroque waters of Trevi Fountain.",
+      image: 'assets/dest_italy.jpg',
+      price: '$2,750',
+      duration: '7 Days · 6 Nights Luxury Itinerary',
+      pkgTitle: 'Rome Eternal Wonders & Vatican Odyssey',
+      highlights: [
+        { icon: '🏛', title: 'Colosseum Underground Tour', desc: 'Exclusive access to the subterranean gladiator chambers and arena floor' },
+        { icon: '🇻🇦', title: 'Vatican & Sistine Chapel VIP', desc: 'After-hours silent viewing of Michelangelo’s iconic fresco ceiling' },
+        { icon: '🍝', title: 'Trastevere Private Culinary Class', desc: 'Hands-on pasta and artisanal gelato masterclass with a master chef' }
+      ]
+    },
+    {
+      id: 'new-york',
+      tagElevation: 'USA',
+      tagRegion: 'NEW YORK · USA',
+      cardTag: '★ USA',
+      title: 'New York<br>USA',
+      country: 'UNITED STATES',
+      cardTitle: 'New York',
+      narrative: "The city that never sleeps: glowing Times Square billboards, iconic Art Deco skyscrapers, Central Park serenity, and Broadway magic.",
+      heritage: "The global capital of culture and architecture, crowned by the Statue of Liberty, Empire State Building, and world-renowned museums.",
+      image: 'assets/dest_new_york.jpg',
+      price: '$3,200',
+      duration: '6 Days · 5 Nights Luxury Itinerary',
+      pkgTitle: 'Manhattan Skyline & Broadway Discovery',
+      highlights: [
+        { icon: '🚁', title: 'Manhattan Helicopter Flight', desc: 'Breathtaking private skyline flight around Lady Liberty and skyscrapers' },
+        { icon: '🎭', title: 'Broadway Orchestra Seats', desc: 'Premium orchestra seating with VIP cast member meet-and-greet' },
+        { icon: '🏙', title: 'Summit One Vanderbilt Sunset', desc: 'Fast-track access to mirror infinity rooms overlooking the Empire State' }
+      ]
+    },
+    {
+      id: 'singapore',
+      tagElevation: 'SINGAPORE',
+      tagRegion: 'CENTRAL REGION · SINGAPORE',
+      cardTag: '★ SINGAPORE',
+      title: 'Singapore',
+      country: 'SINGAPORE',
+      cardTitle: 'Singapore',
+      narrative: "A futuristic garden city of tomorrow: illuminated Supertrees, Marina Bay Sands infinity vistas, and Michelin-starred hawker dining.",
+      heritage: "A seamless blend of colorful Peranakan heritage, colonial architecture, and ultra-modern green urban design.",
+      image: 'assets/dest_singapore.jpg',
+      price: '$2,150',
+      duration: '5 Days · 4 Nights Luxury Itinerary',
+      pkgTitle: 'Singapore Garden City & Marina Bay Sanctuary',
+      highlights: [
+        { icon: '🌺', title: 'Gardens by the Bay VIP Walkway', desc: 'Evening illuminated Supertree Skyway and private Cloud Forest guide' },
+        { icon: '🏊', title: 'Marina Bay Sands SkyPark Access', desc: 'Rooftop infinity pool privileges and 360-degree harbor panoramas' },
+        { icon: '🥢', title: 'Michelin Hawker Gastronomy Trail', desc: 'Curated food tour tasting famous Singaporean chili crab and satay' }
+      ]
+    },
+    {
+      id: 'bangkok',
+      tagElevation: 'THAILAND',
+      tagRegion: 'CENTRAL THAILAND · THAILAND',
+      cardTag: '★ THAILAND',
+      title: 'Bangkok<br>Thailand',
+      country: 'THAILAND',
+      cardTitle: 'Bangkok',
+      narrative: "Gilded Buddhist sanctuaries, bustling Chao Phraya canal river life, vibrant night markets, and legendary Thai hospitality.",
+      heritage: "Home to the glittering Grand Palace and Wat Arun, Bangkok preserves centuries of Siamese royal heritage and sacred temple customs.",
+      image: 'assets/dest_thailand.jpg',
+      price: '$1,650',
+      duration: '6 Days · 5 Nights Luxury Itinerary',
+      pkgTitle: 'Bangkok Royal Temples & Chao Phraya River Escape',
+      highlights: [
+        { icon: '🚤', title: 'Chao Phraya Teak Longboat', desc: 'Private canal journey exploring traditional wooden stilt waterfront homes' },
+        { icon: '🛕', title: 'Grand Palace & Reclining Buddha', desc: 'Private royal scholar tour of sacred Wat Phra Kaew and emerald Buddha' },
+        { icon: '🍸', title: 'Skyline Rooftop Gala Dinner', desc: 'Fine dining Thai gastronomy overlooking the illuminated metropolis' }
+      ]
+    },
+    {
+      id: 'barcelona',
+      tagElevation: 'SPAIN',
+      tagRegion: 'CATALONIA · SPAIN',
+      cardTag: '★ SPAIN',
+      title: 'Barcelona<br>Spain',
+      country: 'SPAIN',
+      cardTitle: 'Barcelona',
+      narrative: "Gaudí’s kaleidoscopic modernist architecture, sun-kissed Mediterranean beaches, vibrant boulevards, and world-renowned tapas culture.",
+      heritage: "Catalan pride crowned by the soaring towers of Sagrada Família, whimsical Park Güell, and the ancient stone alleys of the Gothic Quarter.",
+      image: 'assets/dest_barcelona.jpg',
+      price: '$2,450',
+      duration: '7 Days · 6 Nights Luxury Itinerary',
+      pkgTitle: 'Barcelona Modernist Art & Mediterranean Lifestyle',
+      highlights: [
+        { icon: '⛪', title: 'Sagrada Família Tower Access', desc: 'Skip-the-line elevator to the Nativity towers with panoramic city views' },
+        { icon: '🎨', title: 'Park Güell & Casa Batlló', desc: 'Exclusive VIP architectural tour of Antoni Gaudí’s greatest masterpieces' },
+        { icon: '🍷', title: 'Private Tapas & Flamenco Evening', desc: 'Tasting menu in the historic El Born quarter with passionate live flamenco' }
+      ]
+    },
+    {
+      id: 'male',
+      tagElevation: 'MALDIVES',
+      tagRegion: 'KAAFU ATOLL · MALDIVES',
+      cardTag: '★ MALDIVES',
+      title: 'Malé<br>Maldives',
+      country: 'MALDIVES',
+      cardTitle: 'Malé',
+      narrative: "Crystal turquoise lagoons, private overwater villas with glass ocean floors, kaleidoscopic coral reefs, and tranquil Indian Ocean sunsets.",
+      heritage: "An archipelago of over one thousand coral islands, where vibrant marine life meets the world’s most secluded island luxury.",
+      image: 'assets/dest_tropical.jpg',
+      price: '$3,800',
+      duration: '6 Days · 5 Nights Luxury Itinerary',
+      pkgTitle: 'Maldives Ultra-Luxury Overwater Villa Retreat',
+      highlights: [
+        { icon: '🛩', title: 'Scenic Seaplane Transfer', desc: 'Aerial flight over turquoise atoll rings directly to your island resort' },
+        { icon: '🐬', title: 'Sunset Dolphin & Manta Safari', desc: 'Private yacht cruise with marine biologist guiding snorkeling sessions' },
+        { icon: '🏝', title: 'Private Sandbank Candlelit Feast', desc: 'Exclusive dining on an uninhabited private sandbank under starlight' }
+      ]
+    },
+    {
+      id: 'tokyo',
+      tagElevation: 'JAPAN',
+      tagRegion: 'KANTO · JAPAN',
+      cardTag: '★ JAPAN',
+      title: 'Tokyo<br>Japan',
+      country: 'JAPAN',
+      cardTitle: 'Tokyo',
+      narrative: "Neon-lit Shibuya crossings, tranquil Meiji forest shrines, cutting-edge futuristic robotics, and unmatched culinary perfection.",
+      heritage: "The electric pulse of a modern metropolis intertwined with centuries-old Edo traditions, serene tea gardens, and sacred rituals.",
+      image: 'assets/dest_japan.jpg',
+      price: '$3,100',
+      duration: '8 Days · 7 Nights Luxury Itinerary',
+      pkgTitle: 'Tokyo Modern Pulse & Ancient Zen Sanctuary',
+      highlights: [
+        { icon: '🍣', title: 'Omakase Sushi Master Experience', desc: 'Exclusive counter seating with a Michelin-starred master sushi chef' },
+        { icon: '🚅', title: 'Mount Fuji Bullet Train Excursion', desc: 'Shinkansen transit and luxury private vehicle to Hakone scenic views' },
+        { icon: '⛩', title: 'Meiji Jingu & Asakusa Senso-ji', desc: 'Private historian guide to Tokyo’s oldest and most sacred temples' }
+      ]
+    },
+    {
+      id: 'zurich',
+      tagElevation: 'SWITZERLAND',
+      tagRegion: 'CANTON ZURICH · SWITZERLAND',
+      cardTag: '★ SWISS',
+      title: 'Zurich<br>Switzerland',
+      country: 'SWITZERLAND',
+      cardTitle: 'Zurich',
+      narrative: "Crystal-clear alpine lake waters, snow-capped Swiss peaks, charming medieval Old Town alleys, and world-class boutique luxury.",
+      heritage: "The golden gateway to the Alps, blending Swiss precision, artisanal chocolatier workshops, and lakeside promenade elegance.",
+      image: 'assets/dest_switzerland.jpg',
+      price: '$3,450',
+      duration: '7 Days · 6 Nights Luxury Itinerary',
+      pkgTitle: 'Zurich Lake Elegance & Swiss Alpine Wonderland',
+      highlights: [
+        { icon: '🚢', title: 'Lake Zurich Private Steam Yacht', desc: 'Scenic morning cruise past lakeside villas with Alpine panorama' },
+        { icon: '🏔', title: 'Mount Rigi Cogwheel Railway', desc: 'First-class mountain railway journey to the Queen of the Mountains' },
+        { icon: '🍫', title: 'Swiss Chocolatier Master Atelier', desc: 'Private tasting and truffle crafting with a master Swiss confiseur' }
+      ]
+    },
+    {
+      id: 'kuala-lumpur',
+      tagElevation: 'MALAYSIA',
+      tagRegion: 'FEDERAL TERRITORY · MALAYSIA',
+      cardTag: '★ MALAYSIA',
+      title: 'Kuala Lumpur<br>Malaysia',
+      country: 'MALAYSIA',
+      cardTitle: 'Kuala Lumpur',
+      narrative: "Glittering Petronas Twin Towers, colorful Batu Caves limestone shrines, lush urban rainforests, and multicultural culinary delights.",
+      heritage: "A harmonious fusion of Malay, Chinese, and Indian cultures set amidst gleaming modern architecture and British colonial heritage.",
+      image: 'assets/dest_kuala_lumpur.jpg',
+      price: '$1,750',
+      duration: '5 Days · 4 Nights Luxury Itinerary',
+      pkgTitle: 'Kuala Lumpur Skyline & Heritage Explorer',
+      highlights: [
+        { icon: '🏙', title: 'Petronas Skybridge VIP Access', desc: 'Double-deck skybridge and 86th floor observation deck passes' },
+        { icon: '🛕', title: 'Batu Caves Sacred Sanctuary', desc: 'Guided ascent up the 272 vibrant steps to ancient limestone cave temples' },
+        { icon: '🍲', title: 'Jalan Alor VIP Street Food Trail', desc: 'Tasting journey through world-famous night market specialties' }
+      ]
+    },
+    {
+      id: 'sydney',
+      tagElevation: 'AUSTRALIA',
+      tagRegion: 'NEW SOUTH WALES · AUSTRALIA',
+      cardTag: '★ AUSTRALIA',
+      title: 'Sydney<br>Australia',
+      country: 'AUSTRALIA',
+      cardTitle: 'Sydney',
+      narrative: "The iconic sail-shaped Sydney Opera House, Harbour Bridge climbing, golden Bondi Beach surf, and sun-soaked oceanfront promenades.",
+      heritage: "Australia’s historic gateway surrounded by one of the world's finest natural harbors, coastal national parks, and vibrant arts culture.",
+      image: 'assets/dest_australia.jpg',
+      price: '$3,350',
+      duration: '8 Days · 7 Nights Luxury Itinerary',
+      pkgTitle: 'Sydney Harbour Glory & Coastal Odyssey',
+      highlights: [
+        { icon: '⛵', title: 'Sydney Harbour Catamaran Cruise', desc: 'Private sailing under Harbour Bridge and past the Sydney Opera House' },
+        { icon: '🎭', title: 'Sydney Opera House Behind-the-Scenes', desc: 'Exclusive VIP backstage access and architectural legacy tour' },
+        { icon: '🦘', title: 'Blue Mountains & Wildlife Safari', desc: 'Private 4WD tour of dramatic sandstone escarpments and koala sanctuary' }
+      ]
+    },
+    {
+      id: 'cairo',
+      tagElevation: 'EGYPT',
+      tagRegion: 'GREATER CAIRO · EGYPT',
+      cardTag: '★ EGYPT',
+      title: 'Cairo<br>Egypt',
+      country: 'EGYPT',
+      cardTitle: 'Cairo',
+      narrative: "The monumental Great Pyramids of Giza, the timeless Nile River, ancient golden pharaoh treasures, and bustling historic souks.",
+      heritage: "Five thousand years of civilization at the cradle of human history, guarding the enigmatic Sphinx and wonders of the ancient world.",
+      image: 'assets/dest_egypt.jpg',
+      price: '$2,100',
+      duration: '7 Days · 6 Nights Luxury Itinerary',
+      pkgTitle: 'Cairo Pyramids of Giza & Nile Pharaoh Voyage',
+      highlights: [
+        { icon: '🐫', title: 'Giza Pyramids & Sphinx Private Guide', desc: 'Egyptologist guide with camel ride across the Sahara desert sands' },
+        { icon: '🏛', title: 'Grand Egyptian Museum VIP', desc: 'Skip-the-line entrance to the world’s largest ancient artifact collection' },
+        { icon: '⛵', title: 'Felucca Nile Sunset Sail', desc: 'Traditional wooden sail voyage on the Nile with classical music and mint tea' }
+      ]
+    },
+    {
+      id: 'pattaya',
+      tagElevation: 'THAILAND',
+      tagRegion: 'CHONBURI · THAILAND',
+      cardTag: '★ THAILAND',
+      title: 'Pattaya<br>Thailand',
+      country: 'THAILAND',
+      cardTitle: 'Pattaya',
+      narrative: "Golden Gulf of Thailand coastlines, speedboat tours to coral islands, the hand-carved wooden Sanctuary of Truth, and lively seaside promenades.",
+      heritage: "From a tranquil coastal cove to a dynamic world resort haven, crowned by magnificent all-wood sacred temple craftsmanship.",
+      image: 'assets/dest_pattaya.jpg',
+      price: '$1,550',
+      duration: '5 Days · 4 Nights Luxury Itinerary',
+      pkgTitle: 'Pattaya Coastal Beach & Coral Island Getaway',
+      highlights: [
+        { icon: '🏝', title: 'Koh Larn Coral Island Speedboat', desc: 'Private speedboat to crystal-clear snorkeling bays with fresh seafood lunch' },
+        { icon: '🛕', title: 'Sanctuary of Truth Architectural Tour', desc: 'Guided walk through the world’s largest intricately hand-carved wooden temple' },
+        { icon: '🚤', title: 'Floating Market Private Boat', desc: 'Rowboat tour through traditional water canal stalls and silk craft shops' }
+      ]
+    },
+    {
+      id: 'shanghai',
+      tagElevation: 'CHINA',
+      tagRegion: 'EAST CHINA · CHINA',
+      cardTag: '★ CHINA',
+      title: 'Shanghai<br>China',
+      country: 'CHINA',
+      cardTitle: 'Shanghai',
+      narrative: "The dazzling Bund promenade, neon-lit Pudong super-skyscrapers, classical Yu Garden pavilions, and electric cosmopolitan energy.",
+      heritage: "The Pearl of the Orient, where 1920s European heritage architecture gazes across the river to the tallest towers of the 21st century.",
+      image: 'assets/dest_shanghai.jpg',
+      price: '$2,400',
+      duration: '6 Days · 5 Nights Luxury Itinerary',
+      pkgTitle: 'Shanghai Bund Splendor & Pudong Skyline Tour',
+      highlights: [
+        { icon: '🌃', title: 'Huangpu River Night Cruise', desc: 'VIP deck seats admiring the glowing light shows of the Bund and Pudong' },
+        { icon: '🏙', title: 'Shanghai Tower 118th Floor Lounge', desc: 'High-speed elevator to the clouds with panoramic 360-degree city view' },
+        { icon: '🏮', title: 'Yu Garden & French Concession Tour', desc: 'Ming dynasty classical rockeries and historic tree-lined avenues' }
+      ]
+    },
+    {
+      id: 'osaka',
+      tagElevation: 'JAPAN',
+      tagRegion: 'KANSAI · JAPAN',
+      cardTag: '★ JAPAN',
+      title: 'Osaka<br>Japan',
+      country: 'JAPAN',
+      cardTitle: 'Osaka',
+      narrative: "Japan’s culinary capital, glowing neon Dotonbori canals, the majestic 16th-century Osaka Castle, and warm spirited street life.",
+      heritage: "Celebrated as the Nation’s Kitchen and former imperial capital Naniwa, famous for historic castles, food culture, and Kansai warmth.",
+      image: 'assets/dest_osaka.jpg',
+      price: '$2,650',
+      duration: '6 Days · 5 Nights Luxury Itinerary',
+      pkgTitle: 'Osaka Culinary Heritage & Castle Wonders',
+      highlights: [
+        { icon: '🏯', title: 'Osaka Castle VIP Grounds Tour', desc: 'Private historian access to the samurai armory and panoramic top deck' },
+        { icon: '🐙', title: 'Dotonbori Street Food Tasting', desc: 'Guided gastronomic crawl tasting hot takoyaki, okonomiyaki, and sake' },
+        { icon: '⛩', title: 'Fushimi Inari & Kyoto Day Excursion', desc: 'First-class rail transit to thousand red torii gates and bamboo groves' }
+      ]
+    }
+  ];
+
+  // Default alias for backward compatibility
+  const destinationsData = internationalDestinationsData;
+
   // ==========================================================================
   // --- 2. Math & Easing Helpers ---
   // ==========================================================================
@@ -181,7 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const isMobile = window.innerWidth <= 768;
 
     // Flight takeoff distance: smooth climb-out as user scrolls past hero
-    const takeoffDistance = isMobile ? 380 : 500;
+    const takeoffDistance = isMobile ? 220 : 500;
 
     // Hero Resting Stance (center):
     const midX = 0;
@@ -229,8 +596,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   // --- 4. Factory Function for Showcase Instances ---
   // ==========================================================================
-  function initShowcaseInstance({ suffix = '', initialSlide = 0 } = {}) {
+  function initShowcaseInstance({ suffix = '', initialSlide = 0, dataset = null } = {}) {
     const s = suffix ? `-${suffix}` : '';
+    const datasetList = dataset || (suffix === '2' ? domesticDestinationsData : internationalDestinationsData);
     const sectionElem = document.getElementById(suffix ? `features-${suffix}` : 'features');
     const stickyViewport = document.getElementById(`showcase-sticky-viewport${s}`);
     const introCurtain = document.getElementById(suffix ? `showcase-intro-curtain-${suffix}` : 'showcase-intro-curtain');
@@ -315,7 +683,7 @@ document.addEventListener('DOMContentLoaded', () => {
       clone.style.boxShadow = '0 16px 36px rgba(0, 0, 0, 0.4)';
       clone.style.willChange = 'top, left, width, height, border-radius, box-shadow, opacity';
 
-      const dest = destinationsData[targetSlideIndex - 1];
+      const dest = datasetList[targetSlideIndex - 1];
       const cardImg = targetCard.querySelector('.showcase-card-img');
       const imgSrc = dest ? dest.image : (cardImg ? cardImg.src : '');
 
@@ -424,14 +792,14 @@ document.addEventListener('DOMContentLoaded', () => {
           if (suffix === '2') {
             headline.innerHTML = 'DISCOVER<br>DOMESTIC<br>DESTINATIONS';
           } else {
-            headline.innerHTML = 'FIND YOUR<br>FROZEN<br>ESCAPE';
+            headline.innerHTML = 'EXPLORE<br>INTERNATIONAL<br>DESTINATIONS';
           }
         }
         if (narrative) {
           if (suffix === '2') {
             narrative.textContent = "Explore our high-altitude glacial valleys, ancient Silk Route plateaus, and serene alpine wonders across Pakistan.";
           } else {
-            narrative.textContent = "Explore our frozen lake locations, each offering a unique skating experience in the heart of Skardu.";
+            narrative.textContent = "Explore our handpicked international getaways, from iconic world landmarks and scenic alpine retreats to breathtaking coastal escapes.";
           }
         }
         if (btnLabel) btnLabel.textContent = 'BOOK NOW';
@@ -444,7 +812,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       } else {
         // State 3: Full-Screen Destination View (Slide 1+)
-        const dest = destinationsData[slideIndex - 1];
+        const dest = datasetList[slideIndex - 1];
         if (dest) {
           if (elevationBadge) {
             elevationBadge.classList.remove('hidden-badge');
@@ -457,7 +825,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (btnLabel) btnLabel.textContent = 'BOOK NOW';
           const slideNumStr = slideIndex < 10 ? `0${slideIndex}` : `${slideIndex}`;
           if (counterCurrent) counterCurrent.textContent = slideNumStr;
-          const progressPercent = (slideIndex / destinationsData.length) * 100;
+          const progressPercent = (slideIndex / datasetList.length) * 100;
           if (progressFill) progressFill.style.width = `${progressPercent}%`;
 
           // Shift cards track so upcoming destinations are presented cleanly (card width 248px + gap 24px = 272px)
@@ -478,8 +846,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function goToSlide(newIndex) {
       if (newIndex < 0) {
-        newIndex = destinationsData.length;
-      } else if (newIndex > destinationsData.length) {
+        newIndex = datasetList.length;
+      } else if (newIndex > datasetList.length) {
         newIndex = 0;
       }
       // Ensure cards are visible whenever user interacts with controls
@@ -544,7 +912,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (bookBtn) {
       bookBtn.addEventListener('click', () => {
         const destIdx = slide > 0 ? slide - 1 : 0;
-        openCountryModal(destIdx);
+        openCountryModal(destIdx, datasetList);
       });
     }
 
@@ -607,6 +975,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateOnScroll(scrollY, windowH) {
       if (!stickyViewport) return;
+
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        stickyViewport.style.transform = 'none';
+        stickyViewport.style.opacity = '1';
+        if (cardsDeck && !cardsDeck.classList.contains('cards-entered')) {
+          cardsDeck.classList.add('cards-entered');
+        }
+        return;
+      }
 
       const showcaseTop = sectionElem.offsetTop;
       const showcaseH = sectionElem.offsetHeight;
@@ -741,8 +1119,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Instantiate Both Showcase Sliders
-  const showcase1 = initShowcaseInstance({ suffix: '', initialSlide: 0 });
-  const showcase2 = initShowcaseInstance({ suffix: '2', initialSlide: 0 });
+  const showcase1 = initShowcaseInstance({ suffix: '', initialSlide: 0, dataset: internationalDestinationsData });
+  const showcase2 = initShowcaseInstance({ suffix: '2', initialSlide: 0, dataset: domesticDestinationsData });
 
   function updateShowcasesOnScroll(customScrollY) {
     const scrollY = customScrollY !== undefined ? customScrollY : (window.pageYOffset || document.documentElement.scrollTop);
@@ -766,9 +1144,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   // --- 5. Country Package Modal Details & Booking Form ---
   // ==========================================================================
-  function openCountryModal(destIndex) {
+  function openCountryModal(destIndex, dataList = internationalDestinationsData) {
     if (!countryModal) return;
-    const dest = destinationsData[destIndex];
+    const dest = (dataList && dataList[destIndex]) ? dataList[destIndex] : internationalDestinationsData[destIndex];
     if (!dest) return;
 
     if (countryModalTag) countryModalTag.textContent = `${dest.cardTag} · ${dest.tagRegion}`;
@@ -833,7 +1211,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const travelers = document.getElementById('pkg-travelers')?.value || '2';
 
       if (bookingConfirmationMsg) {
-        const destName = destinationsData[0].pkgTitle;
+        const destName = countryModalTitle ? countryModalTitle.textContent : 'Your Selected Destination';
         bookingConfirmationMsg.innerHTML = `✓ Thank you, <strong>${guestName}</strong>! Your inquiry for <strong>${destName}</strong> on <strong>${travelDate}</strong> (${travelers} travelers) has been submitted. Our concierge will contact you at <em>${guestEmail}</em> within 2 hours.`;
         bookingConfirmationMsg.style.display = 'block';
       }
@@ -916,8 +1294,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
 
-    drawerLinks.forEach(link => {
+    // Close drawer when regular links, sublinks or CTA are clicked
+    const closableDrawerLinks = document.querySelectorAll('.drawer-links > li:not(.drawer-item-dropdown) > .drawer-link, .drawer-sublink, .drawer-cta-btn');
+    closableDrawerLinks.forEach(link => {
       link.addEventListener('click', closeDrawer);
+    });
+
+    // Mobile drawer Services dropdown header toggle (clicking header row, text, or arrow button)
+    const drawerDropdownHeaders = document.querySelectorAll('.drawer-dropdown-header');
+    drawerDropdownHeaders.forEach(header => {
+      header.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const parent = header.closest('.drawer-item-dropdown');
+        if (parent) {
+          parent.classList.toggle('open');
+          const isOpen = parent.classList.contains('open');
+          const toggleBtn = header.querySelector('.drawer-dropdown-toggle');
+          if (toggleBtn) {
+            toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          }
+        }
+      });
+    });
+
+    // Desktop/Touch navbar dropdown toggle support (hover handles desktop automatically)
+    const navDropdowns = document.querySelectorAll('.nav-item-dropdown');
+    navDropdowns.forEach(dropdown => {
+      const trigger = dropdown.querySelector('.nav-dropdown-trigger');
+      if (trigger) {
+        trigger.addEventListener('click', (e) => {
+          if (window.matchMedia('(hover: none)').matches || window.innerWidth <= 1024) {
+            e.preventDefault();
+            const isOpen = dropdown.classList.contains('open');
+            navDropdowns.forEach(d => {
+              d.classList.remove('open');
+              const t = d.querySelector('.nav-dropdown-trigger');
+              if (t) t.setAttribute('aria-expanded', 'false');
+            });
+            if (!isOpen) {
+              dropdown.classList.add('open');
+              trigger.setAttribute('aria-expanded', 'true');
+            }
+          }
+        });
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-item-dropdown')) {
+        navDropdowns.forEach(d => {
+          d.classList.remove('open');
+          const t = d.querySelector('.nav-dropdown-trigger');
+          if (t) t.setAttribute('aria-expanded', 'false');
+        });
+      }
     });
 
     document.addEventListener('click', (e) => {
